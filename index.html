@@ -522,6 +522,60 @@
 
     .form-group textarea { resize: vertical; min-height: 100px; }
 
+    /* PAKET PICKER */
+    .paket-picker {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .paket-btn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 14px 16px;
+      background: var(--white);
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      text-align: left;
+      transition: all 0.2s;
+    }
+
+    .paket-btn:hover { border-color: var(--red-blush); transform: translateY(-1px); }
+
+    .paket-btn.selected {
+      border-color: var(--red);
+      background: var(--red-tint);
+    }
+
+    .paket-popular { border-color: var(--red-blush); }
+
+    .paket-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    .paket-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .paket-price {
+      font-size: 12px;
+      color: var(--slate);
+      margin-top: 2px;
+    }
+
+    .paket-btn.selected .paket-name { color: var(--red); }
+
     .promo-group {
       margin-bottom: 20px;
     }
@@ -813,11 +867,11 @@
 
         <div class="contact-detail">
           <div class="contact-detail-icon">📧</div>
-          <div>info@maxxweb.cz</div>
+          <div>maxxweb@outlook.cz</div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">📞</div>
-          <div>+420 123 456 789</div>
+          <div>+420 776 545 111</div>
         </div>
         <div class="contact-detail">
           <div class="contact-detail-icon">⏰</div>
@@ -841,14 +895,27 @@
             <input type="tel" id="telefon" name="telefon" placeholder="+420 777 123 456" />
           </div>
           <div class="form-group">
-            <label for="paket">Zájem o balíček</label>
-            <select id="paket" name="paket">
-              <option value="">— Vyberte balíček —</option>
-              <option value="basic">A · Basic (od 20 000 Kč)</option>
-              <option value="business">B · Business (od 40 000 Kč)</option>
-              <option value="premium">C · Premium (od 70 000 Kč)</option>
-              <option value="nevim">Ještě nevím</option>
-            </select>
+            <label>Zájem o balíček</label>
+            <div class="paket-picker">
+              <button type="button" class="paket-btn" data-val="basic" onclick="selectPaket(this)">
+                <span class="paket-name">Basic</span>
+                <span class="paket-price">od 20 000 Kč</span>
+              </button>
+              <button type="button" class="paket-btn paket-popular" data-val="business" onclick="selectPaket(this)">
+                <span class="paket-badge">Nejpopulárnější</span>
+                <span class="paket-name">Business</span>
+                <span class="paket-price">od 40 000 Kč</span>
+              </button>
+              <button type="button" class="paket-btn" data-val="premium" onclick="selectPaket(this)">
+                <span class="paket-name">Premium</span>
+                <span class="paket-price">od 70 000 Kč</span>
+              </button>
+              <button type="button" class="paket-btn paket-nevim" data-val="nevim" onclick="selectPaket(this)">
+                <span class="paket-name">Ještě nevím</span>
+                <span class="paket-price">Poradíme vám</span>
+              </button>
+            </div>
+            <input type="hidden" id="paket" name="paket" value="" />
           </div>
 
           <div class="promo-group">
@@ -881,10 +948,19 @@
 </footer>
 
 <script>
+  function selectPaket(btn) {
+    document.querySelectorAll('.paket-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('paket').value = btn.dataset.val;
+  }
+
   function vyberPaket(hodnota) {
-    document.getElementById('paket').value = hodnota;
     document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => document.getElementById('jmeno').focus(), 600);
+    setTimeout(() => {
+      const btn = document.querySelector(`.paket-btn[data-val="${hodnota}"]`);
+      if (btn) selectPaket(btn);
+      document.getElementById('jmeno').focus();
+    }, 600);
   }
 
   document.getElementById('contactForm').addEventListener('submit', function(e) {
