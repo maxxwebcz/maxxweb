@@ -296,6 +296,54 @@
       font-weight: 500;
     }
 
+    /* TILE PICKER */
+    .tile-picker {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .tile-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 16px 18px;
+      background: var(--white);
+      border: 2px solid #e0e0e0;
+      border-radius: 14px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      text-align: left;
+      transition: all 0.18s;
+    }
+
+    .tile-btn:hover {
+      border-color: var(--red-blush);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(232,58,58,0.08);
+    }
+
+    .tile-btn.selected {
+      border-color: var(--red);
+      background: var(--red-tint);
+    }
+
+    .tile-icon { font-size: 22px; margin-bottom: 4px; }
+
+    .tile-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .tile-btn.selected .tile-label { color: var(--red); }
+
+    .tile-sub {
+      font-size: 12px;
+      color: var(--slate);
+    }
+
     /* NAV BUTTONS */
     .step-nav {
       display: flex;
@@ -625,24 +673,57 @@
       <p>Kdy to potřebujete a co bychom měli vědět?</p>
     </div>
     <div class="form-group">
-      <label for="termin">Kdy web potřebujete?</label>
-      <select id="termin">
-        <option value="">— Vyberte termín —</option>
-        <option value="co-nejdrive">Co nejdříve</option>
-        <option value="mesic">Do měsíce</option>
-        <option value="2mesice">Do 2 měsíců</option>
-        <option value="neresi">Termín neřeším</option>
-      </select>
+      <label>Kdy web potřebujete?</label>
+      <div class="tile-picker" id="terminPicker">
+        <button type="button" class="tile-btn" data-val="co-nejdrive" onclick="selectTile('terminPicker', this, 'termin')">
+          <span class="tile-icon">⚡</span>
+          <span class="tile-label">Co nejdříve</span>
+          <span class="tile-sub">ASAP</span>
+        </button>
+        <button type="button" class="tile-btn" data-val="mesic" onclick="selectTile('terminPicker', this, 'termin')">
+          <span class="tile-icon">📅</span>
+          <span class="tile-label">Do měsíce</span>
+          <span class="tile-sub">Cca 4 týdny</span>
+        </button>
+        <button type="button" class="tile-btn" data-val="2mesice" onclick="selectTile('terminPicker', this, 'termin')">
+          <span class="tile-icon">🗓️</span>
+          <span class="tile-label">Do 2 měsíců</span>
+          <span class="tile-sub">Mám čas</span>
+        </button>
+        <button type="button" class="tile-btn" data-val="neresi" onclick="selectTile('terminPicker', this, 'termin')">
+          <span class="tile-icon">😌</span>
+          <span class="tile-label">Termín neřeším</span>
+          <span class="tile-sub">Až to bude</span>
+        </button>
+      </div>
+      <input type="hidden" id="termin" value="" />
     </div>
+
     <div class="form-group">
-      <label for="rozpocet">Orientační rozpočet:</label>
-      <select id="rozpocet">
-        <option value="">— Vyberte —</option>
-        <option value="basic">20 000–40 000 Kč (Basic)</option>
-        <option value="business">40 000–70 000 Kč (Business)</option>
-        <option value="premium">70 000 Kč+ (Premium)</option>
-        <option value="nevim">Ještě nevím</option>
-      </select>
+      <label>Orientační rozpočet:</label>
+      <div class="tile-picker" id="rozpocetPicker">
+        <button type="button" class="tile-btn" data-val="basic" onclick="selectTile('rozpocetPicker', this, 'rozpocet')">
+          <span class="tile-icon">🟦</span>
+          <span class="tile-label">Basic</span>
+          <span class="tile-sub">20–40 tis. Kč</span>
+        </button>
+        <button type="button" class="tile-btn" data-val="business" onclick="selectTile('rozpocetPicker', this, 'rozpocet')">
+          <span class="tile-icon">🟥</span>
+          <span class="tile-label">Business</span>
+          <span class="tile-sub">40–70 tis. Kč</span>
+        </button>
+        <button type="button" class="tile-btn" data-val="premium" onclick="selectTile('rozpocetPicker', this, 'rozpocet')">
+          <span class="tile-icon">🟧</span>
+          <span class="tile-label">Premium</span>
+          <span class="tile-sub">70 tis. Kč+</span>
+        </button>
+        <button type="button" class="tile-btn" data-val="nevim" onclick="selectTile('rozpocetPicker', this, 'rozpocet')">
+          <span class="tile-icon">🤔</span>
+          <span class="tile-label">Ještě nevím</span>
+          <span class="tile-sub">Poradíte mi</span>
+        </button>
+      </div>
+      <input type="hidden" id="rozpocet" value="" />
     </div>
     <div class="form-group">
       <label for="poznamky">Máte ještě něco, co bychom měli vědět?</label>
@@ -665,6 +746,12 @@
 </main>
 
 <script>
+  function selectTile(pickerId, btn, hiddenId) {
+    document.querySelectorAll(`#${pickerId} .tile-btn`).forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById(hiddenId).value = btn.dataset.val;
+  }
+
   const TOTAL_STEPS = 6;
   let currentStep = 1;
   const answers = {};
