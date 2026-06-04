@@ -963,7 +963,7 @@
     }, 600);
   }
 
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const jmeno = document.getElementById('jmeno').value.trim();
@@ -974,14 +974,29 @@
       return;
     }
 
-    const params = new URLSearchParams({
-      jmeno: jmeno,
-      email: email,
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Odesílám…';
+    btn.disabled = true;
+
+    const data = {
+      jmeno,
+      email,
       telefon: document.getElementById('telefon').value.trim(),
       paket: document.getElementById('paket').value,
       promokod: document.getElementById('promokod').value.trim().toUpperCase()
-    });
+    };
 
+    try {
+      await fetch('/api/kontakt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.error(err);
+    }
+
+    const params = new URLSearchParams(data);
     window.location.href = 'dotaznik.html?' + params.toString();
   });
 

@@ -854,11 +854,22 @@
     showStep(currentStep);
   }
 
-  function submitForm() {
+  async function submitForm() {
     collectStep(6);
 
-    // In production: send `answers` to your backend / email service
-    console.log('Dotazník odeslán:', answers);
+    const btn = document.querySelector('#step6 .btn-next');
+    btn.textContent = 'Odesílám…';
+    btn.disabled = true;
+
+    try {
+      await fetch('/api/dotaznik', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(answers)
+      });
+    } catch (err) {
+      console.error(err);
+    }
 
     document.getElementById('welcomeBlock').style.display = 'none';
     document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
