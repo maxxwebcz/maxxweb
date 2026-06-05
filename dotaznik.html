@@ -4,430 +4,127 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <title>Dotazník – maxxweb</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --red: #E83A3A;
-      --red-deep: #B52B2B;
-      --red-tint: #FFF5F5;
-      --red-blush: #FFD0D0;
-      --black: #1A1A1A;
-      --slate: #555555;
-      --gray: #F2F2F2;
-      --white: #FFFFFF;
+      --red: #E83A3A; --red-deep: #B52B2B; --red-tint: #FFF5F5;
+      --red-blush: #FFD0D0; --black: #1A1A1A; --slate: #555555;
+      --gray: #F2F2F2; --white: #FFFFFF;
     }
+    body { font-family: 'Poppins', sans-serif; color: var(--black); background: var(--gray); font-size: 17px; line-height: 1.6; min-height: 100vh; }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--black);
-      background: var(--gray);
-      font-size: 17px;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
+    header { background: var(--black); padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 22px; font-weight: 800; color: var(--white); text-decoration: none; }
+    .logo .xx { color: var(--red); }
+    .logo .web { color: #aaa; font-weight: 500; }
+    .header-tag { background: var(--red); color: var(--white); font-size: 13px; font-weight: 600; padding: 5px 16px; border-radius: 100px; }
 
-    /* HEADER */
-    header {
-      background: var(--black);
-      padding: 0 32px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    .progress-bar-wrap { background: #e0e0e0; height: 5px; }
+    .progress-bar { background: var(--red); height: 5px; transition: width 0.4s ease; }
 
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--white);
-      text-decoration: none;
-    }
+    main { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
 
-    .logo span { color: var(--red); }
-
-    .header-tag {
-      background: var(--red);
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 5px 16px;
-      border-radius: 100px;
-    }
-
-    /* PROGRESS */
-    .progress-bar-wrap {
-      background: #e0e0e0;
-      height: 5px;
-    }
-
-    .progress-bar {
-      background: var(--red);
-      height: 5px;
-      transition: width 0.4s ease;
-    }
-
-    /* MAIN */
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    /* WELCOME */
-    .welcome {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .welcome-name {
-      font-size: 14px;
-      color: var(--slate);
-      margin-bottom: 8px;
-    }
-
-    .welcome h1 {
-      font-size: clamp(26px, 5vw, 40px);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
+    .welcome { text-align: center; margin-bottom: 48px; }
+    .welcome-name { font-size: 14px; color: var(--slate); margin-bottom: 8px; }
+    .welcome h1 { font-size: clamp(26px, 5vw, 40px); font-weight: 800; line-height: 1.2; margin-bottom: 14px; }
     .welcome h1 span { color: var(--red); }
+    .welcome p { font-size: 16px; color: var(--slate); max-width: 520px; margin: 0 auto; }
 
-    .welcome p {
-      font-size: 16px;
-      color: var(--slate);
-      max-width: 520px;
-      margin: 0 auto;
-    }
+    .step { display: none; }
+    .step.active { display: block; }
 
-    /* STEP */
-    .step {
-      display: none;
-    }
+    .step-header { margin-bottom: 32px; }
+    .step-number { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+    .step-header h2 { font-size: clamp(22px, 4vw, 32px); font-weight: 800; line-height: 1.2; margin-bottom: 8px; }
+    .step-header p { font-size: 15px; color: var(--slate); }
 
-    .step.active {
-      display: block;
-    }
+    /* CARD GRID */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .card-option { background: var(--white); border: 2px solid #e0e0e0; border-radius: 14px; padding: 22px 18px; cursor: pointer; transition: all 0.2s; text-align: center; user-select: none; }
+    .card-option:hover { border-color: var(--red-blush); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(232,58,58,0.08); }
+    .card-option.selected { border-color: var(--red); background: var(--red-tint); }
+    .card-option .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .card-option .card-label { font-size: 14px; font-weight: 700; }
+    .card-option.selected .card-label { color: var(--red); }
+    .card-option .card-sub { font-size: 12px; color: var(--slate); margin-top: 3px; }
 
-    .step-header {
-      margin-bottom: 32px;
-    }
-
-    .step-number {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 8px;
-    }
-
-    .step-header h2 {
-      font-size: clamp(22px, 4vw, 32px);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    .step-header p {
-      font-size: 15px;
-      color: var(--slate);
-    }
-
-    /* CARDS */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-
-    .card-option {
-      background: var(--white);
-      border: 2px solid #e0e0e0;
-      border-radius: 14px;
-      padding: 24px 20px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
-      user-select: none;
-    }
-
-    .card-option:hover {
-      border-color: var(--red-blush);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(232,58,58,0.1);
-    }
-
-    .card-option.selected {
-      border-color: var(--red);
-      background: var(--red-tint);
-    }
-
-    .card-option .card-icon {
-      font-size: 32px;
-      margin-bottom: 12px;
-    }
-
-    .card-option .card-label {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .card-option .card-sub {
-      font-size: 13px;
-      color: var(--slate);
-      margin-top: 4px;
-    }
-
-    /* COLOR PICKER */
-    .color-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 14px;
-      margin-bottom: 36px;
-    }
-
-    .color-option {
-      border: 2px solid #e0e0e0;
-      border-radius: 14px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .color-option:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
-    .color-option.selected { border-color: var(--red); }
-
-    .color-swatch {
-      height: 64px;
-    }
-
-    .color-name {
-      padding: 10px 12px;
-      font-size: 13px;
-      font-weight: 600;
-      background: var(--white);
-      text-align: center;
-    }
-
-    /* FORM FIELDS */
-    .form-group {
-      margin-bottom: 24px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      color: var(--black);
-      background: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--red);
-    }
-
-    .form-group textarea { resize: vertical; min-height: 120px; }
-
-    /* CHECKBOX LIST */
-    .check-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 36px;
-    }
-
-    .check-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: var(--white);
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      padding: 16px 20px;
-      cursor: pointer;
-      transition: all 0.2s;
-      user-select: none;
-    }
-
+    /* CHECK LIST */
+    .check-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .check-item { display: flex; align-items: center; gap: 14px; background: var(--white); border: 2px solid #e0e0e0; border-radius: 12px; padding: 14px 18px; cursor: pointer; transition: all 0.2s; user-select: none; }
     .check-item:hover { border-color: var(--red-blush); }
     .check-item.selected { border-color: var(--red); background: var(--red-tint); }
+    .check-box { width: 22px; height: 22px; border: 2px solid #ccc; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all 0.2s; color: transparent; }
+    .check-item.selected .check-box { background: var(--red); border-color: var(--red); color: white; }
+    .check-item-text { flex: 1; }
+    .check-item-label { font-size: 15px; font-weight: 600; }
+    .check-item-sub { font-size: 12px; color: var(--slate); }
 
-    .check-box {
-      width: 22px;
-      height: 22px;
-      border: 2px solid #ccc;
-      border-radius: 6px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .check-item.selected .check-box {
-      background: var(--red);
-      border-color: var(--red);
-      color: white;
-    }
-
-    .check-item-label {
-      font-size: 15px;
-      font-weight: 500;
-    }
+    /* COLOR GRID */
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .color-option { border: 2px solid #e0e0e0; border-radius: 14px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
+    .color-option:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+    .color-option.selected { border-color: var(--red); }
+    .color-swatch { height: 56px; }
+    .color-name { padding: 9px 12px; font-size: 12px; font-weight: 600; background: var(--white); text-align: center; }
 
     /* TILE PICKER */
-    .tile-picker {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .tile-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-      padding: 16px 18px;
-      background: var(--white);
-      border: 2px solid #e0e0e0;
-      border-radius: 14px;
-      cursor: pointer;
-      font-family: 'Poppins', sans-serif;
-      text-align: left;
-      transition: all 0.18s;
-    }
-
-    .tile-btn:hover {
-      border-color: var(--red-blush);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(232,58,58,0.08);
-    }
-
-    .tile-btn.selected {
-      border-color: var(--red);
-      background: var(--red-tint);
-    }
-
+    .tile-picker { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+    .tile-btn { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 16px 18px; background: var(--white); border: 2px solid #e0e0e0; border-radius: 14px; cursor: pointer; font-family: 'Poppins', sans-serif; text-align: left; transition: all 0.18s; }
+    .tile-btn:hover { border-color: var(--red-blush); transform: translateY(-2px); }
+    .tile-btn.selected { border-color: var(--red); background: var(--red-tint); }
     .tile-icon { font-size: 22px; margin-bottom: 4px; }
-
-    .tile-label {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--black);
-    }
-
+    .tile-label { font-size: 14px; font-weight: 700; color: var(--black); }
     .tile-btn.selected .tile-label { color: var(--red); }
+    .tile-sub { font-size: 12px; color: var(--slate); }
 
-    .tile-sub {
-      font-size: 12px;
-      color: var(--slate);
+    /* FORM FIELDS */
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--black); }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 10px;
+      font-family: 'Poppins', sans-serif; font-size: 15px; color: var(--black);
+      background: var(--white); outline: none; transition: border-color 0.2s;
     }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--red); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-hint { font-size: 12px; color: #aaa; margin-top: 6px; }
 
-    /* NAV BUTTONS */
-    .step-nav {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      margin-top: 8px;
-    }
-
-    .btn-next {
-      background: var(--red);
-      color: var(--white);
-      border: none;
-      border-radius: 10px;
-      padding: 16px 36px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-    }
-
+    /* NAV */
+    .step-nav { display: flex; gap: 14px; align-items: center; margin-top: 12px; }
+    .btn-next { background: var(--red); color: var(--white); border: none; border-radius: 10px; padding: 16px 36px; font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.15s; }
     .btn-next:hover { background: var(--red-deep); transform: translateY(-1px); }
-
-    .btn-back {
-      background: transparent;
-      color: var(--slate);
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      padding: 14px 28px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
+    .btn-back { background: transparent; color: var(--slate); border: 2px solid #ddd; border-radius: 10px; padding: 14px 28px; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
     .btn-back:hover { border-color: var(--red); color: var(--red); }
 
+    /* SUMMARY */
+    .summary-screen { display: none; }
+    .summary-header { text-align: center; padding: 40px 0 32px; }
+    .summary-emoji { font-size: 52px; margin-bottom: 16px; }
+    .summary-header h2 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+    .summary-header p { font-size: 16px; color: var(--slate); }
+
+    .summary-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .summary-item { background: var(--white); border-radius: 14px; padding: 18px 22px; display: flex; gap: 16px; align-items: flex-start; }
+    .summary-num { font-size: 12px; font-weight: 700; color: #bbb; min-width: 28px; margin-top: 2px; }
+    .summary-content { flex: 1; }
+    .summary-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--slate); margin-bottom: 4px; }
+    .summary-value { font-size: 15px; font-weight: 600; color: var(--black); }
+    .summary-value.empty { color: #bbb; font-weight: 400; font-style: italic; }
+
+    .summary-actions { display: flex; flex-direction: column; gap: 12px; }
+    .btn-submit { width: 100%; padding: 18px; background: var(--red); color: var(--white); border: none; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .btn-submit:hover { background: var(--red-deep); }
+    .btn-edit { width: 100%; padding: 14px; background: transparent; color: var(--slate); border: 2px solid #ddd; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-edit:hover { border-color: var(--red); color: var(--red); }
+
     /* SUCCESS */
-    .success-screen {
-      display: none;
-      text-align: center;
-      padding: 60px 24px;
-    }
-
-    .success-icon {
-      width: 80px;
-      height: 80px;
-      background: #E8F5E9;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      margin: 0 auto 28px;
-    }
-
-    .success-screen h2 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .success-screen p {
-      font-size: 17px;
-      color: var(--slate);
-      max-width: 480px;
-      margin: 0 auto 36px;
-    }
-
-    .btn-home {
-      display: inline-block;
-      background: var(--red);
-      color: var(--white);
-      text-decoration: none;
-      padding: 16px 36px;
-      border-radius: 10px;
-      font-size: 17px;
-      font-weight: 700;
-      transition: background 0.2s;
-    }
-
+    .success-screen { display: none; text-align: center; padding: 60px 24px; }
+    .success-icon { width: 80px; height: 80px; background: #E8F5E9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto 28px; }
+    .success-screen h2 { font-size: 32px; font-weight: 800; margin-bottom: 16px; }
+    .success-screen p { font-size: 17px; color: var(--slate); max-width: 480px; margin: 0 auto 36px; }
+    .btn-home { display: inline-block; background: var(--red); color: var(--white); text-decoration: none; padding: 16px 36px; border-radius: 10px; font-size: 17px; font-weight: 700; transition: background 0.2s; }
     .btn-home:hover { background: var(--red-deep); }
 
     @media (max-width: 600px) {
@@ -443,63 +140,35 @@
 <body>
 
 <header>
-  <a href="index.html" class="logo">maxx<span>web</span></a>
+  <a href="index.html" class="logo">ma<span class="xx">xx</span><span class="web">web</span></a>
   <div class="header-tag">Dotazník</div>
 </header>
-
-<div class="progress-bar-wrap">
-  <div class="progress-bar" id="progressBar" style="width: 0%"></div>
-</div>
+<div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
 
 <main>
-
   <div class="welcome" id="welcomeBlock">
     <div class="welcome-name" id="welcomeName"></div>
     <h1>Pojďme zjistit,<br/>co váš web <span>potřebuje.</span></h1>
-    <p>Krátký dotazník — 5 minut, 6 otázek. Čím víc nám řeknete, tím lépe váš web uděláme.</p>
+    <p>10 otázek — cca 5 minut. Čím více nám řeknete, tím lépe váš web uděláme.</p>
   </div>
 
   <!-- STEP 1: Typ podnikání -->
   <div class="step active" id="step1">
     <div class="step-header">
-      <div class="step-number">Otázka 1 z 6</div>
+      <div class="step-number">Otázka 1 z 10</div>
       <h2>Čemu se věnujete?</h2>
       <p>Vyberte, co nejlépe popisuje vaše podnikání.</p>
     </div>
     <div class="card-grid">
-      <div class="card-option" data-val="remeslnik">
-        <div class="card-icon">🔨</div>
-        <div class="card-label">Řemeslník</div>
-        <div class="card-sub">Instalatér, elektrikář, malíř…</div>
-      </div>
-      <div class="card-option" data-val="sluzby">
-        <div class="card-icon">💼</div>
-        <div class="card-label">Služby</div>
-        <div class="card-sub">Účetní, poradce, právník…</div>
-      </div>
-      <div class="card-option" data-val="krasa">
-        <div class="card-icon">💇</div>
-        <div class="card-label">Krása & wellness</div>
-        <div class="card-sub">Kadeřnice, kosmetika…</div>
-      </div>
-      <div class="card-option" data-val="gastro">
-        <div class="card-icon">🍽️</div>
-        <div class="card-label">Gastronomie</div>
-        <div class="card-sub">Restaurace, catering, pekárna…</div>
-      </div>
-      <div class="card-option" data-val="eshop">
-        <div class="card-icon">🛒</div>
-        <div class="card-label">E-shop / obchod</div>
-        <div class="card-sub">Prodávám produkty online</div>
-      </div>
-      <div class="card-option" data-val="jine">
-        <div class="card-icon">✨</div>
-        <div class="card-label">Něco jiného</div>
-        <div class="card-sub">Popíši to v poznámce</div>
-      </div>
+      <div class="card-option" data-val="remeslnik"><div class="card-icon">🔨</div><div class="card-label">Řemeslník</div><div class="card-sub">Instalatér, elektrikář…</div></div>
+      <div class="card-option" data-val="sluzby"><div class="card-icon">💼</div><div class="card-label">Služby</div><div class="card-sub">Účetní, poradce…</div></div>
+      <div class="card-option" data-val="krasa"><div class="card-icon">💇</div><div class="card-label">Krása & wellness</div><div class="card-sub">Kadeřnice, kosmetika…</div></div>
+      <div class="card-option" data-val="gastro"><div class="card-icon">🍽️</div><div class="card-label">Gastronomie</div><div class="card-sub">Restaurace, pekárna…</div></div>
+      <div class="card-option" data-val="eshop"><div class="card-icon">🛒</div><div class="card-label">E-shop / obchod</div><div class="card-sub">Prodávám produkty</div></div>
+      <div class="card-option" data-val="jine"><div class="card-icon">✨</div><div class="card-label">Něco jiného</div><div class="card-sub">Popíšu níže</div></div>
     </div>
     <div class="form-group" id="jineGroup" style="display:none">
-      <label for="jinePopis">Popište vaše podnikání:</label>
+      <label>Popište vaše podnikání:</label>
       <input type="text" id="jinePopis" placeholder="Např. fotografka, lektor jógy…" />
     </div>
     <div class="step-nav">
@@ -507,34 +176,21 @@
     </div>
   </div>
 
-  <!-- STEP 2: Styl webu -->
+  <!-- STEP 2: Popis + slogan -->
   <div class="step" id="step2">
     <div class="step-header">
-      <div class="step-number">Otázka 2 z 6</div>
-      <h2>Jaký styl webu chcete?</h2>
-      <p>Vyberte vizuální charakter, který vám sedí.</p>
+      <div class="step-number">Otázka 2 z 10</div>
+      <h2>Řekněte nám o sobě víc.</h2>
+      <p>Čím více víme, tím lépe web napíšeme.</p>
     </div>
-    <div class="card-grid">
-      <div class="card-option" data-val="moderni">
-        <div class="card-icon">🖤</div>
-        <div class="card-label">Moderní</div>
-        <div class="card-sub">Minimalistický, čistý</div>
-      </div>
-      <div class="card-option" data-val="pratelsky">
-        <div class="card-icon">😊</div>
-        <div class="card-label">Přátelský</div>
-        <div class="card-sub">Teplý, lidský, barevný</div>
-      </div>
-      <div class="card-option" data-val="profesionalni">
-        <div class="card-icon">👔</div>
-        <div class="card-label">Profesionální</div>
-        <div class="card-sub">Solidní, důvěryhodný</div>
-      </div>
-      <div class="card-option" data-val="kreativni">
-        <div class="card-icon">🎨</div>
-        <div class="card-label">Kreativní</div>
-        <div class="card-sub">Výrazný, netradiční</div>
-      </div>
+    <div class="form-group">
+      <label>Co je vaše hlavní služba nebo produkt?</label>
+      <textarea id="popisPodnikani" placeholder="Např. Jsem kadeřnice v Brně, specializuji se na barvení a střihy. Provozuji salon už 8 let…"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Máte slogan nebo větu, která vás vystihuje?</label>
+      <textarea id="slogan" placeholder="Např. „S láskou pečené pro vaše výjimečné chvíle"&#10;Nebo napište, jak chcete, aby se zákazník cítil po návštěvě webu." style="min-height:90px"></textarea>
+      <div class="form-hint">Nemusí být dokonalá — stačí nápad.</div>
     </div>
     <div class="step-nav">
       <button class="btn-next" onclick="nextStep(2)">Pokračovat →</button>
@@ -542,42 +198,24 @@
     </div>
   </div>
 
-  <!-- STEP 3: Barvy -->
+  <!-- STEP 3: Praktické info -->
   <div class="step" id="step3">
     <div class="step-header">
-      <div class="step-number">Otázka 3 z 6</div>
-      <h2>Jaké barvy vám sedí?</h2>
-      <p>Vyberte jednu nebo více kombinací, které se vám líbí.</p>
+      <div class="step-number">Otázka 3 z 10</div>
+      <h2>Jaké praktické info má web obsahovat?</h2>
+      <p>Zaškrtněte vše, co platí a doplňte detaily níže.</p>
     </div>
-    <div class="color-grid">
-      <div class="color-option" data-val="cervena">
-        <div class="color-swatch" style="background: linear-gradient(135deg, #E83A3A, #1A1A1A)"></div>
-        <div class="color-name">Červená & černá</div>
-      </div>
-      <div class="color-option" data-val="modra">
-        <div class="color-swatch" style="background: linear-gradient(135deg, #2563EB, #FFFFFF)"></div>
-        <div class="color-name">Modrá & bílá</div>
-      </div>
-      <div class="color-option" data-val="zelena">
-        <div class="color-swatch" style="background: linear-gradient(135deg, #16A34A, #F0FDF4)"></div>
-        <div class="color-name">Zelená & světlá</div>
-      </div>
-      <div class="color-option" data-val="bila">
-        <div class="color-swatch" style="background: linear-gradient(135deg, #F8F8F8, #1A1A1A); border-bottom:1px solid #eee"></div>
-        <div class="color-name">Černobílá</div>
-      </div>
-      <div class="color-option" data-val="tepla">
-        <div class="color-swatch" style="background: linear-gradient(135deg, #D97706, #FEF3C7)"></div>
-        <div class="color-name">Teplá & zlatá</div>
-      </div>
-      <div class="color-option" data-val="fialova">
-        <div class="color-swatch" style="background: linear-gradient(135deg, #7C3AED, #EDE9FE)"></div>
-        <div class="color-name">Fialová</div>
-      </div>
+    <div class="check-list">
+      <div class="check-item" data-val="adresa"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">📍 Adresa / region</div><div class="check-item-sub">kde působíte</div></div></div>
+      <div class="check-item" data-val="oteviraci"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">🕐 Otevírací doba</div><div class="check-item-sub">kdy jste k dispozici</div></div></div>
+      <div class="check-item" data-val="rozvoz"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">🚗 Doručení / rozvoz</div><div class="check-item-sub">kam a za kolik</div></div></div>
+      <div class="check-item" data-val="socialni"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">📱 Sociální sítě</div><div class="check-item-sub">Instagram, Facebook…</div></div></div>
+      <div class="check-item" data-val="cenik_info"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">💰 Ceník</div><div class="check-item-sub">orientační ceny</div></div></div>
+      <div class="check-item" data-val="objednavky"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">📅 Objednávky předem</div><div class="check-item-sub">kolik dní/týdnů</div></div></div>
     </div>
     <div class="form-group">
-      <label for="vlastniBarvicky">Nebo napište vlastní barvy / hex kódy:</label>
-      <input type="text" id="vlastniBarvicky" placeholder="Např. #FF5733, tmavě modrá…" />
+      <label>Doplňte konkrétní detaily:</label>
+      <textarea id="praktickeDetaily" placeholder="Např. e-mail, telefon, Instagram účet, obec/region, ceny, termíny…"></textarea>
     </div>
     <div class="step-nav">
       <button class="btn-next" onclick="nextStep(3)">Pokračovat →</button>
@@ -585,46 +223,22 @@
     </div>
   </div>
 
-  <!-- STEP 4: Stránky & funkce -->
+  <!-- STEP 4: Co má web umět -->
   <div class="step" id="step4">
     <div class="step-header">
-      <div class="step-number">Otázka 4 z 6</div>
-      <h2>Co chcete mít na webu?</h2>
-      <p>Vyberte vše, co potřebujete (lze vybrat více).</p>
+      <div class="step-number">Otázka 4 z 10</div>
+      <h2>Co má web umět?</h2>
+      <p>Vyberte vše, co chcete mít na webu. Lze vybrat více.</p>
     </div>
     <div class="check-list">
-      <div class="check-item" data-val="uvodni">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Úvodní stránka</div>
-      </div>
-      <div class="check-item" data-val="opodnikani">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">O firmě / o mně</div>
-      </div>
-      <div class="check-item" data-val="sluzby">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Stránka služeb / produktů</div>
-      </div>
-      <div class="check-item" data-val="cenik">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Ceník</div>
-      </div>
-      <div class="check-item" data-val="blog">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Blog / aktuality</div>
-      </div>
-      <div class="check-item" data-val="galerie">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Fotogalerie / portfolio</div>
-      </div>
-      <div class="check-item" data-val="kontakt">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Kontaktní formulář</div>
-      </div>
-      <div class="check-item" data-val="eshop">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">E-shop (prodej online)</div>
-      </div>
+      <div class="check-item" data-val="kontakt_form"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">✉️ Kontaktní formulář</div><div class="check-item-sub">poptávky na e-mail</div></div></div>
+      <div class="check-item" data-val="galerie"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">🖼️ Galerie fotek</div><div class="check-item-sub">ukázka tvorby / prostoru</div></div></div>
+      <div class="check-item" data-val="mapa"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">🗺️ Mapa</div><div class="check-item-sub">kde působíte / dodáváte</div></div></div>
+      <div class="check-item" data-val="eshop_funkce"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">🛒 E-shop</div><div class="check-item-sub">online objednávky</div></div></div>
+      <div class="check-item" data-val="rezervace"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">📅 Rezervační systém</div><div class="check-item-sub">výběr termínu</div></div></div>
+      <div class="check-item" data-val="recenze"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">⭐ Recenze zákazníků</div><div class="check-item-sub">hodnocení a reference</div></div></div>
+      <div class="check-item" data-val="instagram_link"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">📸 Odkaz na Instagram</div><div class="check-item-sub">propojení se sítěmi</div></div></div>
+      <div class="check-item" data-val="chat"><div class="check-box">✓</div><div class="check-item-text"><div class="check-item-label">💬 Chat / WhatsApp</div><div class="check-item-sub">rychlý kontakt</div></div></div>
     </div>
     <div class="step-nav">
       <button class="btn-next" onclick="nextStep(4)">Pokračovat →</button>
@@ -632,34 +246,23 @@
     </div>
   </div>
 
-  <!-- STEP 5: Podklady -->
+  <!-- STEP 5: Styl a pocit -->
   <div class="step" id="step5">
     <div class="step-header">
-      <div class="step-number">Otázka 5 z 6</div>
-      <h2>Co máte připravené?</h2>
-      <p>Zaškrtněte, co nám můžete dodat (zbytek vyřešíme za vás).</p>
+      <div class="step-number">Otázka 5 z 10</div>
+      <h2>Jaký má web mít styl a pocit?</h2>
+      <p>Vyberte jedno nebo více slov, která vystihují vaši představu.</p>
     </div>
-    <div class="check-list">
-      <div class="check-item" data-val="logo">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Logo (mám hotové)</div>
-      </div>
-      <div class="check-item" data-val="fotky">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Fotky (vlastní fotografie)</div>
-      </div>
-      <div class="check-item" data-val="texty">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Texty (vím, co chci napsat)</div>
-      </div>
-      <div class="check-item" data-val="domenahosting">
-        <div class="check-box">✓</div>
-        <div class="check-item-label">Doménu / hosting (mám zakoupený)</div>
-      </div>
+    <div class="card-grid">
+      <div class="card-option" data-val="luxusni"><div class="card-icon">💎</div><div class="card-label">Luxusní a elegantní</div><div class="card-sub">prémiový dojem</div></div>
+      <div class="card-option" data-val="hravy"><div class="card-icon">🌸</div><div class="card-label">Hravý a milý</div><div class="card-sub">přátelský, barevný</div></div>
+      <div class="card-option" data-val="utulny"><div class="card-icon">🏡</div><div class="card-label">Útulný a domácí</div><div class="card-sub">teplo, tradice</div></div>
+      <div class="card-option" data-val="moderni_styl"><div class="card-icon">⚡</div><div class="card-label">Moderní a dynamický</div><div class="card-sub">tech, energie</div></div>
+      <div class="card-option" data-val="prirodni"><div class="card-icon">🌿</div><div class="card-label">Přírodní a čistý</div><div class="card-sub">bio, organický</div></div>
+      <div class="card-option" data-val="minimalisticky"><div class="card-icon">🖤</div><div class="card-label">Minimalistický</div><div class="card-sub">jednoduché, čisté</div></div>
     </div>
     <div class="form-group">
-      <label for="existujiciWeb">Máte aktuálně nějaký web? (URL nebo „nemám")</label>
-      <input type="text" id="existujiciWeb" placeholder="Např. www.mojefirma.cz nebo nemám" />
+      <input type="text" id="stylVlastni" placeholder="Nebo popište vlastními slovy…" />
     </div>
     <div class="step-nav">
       <button class="btn-next" onclick="nextStep(5)">Pokračovat →</button>
@@ -667,70 +270,141 @@
     </div>
   </div>
 
-  <!-- STEP 6: Termín + poznámky -->
+  <!-- STEP 6: Barvy -->
   <div class="step" id="step6">
     <div class="step-header">
-      <div class="step-number">Otázka 6 z 6</div>
+      <div class="step-number">Otázka 6 z 10</div>
+      <h2>Jaké barvy vám sedí?</h2>
+      <p>Vyberte jednu nebo více kombinací. Lze vybrat více.</p>
+    </div>
+    <div class="color-grid">
+      <div class="color-option" data-val="cervena"><div class="color-swatch" style="background:linear-gradient(135deg,#E83A3A,#1A1A1A)"></div><div class="color-name">Červená & černá</div></div>
+      <div class="color-option" data-val="modra"><div class="color-swatch" style="background:linear-gradient(135deg,#2563EB,#FFFFFF)"></div><div class="color-name">Modrá & bílá</div></div>
+      <div class="color-option" data-val="zelena"><div class="color-swatch" style="background:linear-gradient(135deg,#16A34A,#F0FDF4)"></div><div class="color-name">Zelená & světlá</div></div>
+      <div class="color-option" data-val="bila"><div class="color-swatch" style="background:linear-gradient(135deg,#F8F8F8,#1A1A1A);border-bottom:1px solid #eee"></div><div class="color-name">Černobílá</div></div>
+      <div class="color-option" data-val="tepla"><div class="color-swatch" style="background:linear-gradient(135deg,#D97706,#FEF3C7)"></div><div class="color-name">Teplá & zlatá</div></div>
+      <div class="color-option" data-val="fialova"><div class="color-swatch" style="background:linear-gradient(135deg,#7C3AED,#EDE9FE)"></div><div class="color-name">Fialová</div></div>
+    </div>
+    <div class="form-group">
+      <input type="text" id="vlastniBarvicky" placeholder="Nebo napište vlastní barvy / hex kódy…" />
+    </div>
+    <div class="step-nav">
+      <button class="btn-next" onclick="nextStep(6)">Pokračovat →</button>
+      <button class="btn-back" onclick="prevStep(6)">← Zpět</button>
+    </div>
+  </div>
+
+  <!-- STEP 7: Logo a fotky -->
+  <div class="step" id="step7">
+    <div class="step-header">
+      <div class="step-number">Otázka 7 z 10</div>
+      <h2>Máte logo a fotky?</h2>
+      <p>Fotky jsou pro web velmi důležité — čím více, tím lépe!</p>
+    </div>
+    <div class="card-grid">
+      <div class="card-option" data-val="mam_logo"><div class="card-icon">✅</div><div class="card-label">Mám logo</div><div class="card-sub">pošlu soubor</div></div>
+      <div class="card-option" data-val="nemam_logo"><div class="card-icon">❌</div><div class="card-label">Nemám logo</div><div class="card-sub">použijte jen název</div></div>
+      <div class="card-option" data-val="mam_fotky"><div class="card-icon">📸</div><div class="card-label">Mám fotky</div><div class="card-sub">produkty, prostory…</div></div>
+      <div class="card-option" data-val="nemam_fotky"><div class="card-icon">🙈</div><div class="card-label">Nemám fotky</div><div class="card-sub">použijte ilustrace</div></div>
+    </div>
+    <div class="form-group">
+      <label>Doplňte detaily:</label>
+      <textarea id="logoFotkyDetail" placeholder="Kolik fotek máte, co zobrazují, zda jsou kvalitní…" style="min-height:80px"></textarea>
+    </div>
+    <div class="step-nav">
+      <button class="btn-next" onclick="nextStep(7)">Pokračovat →</button>
+      <button class="btn-back" onclick="prevStep(7)">← Zpět</button>
+    </div>
+  </div>
+
+  <!-- STEP 8: Inspirace -->
+  <div class="step" id="step8">
+    <div class="step-header">
+      <div class="step-number">Otázka 8 z 10</div>
+      <h2>Jaký web nebo Instagram se vám líbí?</h2>
+      <p>Pošlete 1–3 odkazy na weby nebo Instagramy, které vás inspirují. Nemusí být ze stejného oboru.</p>
+    </div>
+    <div class="form-group">
+      <textarea id="inspirace" placeholder="Např.&#10;https://www.instagram.com/nekdo&#10;https://nejaky-web.cz&#10;&#10;Nebo popište slovy: „Líbí se mi čisté weby s velkými fotkami"" style="min-height:140px"></textarea>
+    </div>
+    <div class="step-nav">
+      <button class="btn-next" onclick="nextStep(8)">Pokračovat →</button>
+      <button class="btn-back" onclick="prevStep(8)">← Zpět</button>
+    </div>
+  </div>
+
+  <!-- STEP 9: Zákazník -->
+  <div class="step" id="step9">
+    <div class="step-header">
+      <div class="step-number">Otázka 9 z 10</div>
+      <h2>Kdo je váš zákazník?</h2>
+      <p>Popište, komu web mluví — věk, zájmy, situace. Podle toho ladíme jazyk i celkový dojem.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card-option" data-val="maminky"><div class="card-icon">👶</div><div class="card-label">Maminky s dětmi</div></div>
+      <div class="card-option" data-val="studenti"><div class="card-icon">🎓</div><div class="card-label">Studenti a mladí lidé</div></div>
+      <div class="card-option" data-val="firmy"><div class="card-icon">🏢</div><div class="card-label">Firmy a podniky</div></div>
+      <div class="card-option" data-val="30_50"><div class="card-icon">🏡</div><div class="card-label">Lidé 30–50 let</div></div>
+      <div class="card-option" data-val="zdravi"><div class="card-icon">🌱</div><div class="card-label">Zdravě žijící lidé</div></div>
+      <div class="card-option" data-val="vsichni"><div class="card-icon">👥</div><div class="card-label">Všichni / široká veřejnost</div></div>
+    </div>
+    <div class="form-group">
+      <textarea id="zakaznikDetail" placeholder="Nebo popište podrobněji — věk, co zákazníky zajímá, proč hledají vaše služby…" style="min-height:80px"></textarea>
+    </div>
+    <div class="step-nav">
+      <button class="btn-next" onclick="nextStep(9)">Pokračovat →</button>
+      <button class="btn-back" onclick="prevStep(9)">← Zpět</button>
+    </div>
+  </div>
+
+  <!-- STEP 10: Termín + rozpočet -->
+  <div class="step" id="step10">
+    <div class="step-header">
+      <div class="step-number">Otázka 10 z 10</div>
       <h2>Poslední věci.</h2>
       <p>Kdy to potřebujete a co bychom měli vědět?</p>
     </div>
     <div class="form-group">
       <label>Kdy web potřebujete?</label>
       <div class="tile-picker" id="terminPicker">
-        <button type="button" class="tile-btn" data-val="co-nejdrive" onclick="selectTile('terminPicker', this, 'termin')">
-          <span class="tile-icon">⚡</span>
-          <span class="tile-label">Co nejdříve</span>
-          <span class="tile-sub">ASAP</span>
-        </button>
-        <button type="button" class="tile-btn" data-val="mesic" onclick="selectTile('terminPicker', this, 'termin')">
-          <span class="tile-icon">📅</span>
-          <span class="tile-label">Do měsíce</span>
-          <span class="tile-sub">Cca 4 týdny</span>
-        </button>
-        <button type="button" class="tile-btn" data-val="2mesice" onclick="selectTile('terminPicker', this, 'termin')">
-          <span class="tile-icon">🗓️</span>
-          <span class="tile-label">Do 2 měsíců</span>
-          <span class="tile-sub">Mám čas</span>
-        </button>
-        <button type="button" class="tile-btn" data-val="neresi" onclick="selectTile('terminPicker', this, 'termin')">
-          <span class="tile-icon">😌</span>
-          <span class="tile-label">Termín neřeším</span>
-          <span class="tile-sub">Až to bude</span>
-        </button>
+        <button type="button" class="tile-btn" data-val="co-nejdrive" onclick="selectTile('terminPicker', this, 'termin')"><span class="tile-icon">⚡</span><span class="tile-label">Co nejdříve</span></button>
+        <button type="button" class="tile-btn" data-val="mesic" onclick="selectTile('terminPicker', this, 'termin')"><span class="tile-icon">📅</span><span class="tile-label">Do měsíce</span></button>
+        <button type="button" class="tile-btn" data-val="2mesice" onclick="selectTile('terminPicker', this, 'termin')"><span class="tile-icon">🗓️</span><span class="tile-label">Do 2 měsíců</span></button>
+        <button type="button" class="tile-btn" data-val="neresi" onclick="selectTile('terminPicker', this, 'termin')"><span class="tile-icon">😌</span><span class="tile-label">Termín neřeším</span></button>
       </div>
       <input type="hidden" id="termin" value="" />
     </div>
-
     <div class="form-group">
       <label>Orientační rozpočet:</label>
       <div class="tile-picker" id="rozpocetPicker">
-        <button type="button" class="tile-btn" data-val="basic" onclick="selectTile('rozpocetPicker', this, 'rozpocet')">
-          <span class="tile-icon">🟦</span>
-          <span class="tile-label">Basic</span>
-        </button>
-        <button type="button" class="tile-btn" data-val="business" onclick="selectTile('rozpocetPicker', this, 'rozpocet')">
-          <span class="tile-icon">🟥</span>
-          <span class="tile-label">Business</span>
-        </button>
-        <button type="button" class="tile-btn" data-val="premium" onclick="selectTile('rozpocetPicker', this, 'rozpocet')">
-          <span class="tile-icon">🟧</span>
-          <span class="tile-label">Premium</span>
-        </button>
-        <button type="button" class="tile-btn" data-val="nevim" onclick="selectTile('rozpocetPicker', this, 'rozpocet')">
-          <span class="tile-icon">🤔</span>
-          <span class="tile-label">Ještě nevím</span>
-          <span class="tile-sub">Poradíte mi</span>
-        </button>
+        <button type="button" class="tile-btn" data-val="basic" onclick="selectTile('rozpocetPicker', this, 'rozpocet')"><span class="tile-icon">🟦</span><span class="tile-label">Basic</span></button>
+        <button type="button" class="tile-btn" data-val="business" onclick="selectTile('rozpocetPicker', this, 'rozpocet')"><span class="tile-icon">🟥</span><span class="tile-label">Business</span></button>
+        <button type="button" class="tile-btn" data-val="premium" onclick="selectTile('rozpocetPicker', this, 'rozpocet')"><span class="tile-icon">🟧</span><span class="tile-label">Premium</span></button>
+        <button type="button" class="tile-btn" data-val="nevim" onclick="selectTile('rozpocetPicker', this, 'rozpocet')"><span class="tile-icon">🤔</span><span class="tile-label">Ještě nevím</span></button>
       </div>
       <input type="hidden" id="rozpocet" value="" />
     </div>
     <div class="form-group">
-      <label for="poznamky">Máte ještě něco, co bychom měli vědět?</label>
-      <textarea id="poznamky" placeholder="Např. inspirace z jiných webů, speciální požadavky, logo je žluto-zelené…"></textarea>
+      <label>Máte ještě něco, co bychom měli vědět?</label>
+      <textarea id="poznamky" placeholder="Speciální požadavky, důležité termíny, co vás trápí…"></textarea>
     </div>
     <div class="step-nav">
-      <button class="btn-next" onclick="submitForm()">Odeslat dotazník ✓</button>
-      <button class="btn-back" onclick="prevStep(6)">← Zpět</button>
+      <button class="btn-next" onclick="showSummary()">Zobrazit shrnutí ✓</button>
+      <button class="btn-back" onclick="prevStep(10)">← Zpět</button>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-screen" id="summaryScreen">
+    <div class="summary-header">
+      <div class="summary-emoji">🎉</div>
+      <h2>Skvěle, máme vše!</h2>
+      <p>Zde je shrnutí vašich odpovědí. Zkontrolujte je a odešlete.</p>
+    </div>
+    <div class="summary-items" id="summaryItems"></div>
+    <div class="summary-actions">
+      <button class="btn-submit" id="submitBtn" onclick="submitForm()">Odeslat dotazník →</button>
+      <button class="btn-edit" onclick="hideSummary()">← Upravit odpovědi</button>
     </div>
   </div>
 
@@ -745,101 +419,90 @@
 </main>
 
 <script>
+  const TOTAL_STEPS = 10;
+  let currentStep = 1;
+  const answers = {};
+
+  // Pre-fill from URL
+  const params = new URLSearchParams(window.location.search);
+  const jmeno = params.get('jmeno') || '';
+  answers.email = params.get('email') || '';
+  answers.jmeno = jmeno;
+  answers.promokod = params.get('promokod') || '';
+  answers.paketZFormu = params.get('paket') || '';
+  if (jmeno) document.getElementById('welcomeName').textContent = 'Vítejte, ' + jmeno + ' 👋';
+
+  // Single-select card grids
+  document.querySelectorAll('.card-grid').forEach(grid => {
+    grid.querySelectorAll('.card-option').forEach(card => {
+      card.addEventListener('click', () => {
+        grid.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        const jineGroup = document.getElementById('jineGroup');
+        if (jineGroup) jineGroup.style.display = card.dataset.val === 'jine' ? 'block' : 'none';
+      });
+    });
+  });
+
+  // Multi-select color options
+  document.querySelectorAll('.color-option').forEach(opt => {
+    opt.addEventListener('click', () => opt.classList.toggle('selected'));
+  });
+
+  // Multi-select check items
+  document.querySelectorAll('.check-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('selected'));
+  });
+
+  // Multi-select style cards (step 5)
+  document.querySelectorAll('#step5 .card-option').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('selected'));
+  });
+
+  // Multi-select logo/fotky cards (step 7)
+  document.querySelectorAll('#step7 .card-option').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('selected'));
+  });
+
+  // Multi-select zákazník cards (step 9)
+  document.querySelectorAll('#step9 .card-option').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('selected'));
+  });
+
   function selectTile(pickerId, btn, hiddenId) {
     document.querySelectorAll(`#${pickerId} .tile-btn`).forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
     document.getElementById(hiddenId).value = btn.dataset.val;
   }
 
-  const TOTAL_STEPS = 6;
-  let currentStep = 1;
-  const answers = {};
-
-  // Pre-fill name from URL params
-  const params = new URLSearchParams(window.location.search);
-  const jmeno = params.get('jmeno') || '';
-  const email = params.get('email') || '';
-  const promokod = params.get('promokod') || '';
-  const paket = params.get('paket') || '';
-
-  if (jmeno) {
-    document.getElementById('welcomeName').textContent = 'Vítejte, ' + jmeno + ' 👋';
-  }
-
-  // Pre-select package if given
-  if (paket && paket !== '') {
-    const valMap = { basic: 'basic', business: 'business', premium: 'premium' };
-    if (valMap[paket]) answers.paketZFormu = valMap[paket];
-  }
-
-  answers.email = email;
-  answers.jmeno = jmeno;
-  answers.promokod = promokod;
-
-  // CARD OPTIONS (single-select)
-  document.querySelectorAll('.card-grid').forEach(grid => {
-    grid.querySelectorAll('.card-option').forEach(card => {
-      card.addEventListener('click', () => {
-        grid.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        if (card.dataset.val === 'jine') {
-          document.getElementById('jineGroup').style.display = 'block';
-        } else if (grid.querySelector('[data-val="jine"]')) {
-          document.getElementById('jineGroup').style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // COLOR OPTIONS (multi-select)
-  document.querySelectorAll('.color-option').forEach(opt => {
-    opt.addEventListener('click', () => opt.classList.toggle('selected'));
-  });
-
-  // CHECK ITEMS (multi-select)
-  document.querySelectorAll('.check-item').forEach(item => {
-    item.addEventListener('click', () => item.classList.toggle('selected'));
-  });
-
-  function updateProgress() {
-    const pct = ((currentStep - 1) / TOTAL_STEPS) * 100;
-    document.getElementById('progressBar').style.width = pct + '%';
+  function updateProgress(step) {
+    document.getElementById('progressBar').style.width = ((step - 1) / TOTAL_STEPS * 100) + '%';
   }
 
   function showStep(n) {
     document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
     const el = document.getElementById('step' + n);
     if (el) el.classList.add('active');
-    updateProgress();
+    updateProgress(n);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function collectStep(n) {
-    if (n === 1) {
-      const sel = document.querySelector('#step1 .card-option.selected');
-      answers.typPodnikani = sel ? sel.dataset.val : '';
-      answers.typPodnikaniJine = document.getElementById('jinePopis').value.trim();
-    }
-    if (n === 2) {
-      const sel = document.querySelector('#step2 .card-option.selected');
-      answers.styl = sel ? sel.dataset.val : '';
-    }
-    if (n === 3) {
-      answers.barvy = Array.from(document.querySelectorAll('.color-option.selected')).map(e => e.dataset.val);
-      answers.vlastniBarvy = document.getElementById('vlastniBarvicky').value.trim();
-    }
-    if (n === 4) {
-      answers.stranky = Array.from(document.querySelectorAll('#step4 .check-item.selected')).map(e => e.dataset.val);
-    }
-    if (n === 5) {
-      answers.podklady = Array.from(document.querySelectorAll('#step5 .check-item.selected')).map(e => e.dataset.val);
-      answers.existujiciWeb = document.getElementById('existujiciWeb').value.trim();
-    }
-    if (n === 6) {
-      answers.termin = document.getElementById('termin').value;
-      answers.rozpocet = document.getElementById('rozpocet').value;
-      answers.poznamky = document.getElementById('poznamky').value.trim();
-    }
+    const getSelected = (stepId) => Array.from(document.querySelectorAll(`#${stepId} .card-option.selected`)).map(e => e.dataset.val);
+    const getChecked = (stepId) => Array.from(document.querySelectorAll(`#${stepId} .check-item.selected`)).map(e => e.dataset.val);
+    const getColors = () => Array.from(document.querySelectorAll('.color-option.selected')).map(e => e.dataset.val);
+    const val = (id) => document.getElementById(id)?.value?.trim() || '';
+
+    if (n === 1) { answers.typPodnikani = getSelected('step1')[0] || ''; answers.typPodnikaniJine = val('jinePopis'); }
+    if (n === 2) { answers.popisPodnikani = val('popisPodnikani'); answers.slogan = val('slogan'); }
+    if (n === 3) { answers.praktickeInfo = getChecked('step3'); answers.praktickeDetaily = val('praktickeDetaily'); }
+    if (n === 4) { answers.webFunkce = getChecked('step4'); }
+    if (n === 5) { answers.styl = getSelected('step5'); answers.stylVlastni = val('stylVlastni'); }
+    if (n === 6) { answers.barvy = getColors(); answers.vlastniBarvy = val('vlastniBarvicky'); }
+    if (n === 7) { answers.logoFotky = getSelected('step7'); answers.logoFotkyDetail = val('logoFotkyDetail'); }
+    if (n === 8) { answers.inspirace = val('inspirace'); }
+    if (n === 9) { answers.zakaznik = getSelected('step9'); answers.zakaznikDetail = val('zakaznikDetail'); }
+    if (n === 10) { answers.termin = val('termin'); answers.rozpocet = val('rozpocet'); answers.poznamky = val('poznamky'); }
   }
 
   function nextStep(n) {
@@ -853,10 +516,70 @@
     showStep(currentStep);
   }
 
-  async function submitForm() {
-    collectStep(6);
+  // SUMMARY
+  const labelMaps = {
+    typPodnikani: { remeslnik:'Řemeslník', sluzby:'Služby', krasa:'Krása & wellness', gastro:'Gastronomie', eshop:'E-shop / obchod', jine:'Jiné' },
+    praktickeInfo: { adresa:'Adresa/region', oteviraci:'Otevírací doba', rozvoz:'Doručení/rozvoz', socialni:'Sociální sítě', cenik_info:'Ceník', objednavky:'Objednávky předem' },
+    webFunkce: { kontakt_form:'Kontaktní formulář', galerie:'Galerie fotek', mapa:'Mapa', eshop_funkce:'E-shop', rezervace:'Rezervační systém', recenze:'Recenze zákazníků', instagram_link:'Instagram', chat:'Chat/WhatsApp' },
+    styl: { luxusni:'Luxusní a elegantní', hravy:'Hravý a milý', utulny:'Útulný a domácí', moderni_styl:'Moderní a dynamický', prirodni:'Přírodní a čistý', minimalisticky:'Minimalistický' },
+    barvy: { cervena:'Červená & černá', modra:'Modrá & bílá', zelena:'Zelená & světlá', bila:'Černobílá', tepla:'Teplá & zlatá', fialova:'Fialová' },
+    logoFotky: { mam_logo:'Mám logo', nemam_logo:'Nemám logo', mam_fotky:'Mám fotky', nemam_fotky:'Nemám fotky' },
+    zakaznik: { maminky:'Maminky s dětmi', studenti:'Studenti a mladí lidé', firmy:'Firmy a podniky', '30_50':'Lidé 30–50 let', zdravi:'Zdravě žijící lidé', vsichni:'Všichni' },
+    termin: { 'co-nejdrive':'Co nejdříve', mesic:'Do měsíce', '2mesice':'Do 2 měsíců', neresi:'Termín neřeším' },
+    rozpocet: { basic:'Basic', business:'Business', premium:'Premium', nevim:'Ještě nevím' },
+  };
 
-    const btn = document.querySelector('#step6 .btn-next');
+  function mapArr(arr, map) { return arr && arr.length ? arr.map(v => map[v] || v).join(', ') : null; }
+  function mapVal(val, map) { return map[val] || val || null; }
+
+  function showSummary() {
+    collectStep(10);
+
+    const rows = [
+      { label: 'Kontaktní údaje', value: [answers.jmeno, answers.email, answers.promokod ? `Kód: ${answers.promokod}` : null].filter(Boolean).join(' | ') },
+      { label: 'Typ podnikání', value: mapVal(answers.typPodnikani, labelMaps.typPodnikani) + (answers.typPodnikaniJine ? ` — ${answers.typPodnikaniJine}` : '') },
+      { label: 'Popis podnikání', value: answers.popisPodnikani },
+      { label: 'Slogan / pocit z webu', value: answers.slogan },
+      { label: 'Praktické info na webu', value: mapArr(answers.praktickeInfo, labelMaps.praktickeInfo) },
+      { label: 'Detaily (info)', value: answers.praktickeDetaily },
+      { label: 'Co má web umět', value: mapArr(answers.webFunkce, labelMaps.webFunkce) },
+      { label: 'Styl a pocit', value: [mapArr(answers.styl, labelMaps.styl), answers.stylVlastni].filter(Boolean).join(', ') },
+      { label: 'Barvy', value: [mapArr(answers.barvy, labelMaps.barvy), answers.vlastniBarvy].filter(Boolean).join(', ') },
+      { label: 'Logo a fotky', value: mapArr(answers.logoFotky, labelMaps.logoFotky) },
+      { label: 'Detaily (logo/fotky)', value: answers.logoFotkyDetail },
+      { label: 'Inspirace', value: answers.inspirace },
+      { label: 'Zákazník', value: [mapArr(answers.zakaznik, labelMaps.zakaznik), answers.zakaznikDetail].filter(Boolean).join(' — ') },
+      { label: 'Termín', value: mapVal(answers.termin, labelMaps.termin) },
+      { label: 'Rozpočet', value: mapVal(answers.rozpocet, labelMaps.rozpocet) },
+      { label: 'Poznámky', value: answers.poznamky },
+    ];
+
+    const container = document.getElementById('summaryItems');
+    container.innerHTML = rows.map((row, i) => `
+      <div class="summary-item">
+        <div class="summary-num">${String(i).padStart(2,'0')}</div>
+        <div class="summary-content">
+          <div class="summary-label">${row.label}</div>
+          <div class="summary-value ${!row.value ? 'empty' : ''}">${row.value || 'Nevyplněno'}</div>
+        </div>
+      </div>
+    `).join('');
+
+    document.getElementById('welcomeBlock').style.display = 'none';
+    document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
+    document.getElementById('summaryScreen').style.display = 'block';
+    document.getElementById('progressBar').style.width = '95%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function hideSummary() {
+    document.getElementById('summaryScreen').style.display = 'none';
+    document.getElementById('welcomeBlock').style.display = 'block';
+    showStep(currentStep);
+  }
+
+  async function submitForm() {
+    const btn = document.getElementById('submitBtn');
     btn.textContent = 'Odesílám…';
     btn.disabled = true;
 
@@ -866,19 +589,15 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(answers)
       });
-    } catch (err) {
-      console.error(err);
-    }
+    } catch (err) { console.error(err); }
 
-    document.getElementById('welcomeBlock').style.display = 'none';
-    document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
+    document.getElementById('summaryScreen').style.display = 'none';
     document.getElementById('successScreen').style.display = 'block';
     document.getElementById('progressBar').style.width = '100%';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  updateProgress();
+  updateProgress(1);
 </script>
-
 </body>
 </html>
