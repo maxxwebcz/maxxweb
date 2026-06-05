@@ -432,8 +432,13 @@
   answers.paketZFormu = params.get('paket') || '';
   if (jmeno) document.getElementById('welcomeName').textContent = 'Vítejte, ' + jmeno + ' 👋';
 
-  // Single-select card grids
+  // Multi-select kroky — žádný single-select listener
+  const multiSelectSteps = ['step5', 'step7', 'step9'];
+
+  // Single-select card grids (jen kroky které NEJSOU multi)
   document.querySelectorAll('.card-grid').forEach(grid => {
+    const stepEl = grid.closest('.step');
+    if (stepEl && multiSelectSteps.includes(stepEl.id)) return; // přeskočit multi-select kroky
     grid.querySelectorAll('.card-option').forEach(card => {
       card.addEventListener('click', () => {
         grid.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
@@ -441,6 +446,13 @@
         const jineGroup = document.getElementById('jineGroup');
         if (jineGroup) jineGroup.style.display = card.dataset.val === 'jine' ? 'block' : 'none';
       });
+    });
+  });
+
+  // Multi-select kroky 5, 7, 9
+  multiSelectSteps.forEach(stepId => {
+    document.querySelectorAll(`#${stepId} .card-option`).forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('selected'));
     });
   });
 
@@ -452,21 +464,6 @@
   // Multi-select check items
   document.querySelectorAll('.check-item').forEach(item => {
     item.addEventListener('click', () => item.classList.toggle('selected'));
-  });
-
-  // Multi-select style cards (step 5)
-  document.querySelectorAll('#step5 .card-option').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('selected'));
-  });
-
-  // Multi-select logo/fotky cards (step 7)
-  document.querySelectorAll('#step7 .card-option').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('selected'));
-  });
-
-  // Multi-select zákazník cards (step 9)
-  document.querySelectorAll('#step9 .card-option').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('selected'));
   });
 
   function selectTile(pickerId, btn, hiddenId) {
@@ -566,7 +563,7 @@
     `).join('');
 
     document.getElementById('welcomeBlock').style.display = 'none';
-    document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
     document.getElementById('summaryScreen').style.display = 'block';
     document.getElementById('progressBar').style.width = '95%';
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -575,7 +572,7 @@
   function hideSummary() {
     document.getElementById('summaryScreen').style.display = 'none';
     document.getElementById('welcomeBlock').style.display = 'block';
-    showStep(currentStep);
+    showStep(currentStep); // currentStep je stále 10, showStep přidá .active
   }
 
   async function submitForm() {
