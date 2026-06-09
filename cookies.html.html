@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zásady cookies | maxxweb</title>
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --text: #f0f0f0;
+    --text-muted: #888;
+    --accent: #f5c842;
+    --border: #222;
+    --card: #181818;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+  }
+  .logo { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
+  nav a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+  nav a:hover { color: var(--text); }
+
+  .page-hero {
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  h1 { font-size: 2rem; font-weight: 700; letter-spacing: -1px; margin-bottom: 0.5rem; }
+  .meta { font-size: 0.85rem; color: var(--text-muted); }
+
+  main { max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+
+  section { margin-bottom: 3rem; }
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+  p { margin-bottom: 0.9rem; color: #ccc; }
+  ul { padding-left: 1.4rem; margin-bottom: 0.9rem; color: #ccc; }
+  li { margin-bottom: 0.3rem; }
+  strong { color: var(--text); }
+  a { color: var(--accent); }
+
+  .highlight-box {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    color: #ccc;
+  }
+
+  .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; color: #ccc; }
+  th { text-align: left; padding: 0.6rem 0.8rem; background: var(--card); color: var(--text-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
+  td { padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .badge-green { background: #1a2e1a; color: #6fcf6f; }
+  .badge-yellow { background: #2e2a1a; color: #f5c842; }
+  .badge-gray { background: #222; color: #888; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  footer a { color: var(--text-muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  footer .links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 0.75rem; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.maxxweb.cz" class="logo">maxx<span>web</span></a>
+  <a href="https://www.maxxweb.cz">← Zpět na web</a>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="https://www.maxxweb.cz">maxxweb</a> / Zásady cookies</div>
+  <h1>Zásady cookies</h1>
+  <p class="meta">Platné od 1. 6. 2025 &nbsp;·&nbsp; Verze 1.0</p>
+</div>
+
+<main>
+
+  <section id="co-jsou-cookies">
+    <h2>Co jsou cookies</h2>
+    <p>Cookies jsou malé textové soubory, které webová stránka ukládá do vašeho prohlížeče při její návštěvě. Umožňují webu zapamatovat si vaše akce a preference po určitou dobu, takže je nemusíte znovu zadávat při každé návštěvě nebo při přechodu z jedné stránky na druhou.</p>
+    <p>Cookies mohou být buď <strong>relační</strong> (zanikají po zavření prohlížeče) nebo <strong>trvalé</strong> (zůstávají uloženy po stanovenou dobu). Mohou být nastaveny samotným webem (<em>vlastní cookies</em>) nebo třetími stranami (<em>cookies třetích stran</em>).</p>
+  </section>
+
+  <section id="jake-cookies">
+    <h2>Jaké cookies používáme</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Název / zdroj</th>
+            <th>Typ</th>
+            <th>Účel</th>
+            <th>Platnost</th>
+            <th>Souhlas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>_ga</strong><br><small>Google Analytics</small></td>
+            <td>Analytická</td>
+            <td>Rozlišuje unikátní uživatele a relace pro statistiku návštěvnosti</td>
+            <td>2 roky</td>
+            <td><span class="badge badge-yellow">Vyžadován</span></td>
+          </tr>
+          <tr>
+            <td><strong>_ga_[ID]</strong><br><small>Google Analytics</small></td>
+            <td>Analytická</td>
+            <td>Udržuje stav relace Google Analytics 4</td>
+            <td>2 roky</td>
+            <td><span class="badge badge-yellow">Vyžadován</span></td>
+          </tr>
+          <tr>
+            <td><strong>cookie_consent</strong><br><small>maxxweb</small></td>
+            <td>Funkční</td>
+            <td>Uloží vaši volbu ohledně cookies, aby se dialog nezobrazoval opakovaně</td>
+            <td>1 rok</td>
+            <td><span class="badge badge-green">Nutná</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box">
+      Webové stránky maxxweb.cz nepoužívají reklamní ani profilovací cookies. Analytická data jsou zpracovávána anonymizovaně — IP adresa je před zpracováním zkrácena.
+    </div>
+  </section>
+
+  <section id="sprava">
+    <h2>Správa cookies a odvolání souhlasu</h2>
+    <p>Souhlas s analytickými cookies udělujete při první návštěvě webu prostřednictvím lišty cookies. Souhlas můžete kdykoli odvolat:</p>
+    <ul>
+      <li>Smazáním cookies a nastavením volby v liště cookies při opětovné návštěvě webu.</li>
+      <li>Nastavením prohlížeče — většina prohlížečů umožňuje odmítnout, omezit nebo smazat cookies:</li>
+    </ul>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/cs/kb/cookies-informace-ktere-webove-stranky-ukladaji" target="_blank">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/cs-cz/guide/safari/sfri11471/mac" target="_blank">Apple Safari</a></li>
+      <li><a href="https://support.microsoft.com/cs-cz/windows/odstranit-a-spravovat-soubory-cookie-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank">Microsoft Edge</a></li>
+    </ul>
+    <p>Odvolání souhlasu s cookies nemá vliv na zákonnost zpracování před odvoláním. Zablokování technicky nezbytných cookies může omezit funkčnost webu.</p>
+  </section>
+
+  <section id="treti-strany">
+    <h2>Cookies třetích stran</h2>
+    <p>Na webu používáme nástroj <strong>Google Analytics</strong> (provozovaný společností Google LLC). Google může tyto údaje zpracovávat v USA. Zpracování je zabezpečeno odpovídajícími zárukami dle čl. 46 GDPR. Více informací: <a href="https://policies.google.com/privacy" target="_blank">Zásady ochrany soukromí Google</a>.</p>
+    <p>Opt-out z Google Analytics: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</p>
+  </section>
+
+  <section id="zmeny">
+    <h2>Změny těchto zásad</h2>
+    <p>Tyto zásady cookies můžeme průběžně aktualizovat v souladu se změnami v používaných technologiích nebo právních předpisech. Aktuální verze je vždy dostupná na této stránce. V případě podstatných změn vás budeme informovat prostřednictvím lišty cookies.</p>
+    <p>Máte-li otázky týkající se cookies, kontaktujte nás na <a href="mailto:maxxweb@outlook.cz">maxxweb@outlook.cz</a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2025 ELEOS s.r.o. &nbsp;·&nbsp; IČO: 01950398</div>
+  <div class="links">
+    <a href="https://www.maxxweb.cz">Hlavní stránka</a>
+    <a href="obchodni-podminky.html">Obchodní podmínky</a>
+    <a href="gdpr.html">Zásady ochrany osobních údajů</a>
+  </div>
+</footer>
+
+</body>
+</html>
