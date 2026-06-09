@@ -753,6 +753,133 @@
     footer strong { color: var(--white); }
     footer span { color: var(--red); }
 
+    /* GDPR CONSENT */
+    .consent-wrap {
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      margin-top: 4px;
+    }
+
+    .consent-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .consent-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 2px;
+      accent-color: var(--red);
+      cursor: pointer;
+    }
+
+    .consent-text {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.55;
+    }
+
+    .consent-text a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .consent-text a:hover { text-decoration: underline; }
+
+    .consent-error {
+      font-size: 12px;
+      color: var(--red);
+      margin-top: 8px;
+      display: none;
+    }
+
+    .consent-error.visible { display: block; }
+
+    /* COOKIE BANNER */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--black);
+      border-top: 1px solid #333;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 9999;
+      flex-wrap: wrap;
+    }
+
+    .cookie-banner.hidden { display: none; }
+
+    .cookie-text {
+      flex: 1;
+      font-size: 13px;
+      color: #aaa;
+      min-width: 220px;
+      line-height: 1.5;
+    }
+
+    .cookie-text a { color: var(--red); text-decoration: none; }
+    .cookie-text a:hover { text-decoration: underline; }
+
+    .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+
+    .btn-cookie-accept {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-cookie-accept:hover { background: var(--red-deep); }
+
+    .btn-cookie-reject {
+      background: none;
+      color: #888;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-cookie-reject:hover { color: #ccc; border-color: #666; }
+
+    /* FOOTER LINKS */
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 12px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #aaa; }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
@@ -975,6 +1102,16 @@
             <div class="promo-hint">Váš poradce vám dal kód? Zadejte ho sem, ať víme, od koho přicházíte.</div>
           </div>
 
+          <div class="consent-wrap">
+            <label class="consent-label" for="gdpr-consent">
+              <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required />
+              <span class="consent-text">
+                Odesláním formuláře souhlasím se zpracováním svých osobních údajů (jméno, e-mail, telefon) společností ELEOS s.r.o. (maxxweb), IČO 01950398, výhradně za účelem zpracování mé poptávky a kontaktování s nabídkou tvorby webové stránky. Souhlas mohu kdykoli odvolat na maxxweb@outlook.cz. Podrobnosti viz <a href="/zasady-ochrany-osobnich-udaju.html" target="_blank">Zásady ochrany osobních údajů</a>.
+              </span>
+            </label>
+            <div class="consent-error" id="consentError">Pro odeslání je nutné souhlasit se zpracováním osobních údajů.</div>
+          </div>
+
           <button type="submit" class="form-submit">Odeslat a vyplnit dotazník →</button>
           <div class="form-note">Po odeslání budete přesměrováni na krátký dotazník.</div>
         </form>
@@ -988,10 +1125,61 @@
 <footer>
   <div style="font-size:20px;font-weight:800;color:white;margin-bottom:8px">ma<span style="color:#E83A3A">xx</span><span style="color:#aaa;font-weight:500">web</span></div>
   <div>Weby s rychlým doručením pro malé firmy a živnostníky.</div>
-  <div style="margin-top:16px;font-size:12px">© 2025 maxxweb · Všechna práva vyhrazena</div>
+  <div style="margin-top:10px;font-size:12px;color:#555">ELEOS s.r.o. &nbsp;·&nbsp; IČO: 01950398 &nbsp;·&nbsp; Nedělní 1033, 696 11 Mutěnice</div>
+  <div style="margin-top:6px;font-size:12px">© 2025 maxxweb · Všechna práva vyhrazena</div>
+  <div class="footer-links">
+    <a href="/obchodni-podminky.html">Obchodní podmínky</a>
+    <a href="/zasady-ochrany-osobnich-udaju.html">Zásady ochrany osobních údajů</a>
+    <a href="/cookies.html">Zásady cookies</a>
+  </div>
 </footer>
 
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">
+    Používáme cookies pro analýzu návštěvnosti (Google Analytics). Funkční cookies jsou nezbytné pro provoz webu.
+    <a href="/cookies.html">Zásady cookies</a> &nbsp;·&nbsp; <a href="/zasady-ochrany-osobnich-udaju.html">Ochrana osobních údajů</a>
+  </div>
+  <div class="cookie-actions">
+    <button class="btn-cookie-reject" onclick="rejectCookies()">Odmítnout analytické</button>
+    <button class="btn-cookie-accept" onclick="acceptCookies()">Přijmout vše</button>
+  </div>
+</div>
+
 <script>
+  // ── Cookie banner ──────────────────────────────────────
+  const cookieBanner = document.getElementById('cookieBanner');
+  const savedConsent = localStorage.getItem('cookie_consent');
+  if (savedConsent) {
+    cookieBanner.classList.add('hidden');
+    if (savedConsent === 'accepted') loadAnalytics();
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('cookie_consent', 'accepted');
+    cookieBanner.classList.add('hidden');
+    loadAnalytics();
+  }
+
+  function rejectCookies() {
+    localStorage.setItem('cookie_consent', 'rejected');
+    cookieBanner.classList.add('hidden');
+  }
+
+  function loadAnalytics() {
+    // ← Nahraďte G-XXXXXXXXXX svým Google Analytics Measurement ID
+    const GA_ID = 'G-SLQH3X7CYR';
+    const s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  // ── Paket picker ──────────────────────────────────────
   function selectPaket(btn) {
     document.querySelectorAll('.paket-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
@@ -1012,11 +1200,20 @@
 
     const jmeno = document.getElementById('jmeno').value.trim();
     const email = document.getElementById('email').value.trim();
+    const gdprConsent = document.getElementById('gdpr-consent');
+    const consentError = document.getElementById('consentError');
 
     if (!jmeno || !email) {
       alert('Prosím vyplňte jméno a e-mail.');
       return;
     }
+
+    if (!gdprConsent.checked) {
+      consentError.classList.add('visible');
+      gdprConsent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    consentError.classList.remove('visible');
 
     const btn = document.querySelector('.form-submit');
     btn.textContent = 'Odesílám…';
