@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.maxxweb.cz/$1",
+      "permanent": true
+    }
+  ]
+}
