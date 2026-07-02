@@ -1,0 +1,85 @@
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const maps = {
+  typPodnikani: { remeslnik:'ĹemeslnĂ­k', sluzby:'SluĹžby', krasa:'KrĂĄsa & wellness', gastro:'Gastronomie', eshop:'E-shop / obchod', jine:'JinĂŠ' },
+  praktickeInfo: { adresa:'Adresa/region', oteviraci:'OtevĂ­racĂ­ doba', rozvoz:'DoruÄenĂ­/rozvoz', socialni:'SociĂĄlnĂ­ sĂ­tÄ', cenik_info:'CenĂ­k', objednavky:'ObjednĂĄvky pĹedem' },
+  webFunkce: { kontakt_form:'KontaktnĂ­ formulĂĄĹ', galerie:'Galerie fotek', mapa:'Mapa', eshop_funkce:'E-shop', rezervace:'RezervaÄnĂ­ systĂŠm', recenze:'Recenze zĂĄkaznĂ­kĹŻ', instagram_link:'Instagram', chat:'Chat/WhatsApp' },
+  styl: { luxusni:'LuxusnĂ­ a elegantnĂ­', hravy:'HravĂ˝ a milĂ˝', utulny:'ĂtulnĂ˝ a domĂĄcĂ­', moderni_styl:'ModernĂ­ a dynamickĂ˝', prirodni:'PĹĂ­rodnĂ­ a ÄistĂ˝', minimalisticky:'MinimalistickĂ˝' },
+  barvy: { cervena:'ÄervenĂĄ & ÄernĂĄ', modra:'ModrĂĄ & bĂ­lĂĄ', zelena:'ZelenĂĄ & svÄtlĂĄ', bila:'ÄernobĂ­lĂĄ', tepla:'TeplĂĄ & zlatĂĄ', fialova:'FialovĂĄ' },
+  logoFotky: { mam_logo:'MĂĄm logo', nemam_logo:'NemĂĄm logo', mam_fotky:'MĂĄm fotky', nemam_fotky:'NemĂĄm fotky' },
+  zakaznik: { maminky:'Maminky s dÄtmi', studenti:'Studenti a mladĂ­ lidĂŠ', firmy:'Firmy a podniky', '30_50':'LidĂŠ 30â50 let', zdravi:'ZdravÄ ĹžijĂ­cĂ­ lidĂŠ', vsichni:'VĹĄichni' },
+  termin: { 'co-nejdrive':'Co nejdĹĂ­ve', mesic:'Do mÄsĂ­ce', '2mesice':'Do 2 mÄsĂ­cĹŻ', neresi:'TermĂ­n neĹeĹĄĂ­m' },
+  rozpocet: { basic:'Basic', business:'Business', premium:'Premium', nevim:'JeĹĄtÄ nevĂ­m' },
+};
+
+const mapArr = (arr, map) => arr && arr.length ? arr.map(v => map[v] || v).join(', ') : 'â';
+const mapVal = (val, map) => (val && map[val]) ? map[val] : (val || 'â');
+
+function row(label, value) {
+  const v = value || 'â';
+  return `<tr>
+    <td style="padding:10px 0;border-bottom:1px solid #333;color:#aaa;width:180px;vertical-align:top;font-size:14px">${label}</td>
+    <td style="padding:10px 0;border-bottom:1px solid #333;font-weight:600;font-size:14px">${v}</td>
+  </tr>`;
+}
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') return res.status(405).end();
+
+  const d = req.body;
+
+  try {
+    await resend.emails.send({
+      from: 'maxxweb <onboarding@resend.dev>',
+      to: 'office@maxxweb.cz',
+      subject: `đ DotaznĂ­k â ${d.jmeno || 'NovĂ˝ klient'}${d.promokod ? ` [${d.promokod}]` : ''}`,
+      html: `
+        <div style="font-family:sans-serif;max-width:640px;margin:0 auto;background:#1A1A1A;color:#fff;border-radius:12px;overflow:hidden">
+          <div style="background:#111;padding:24px 32px;border-bottom:1px solid #333">
+            <span style="font-size:22px;font-weight:800">ma<span style="color:#E83A3A">xx</span><span style="color:#aaa;font-weight:400">web</span></span>
+            <span style="margin-left:16px;background:#E83A3A;color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:100px">NovĂ˝ dotaznĂ­k</span>
+          </div>
+
+          <div style="padding:32px">
+            <h2 style="margin:0 0 6px;font-size:18px">đ VyplnÄnĂ˝ dotaznĂ­k</h2>
+            <p style="color:#aaa;font-size:13px;margin:0 0 28px">Klient dokonÄil dotaznĂ­k na maxxweb.cz</p>
+
+            <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E83A3A;margin:0 0 12px">KONTAKTNĂ ĂDAJE</p>
+            <table style="width:100%;border-collapse:collapse;margin-bottom:28px">
+              ${row('JmĂŠno', d.jmeno)}
+              ${row('E-mail', d.email ? `<a href="mailto:${d.email}" style="color:#E83A3A">${d.email}</a>` : null)}
+              ${row('Promo kĂłd', d.promokod ? `<span style="color:#E83A3A;font-weight:700">${d.promokod}</span>` : null)}
+              ${row('BalĂ­Äek (z formulĂĄĹe)', mapVal(d.paketZFormu, maps.rozpocet))}
+            </table>
+
+            <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E83A3A;margin:0 0 12px">ODPOVÄDI Z DOTAZNĂKU</p>
+            <table style="width:100%;border-collapse:collapse">
+              ${row('Typ podnikĂĄnĂ­', mapVal(d.typPodnikani, maps.typPodnikani) + (d.typPodnikaniJine ? ` â ${d.typPodnikaniJine}` : ''))}
+              ${row('Popis podnikĂĄnĂ­', d.popisPodnikani)}
+              ${row('Slogan / pocit z webu', d.slogan)}
+              ${row('PraktickĂŠ info', mapArr(d.praktickeInfo, maps.praktickeInfo))}
+              ${row('Detaily (info)', d.praktickeDetaily)}
+              ${row('Co mĂĄ web umÄt', mapArr(d.webFunkce, maps.webFunkce))}
+              ${row('Styl a pocit', [mapArr(d.styl, maps.styl), d.stylVlastni].filter(v => v && v !== 'â').join(', ') || 'â')}
+              ${row('Barvy', [mapArr(d.barvy, maps.barvy), d.vlastniBarvy].filter(v => v && v !== 'â').join(', ') || 'â')}
+              ${row('Logo a fotky', mapArr(d.logoFotky, maps.logoFotky))}
+              ${row('Detaily (logo/fotky)', d.logoFotkyDetail)}
+              ${row('Inspirace', d.inspirace)}
+              ${row('ZĂĄkaznĂ­k', [mapArr(d.zakaznik, maps.zakaznik), d.zakaznikDetail].filter(v => v && v !== 'â').join(' â ') || 'â')}
+              ${row('TermĂ­n', mapVal(d.termin, maps.termin))}
+              ${row('RozpoÄet', mapVal(d.rozpocet, maps.rozpocet))}
+              ${row('PoznĂĄmky', d.poznamky)}
+            </table>
+          </div>
+        </div>
+      `,
+    });
+
+    res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Chyba pĹi odesĂ­lĂĄnĂ­ emailu.' });
+  }
+}
