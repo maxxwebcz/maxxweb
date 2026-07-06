@@ -32,7 +32,7 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from: 'maxxweb <onboarding@resend.dev>',
+      from: 'maxxweb <office@maxxweb.cz>',
       to: 'office@maxxweb.cz',
       subject: `đ DotaznĂ­k â ${d.jmeno || 'NovĂ˝ klient'}${d.promokod ? ` [${d.promokod}]` : ''}`,
       html: `
