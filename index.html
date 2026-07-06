@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/logo-icon.png" />
+  <link rel="apple-touch-icon" href="/logo-icon.png" />
+  <title>maxxweb – Web hotový za týden | Weby pro živnostníky a malé firmy</title>
+  <meta name="description" content="Profesionální web do 7 dní. Děláme weby pro živnostníky a malé firmy – bez byrokracie, fixní cena předem, bez překvapení." />
+  <meta name="keywords" content="tvorba webu, webové stránky, web pro živnostníky, levný web, rychlý web, web do týdne, maxxweb" />
+  <meta name="author" content="maxxweb" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.maxxweb.cz/" />
+
+  <!-- Open Graph (sdílení na sociálních sítích) -->
+  <meta property="og:title" content="maxxweb – Web hotový za týden" />
+  <meta property="og:image" content="https://www.maxxweb.cz/logo-icon.png" />
+  <meta property="og:image:width" content="1080" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:description" content="Profesionální web do 7 dní pro živnostníky a malé firmy. Cena individuálně, fixní cena předem, bez překvapení." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.maxxweb.cz/" />
+  <meta property="og:locale" content="cs_CZ" />
+
+  <!-- Schema.org strukturovaná data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "maxxweb",
+    "description": "Tvorba webových stránek pro živnostníky a malé firmy. Web hotový za 7 dní.",
+    "url": "https://www.maxxweb.cz",
+    "telephone": "+420776545111",
+    "email": "office@maxxweb.cz",
+    "priceRange": "Individuálně",
+    "areaServed": "CZ",
+    "serviceType": "Tvorba webových stránek",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Basic",
+        "price": "20000",
+        "priceCurrency": "CZK",
+        "description": "Web 1–3 stránky, responzivní design, základní SEO"
+      },
+      {
+        "@type": "Offer",
+        "name": "Business",
+        "price": "40000",
+        "priceCurrency": "CZK",
+        "description": "Web 4–6 stránek, CMS, blog, pokročilé SEO"
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium",
+        "price": "70000",
+        "priceCurrency": "CZK",
+        "description": "Web 10+ stránek, e-shop, platební brána, registrace uživatelů"
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #E83A3A;
+      --red-deep: #B52B2B;
+      --red-tint: #FFF5F5;
+      --red-blush: #FFD0D0;
+      --black: #1A1A1A;
+      --slate: #555555;
+      --gray: #F2F2F2;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(-28px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(232,58,58,0.35); }
+      70%  { box-shadow: 0 0 0 12px rgba(232,58,58,0); }
+      100% { box-shadow: 0 0 0 0 rgba(232,58,58,0); }
+    }
+
+    /* scroll-reveal base state */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.93);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* staggered children */
+    .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s; }
+    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s; }
+    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.3s; }
+    .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s; }
+    .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.5s; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--black);
+      background: var(--white);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid #eee;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--slate);
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--red); }
+
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--red-deep) !important; color: var(--white) !important; }
+
+    /* HERO */
+    .hero {
+      background: var(--black);
+      color: var(--white);
+      padding: 100px 32px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+      animation: fadeIn 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      animation: fadeUp 0.7s ease 0.15s both;
+    }
+
+    .hero h1 span { color: var(--red); }
+
+    .hero p {
+      font-size: clamp(17px, 2.5vw, 21px);
+      color: #aaa;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      animation: fadeUp 0.7s ease 0.3s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s ease 0.45s both;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--red-deep); transform: translateY(-1px); }
+    .btn-primary { animation: pulse-ring 2.4s ease-out 1.8s infinite; }
+
+    .btn-outline {
+      border: 2px solid #444;
+      color: var(--white);
+      padding: 14px 34px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: #888; transform: translateY(-1px); }
+
+    /* STATS */
+    .stats {
+      background: var(--gray);
+      padding: 60px 32px;
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 15px;
+      color: var(--slate);
+      margin-top: 6px;
+    }
+
+    /* SECTION */
+    section { padding: 80px 32px; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--slate);
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+
+    /* VALUES */
+    .values { background: var(--white); }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .value-card {
+      background: var(--gray);
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--red-blush);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .value-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .value-card p {
+      font-size: 15px;
+      color: var(--slate);
+      line-height: 1.65;
+    }
+
+    /* PRICING */
+    .pricing { background: var(--red-tint); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    .price-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 36px 32px;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: var(--red);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--red);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 20px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .plan-tag {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .plan-tag.basic { background: #EEF2FF; color: #3B5BDB; }
+    .plan-tag.business { background: var(--red-blush); color: var(--red-deep); }
+    .plan-tag.premium { background: #FFF3E0; color: #E65100; }
+
+    .plan-price {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .plan-period {
+      font-size: 14px;
+      color: var(--slate);
+      margin-bottom: 24px;
+    }
+
+    .plan-divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin-bottom: 24px;
+    }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .plan-features li .icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+    }
+
+    .icon-yes { color: #2E7D32; }
+    .icon-no { color: #bbb; }
+
+    .plan-note {
+      font-size: 13px;
+      color: var(--slate);
+      margin-top: 16px;
+    }
+
+    .btn-plan {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-plan.red {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn-plan.red:hover { background: var(--red-deep); }
+
+    .btn-plan.outline {
+      border: 2px solid #ddd;
+      color: var(--black);
+    }
+
+    .btn-plan.outline:hover { border-color: var(--red); color: var(--red); }
+
+    /* CONTACT */
+    .contact { background: var(--white); }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      color: var(--slate);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    .contact-detail-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--gray);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* FORM */
+    .form-card {
+      background: var(--gray);
+      border-radius: 20px;
+      padding: 40px 36px;
+    }
+
+    .form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      color: var(--black);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--red);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    /* PAKET PICKER */
+    .paket-picker {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .paket-btn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 14px 16px;
+      background: var(--white);
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      text-align: left;
+      transition: all 0.2s;
+    }
+
+    .paket-btn:hover { border-color: var(--red-blush); transform: translateY(-1px); }
+
+    .paket-btn.selected {
+      border-color: var(--red);
+      background: var(--red-tint);
+    }
+
+    .paket-popular { border-color: var(--red-blush); }
+
+    .paket-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    .paket-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .paket-price {
+      font-size: 12px;
+      color: var(--slate);
+      margin-top: 2px;
+    }
+
+    .paket-btn.selected .paket-name { color: var(--red); }
+
+    .promo-group {
+      margin-bottom: 20px;
+    }
+
+    .promo-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .promo-input-wrap {
+      position: relative;
+    }
+
+    .promo-input-wrap svg {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: #bbb;
+      pointer-events: none;
+      transition: color 0.2s;
+    }
+
+    .promo-input-wrap input {
+      width: 100%;
+      padding: 14px 120px 14px 46px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .promo-input-wrap input::placeholder {
+      letter-spacing: 1px;
+      font-weight: 400;
+      color: #ccc;
+    }
+
+    .promo-input-wrap input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 4px rgba(232,58,58,0.08);
+    }
+
+    .promo-input-wrap input:focus + .promo-check-icon,
+    .promo-input-wrap:focus-within svg { color: var(--red); }
+
+    .promo-badge {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--gray);
+      color: var(--slate);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .promo-input-wrap input:not(:placeholder-shown) ~ .promo-badge {
+      background: #E8F5E9;
+      color: #2E7D32;
+    }
+
+    .promo-hint {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 7px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover { background: var(--red-deep); transform: translateY(-1px); }
+
+    .form-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--slate);
+      margin-top: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #888;
+      text-align: center;
+      padding: 40px 32px;
+      font-size: 14px;
+    }
+
+    footer strong { color: var(--white); }
+    footer span { color: var(--red); }
+
+    /* GDPR CONSENT */
+    .consent-wrap {
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      margin-top: 4px;
+    }
+
+    .consent-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .consent-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 2px;
+      accent-color: var(--red);
+      cursor: pointer;
+    }
+
+    .consent-text {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.55;
+    }
+
+    .consent-text a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .consent-text a:hover { text-decoration: underline; }
+
+    .consent-error {
+      font-size: 12px;
+      color: var(--red);
+      margin-top: 8px;
+      display: none;
+    }
+
+    .consent-error.visible { display: block; }
+
+    /* COOKIE BANNER */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--black);
+      border-top: 1px solid #333;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 9999;
+      flex-wrap: wrap;
+    }
+
+    .cookie-banner.hidden { display: none; }
+
+    .cookie-text {
+      flex: 1;
+      font-size: 13px;
+      color: #aaa;
+      min-width: 220px;
+      line-height: 1.5;
+    }
+
+    .cookie-text a { color: var(--red); text-decoration: none; }
+    .cookie-text a:hover { text-decoration: underline; }
+
+    .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+
+    .btn-cookie-accept {
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-cookie-accept:hover { background: var(--red-deep); }
+
+    .btn-cookie-reject {
+      background: none;
+      color: #888;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-cookie-reject:hover { color: #ccc; border-color: #666; }
+
+    /* FOOTER LINKS */
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 12px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #aaa; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+
+      .hero { padding: 70px 20px; }
+
+      .stats { gap: 36px; padding: 50px 20px; }
+
+      section { padding: 60px 20px; }
+
+      .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+
+      .form-card { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="/logo.jpeg" alt="maxxweb" /></div>
+  <ul class="nav-links">
+    <li><a href="#o-nas">O nás</a></li>
+    <li><a href="#cenik">Ceník</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="#kontakt" class="nav-cta">Chci web za týden</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">⚡ Doručení za 4 dny</div>
+  <h1>Web hotový<br/><span>za týden.</span></h1>
+  <p>Děláme weby pro živnostníky a malé firmy. Bez byrokracie, bez skrytých poplatků, bez zbytečných otázek.</p>
+  <div class="hero-buttons">
+    <a href="#kontakt" class="btn-primary">Chci web za týden</a>
+    <a href="#cenik" class="btn-outline">Zjistit více</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats stagger">
+  <div>
+    <div class="stat-number">4 dny</div>
+    <div class="stat-label">Průměrné doručení</div>
+  </div>
+  <div>
+    <div class="stat-number" data-count="150" data-suffix="+">0</div>
+    <div class="stat-label">Spokojených klientů</div>
+  </div>
+  <div>
+    <div class="stat-number" data-count="100" data-suffix="%">0%</div>
+    <div class="stat-label">Fixní cena předem</div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section class="values" id="o-nas">
+  <div class="container">
+    <div class="section-label">Proč maxxweb</div>
+    <div class="section-title">Weby bez komplikací.</div>
+    <div class="section-sub">Klient nemusí rozumět technologiím. Naší prací je to vyřešit za něj.</div>
+    <div class="values-grid stagger">
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <h3>Rychlost</h3>
+        <p>Web do týdne je slib, ne fráze. Víme, že každý den bez webu stojí peníze. Proto jsme tak rychlí.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3>Lidský přístup</h3>
+        <p>Mluvíme česky, ne IT žargonem. Klientem je řemeslník, kadeřnice, cukrářka — ne IT manažer.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💰</div>
+        <h3>Jasná cena</h3>
+        <p>Žádné skryté poplatky. Říkáme cenu dopředu a držíme se jí. Žádné překvapení v ceně.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="cenik">
+  <div class="container">
+    <div class="section-label">Ceník</div>
+    <div class="section-title">Vyberte si balíček.</div>
+    <div class="section-sub">Každý balíček má pevnou cenu. Přesně víte, co dostanete.</div>
+
+    <div class="pricing-grid stagger">
+
+      <!-- BASIC -->
+      <div class="price-card">
+        <span class="plan-tag basic">A · Basic</span>
+        <hr class="plan-divider" />
+        <ul class="plan-features">
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>1–3 stránky</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Responzivní design</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Základní SEO</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Google Analytics</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Zprovoznění domény + hostingu</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Kontaktní formulář</li>
+          <li><svg class="icon icon-no" viewBox="0 0 20 20" fill="currentColor" style="color:#ddd"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg><span style="color:#bbb">Redakční systém</span></li>
+        </ul>
+        <div class="plan-note">Vizitka, landing page, živnostník</div>
+        <br/>
+        <button type="button" class="btn-plan outline" onclick="vyberPaket('basic')">Vybrat Basic</button>
+      </div>
+
+      <!-- BUSINESS (featured) -->
+      <div class="price-card featured">
+        <div class="popular-badge">Nejpopulárnější</div>
+        <span class="plan-tag business">B · Business</span>
+        <hr class="plan-divider" />
+        <ul class="plan-features">
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>4–6 stránek</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Vše z Basic</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Kontaktní formulář</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Blog / aktuality</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>CMS (správa obsahu)</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Pokročilé SEO</li>
+          <li><svg class="icon icon-no" viewBox="0 0 20 20" fill="currentColor" style="color:#ddd"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg><span style="color:#bbb">Registrace uživatelů</span></li>
+        </ul>
+        <div class="plan-note">Firmy, služby, portfolia</div>
+        <br/>
+        <button type="button" class="btn-plan red" onclick="vyberPaket('business')">Vybrat Business</button>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="price-card">
+        <span class="plan-tag premium">C · Premium</span>
+        <hr class="plan-divider" />
+        <ul class="plan-features">
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>10+ stránek</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Vše z Business</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Registrace uživatelů</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Uživatelské role &amp; přihlášení</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Malý e-shop (do 500 produktů)</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Platební brána</li>
+          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Individuální analýza + smlouva</li>
+        </ul>
+        <div class="plan-note">E-shopy, portály, SaaS MVP</div>
+        <br/>
+        <button type="button" class="btn-plan outline" onclick="vyberPaket('premium')">Vybrat Premium</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="container">
+    <div class="contact-wrap">
+
+      <div class="contact-info reveal">
+        <div class="section-label">Kontakt</div>
+        <h2>Pojďme to rozjet.</h2>
+        <p>Vyplňte formulář a my se vám ozveme do 24 hodin. Pak vás provedeme krátkým dotazníkem, abychom mohli začít co nejdřív.</p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📧</div>
+          <div><a href="mailto:office@maxxweb.cz" style="color:inherit;text-decoration:none">office@maxxweb.cz</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📧</div>
+          <div><a href="mailto:zakazky@maxxweb.cz" style="color:inherit;text-decoration:none">zakazky@maxxweb.cz</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div><a href="tel:+420604419420" style="color:inherit;text-decoration:none">+420 604 419 420</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div><a href="tel:+420604420788" style="color:inherit;text-decoration:none">+420 604 420 788</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">⏰</div>
+          <div>Po–Pá, 8:00–17:00</div>
+        </div>
+      </div>
+
+      <div class="form-card reveal" style="transition-delay:0.15s">
+        <div class="form-title">Napište nám</div>
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="jmeno">Jméno a příjmení *</label>
+            <input type="text" id="jmeno" name="jmeno" placeholder="Jan Novák" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" placeholder="jan@vasefirma.cz" required />
+          </div>
+          <div class="form-group">
+            <label for="telefon">Telefon <span style="color:var(--red)">*</span></label>
+            <input type="tel" id="telefon" name="telefon" placeholder="+420 777 123 456" required />
+          </div>
+          <div class="form-group">
+            <label>Zájem o balíček</label>
+            <div class="paket-picker">
+              <button type="button" class="paket-btn" data-val="basic" onclick="selectPaket(this)">
+                <span class="paket-name">Basic</span>
+              </button>
+              <button type="button" class="paket-btn" data-val="business" onclick="selectPaket(this)">
+                <span class="paket-name">Business</span>
+              </button>
+              <button type="button" class="paket-btn" data-val="premium" onclick="selectPaket(this)">
+                <span class="paket-name">Premium</span>
+              </button>
+              <button type="button" class="paket-btn" data-val="nevim" onclick="selectPaket(this)">
+                <span class="paket-name">Ještě nevím</span>
+              </button>
+            </div>
+            <input type="hidden" id="paket" name="paket" value="" />
+          </div>
+
+          <div class="promo-group">
+            <label for="promokod">Promo kód <span style="color:#aaa;font-weight:400">(nepovinné)</span></label>
+            <div class="promo-input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+              <input type="text" id="promokod" name="promokod" placeholder="Zadejte kód" maxlength="20" />
+              <span class="promo-badge">od poradce</span>
+            </div>
+            <div class="promo-hint">Váš poradce vám dal kód? Zadejte ho sem, ať víme, od koho přicházíte.</div>
+          </div>
+
+          <div class="consent-wrap">
+            <label class="consent-label" for="gdpr-consent">
+              <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required />
+              <span class="consent-text">
+                Odesláním formuláře souhlasím se zpracováním svých osobních údajů (jméno, e-mail, telefon) společností ELEOS s.r.o. (maxxweb), IČO 01950398, výhradně za účelem zpracování mé poptávky a kontaktování s nabídkou tvorby webové stránky. Souhlas mohu kdykoli odvolat na office@maxxweb.cz. Podrobnosti viz <a href="/zasady-ochrany-osobnich-udaju.html" target="_blank">Zásady ochrany osobních údajů</a>.
+              </span>
+            </label>
+            <div class="consent-error" id="consentError">Pro odeslání je nutné souhlasit se zpracováním osobních údajů.</div>
+          </div>
+
+          <button type="submit" class="form-submit">Odeslat a vyplnit dotazník →</button>
+          <div class="form-note">Po odeslání budete přesměrováni na krátký dotazník.</div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="font-size:20px;font-weight:800;color:white;margin-bottom:8px">ma<span style="color:#E83A3A">xx</span><span style="color:#aaa;font-weight:500">web</span></div>
+  <div>Weby s rychlým doručením pro malé firmy a živnostníky.</div>
+  <div style="margin-top:10px;font-size:12px;color:#555"><span style="-webkit-user-select:text;user-select:text;pointer-events:none">ELEOS s.r.o. &nbsp;·&nbsp; IČO:&nbsp;01950398 &nbsp;·&nbsp; Nedělní 1033, 696 11 Mutěnice</span></div>
+  <div style="margin-top:6px;font-size:12px">© 2025 maxxweb · Všechna práva vyhrazena</div>
+  <div class="footer-links">
+    <a href="/obchodni-podminky.html">Obchodní podmínky</a>
+    <a href="/zasady-ochrany-osobnich-udaju.html">Zásady ochrany osobních údajů</a>
+    <a href="/cookies.html">Zásady cookies</a>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">
+    Používáme cookies pro analýzu návštěvnosti (Google Analytics). Funkční cookies jsou nezbytné pro provoz webu.
+    <a href="/cookies.html">Zásady cookies</a> &nbsp;·&nbsp; <a href="/zasady-ochrany-osobnich-udaju.html">Ochrana osobních údajů</a>
+  </div>
+  <div class="cookie-actions">
+    <button class="btn-cookie-reject" onclick="rejectCookies()">Odmítnout analytické</button>
+    <button class="btn-cookie-accept" onclick="acceptCookies()">Přijmout vše</button>
+  </div>
+</div>
+
+<script>
+  // ── Cookie banner ──────────────────────────────────────
+  const cookieBanner = document.getElementById('cookieBanner');
+  const savedConsent = localStorage.getItem('cookie_consent');
+  if (savedConsent) {
+    cookieBanner.classList.add('hidden');
+    if (savedConsent === 'accepted') loadAnalytics();
+  }
+
+  function acceptCookies() {
+    localStorage.setItem('cookie_consent', 'accepted');
+    cookieBanner.classList.add('hidden');
+    loadAnalytics();
+  }
+
+  function rejectCookies() {
+    localStorage.setItem('cookie_consent', 'rejected');
+    cookieBanner.classList.add('hidden');
+  }
+
+  function loadAnalytics() {
+    // ← Nahraďte G-XXXXXXXXXX svým Google Analytics Measurement ID
+    const GA_ID = 'G-SLQH3X7CYR';
+    const s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  // ── Paket picker ──────────────────────────────────────
+  function selectPaket(btn) {
+    document.querySelectorAll('.paket-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('paket').value = btn.dataset.val;
+  }
+
+  function vyberPaket(hodnota) {
+    document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      const btn = document.querySelector(`.paket-btn[data-val="${hodnota}"]`);
+      if (btn) selectPaket(btn);
+      document.getElementById('jmeno').focus();
+    }, 600);
+  }
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const jmeno = document.getElementById('jmeno').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefon = document.getElementById('telefon').value.trim();
+    const gdprConsent = document.getElementById('gdpr-consent');
+    const consentError = document.getElementById('consentError');
+
+    if (!jmeno || !email || !telefon) {
+      alert('Prosím vyplňte jméno, e-mail a telefon.');
+      return;
+    }
+
+    if (!gdprConsent.checked) {
+      consentError.classList.add('visible');
+      gdprConsent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    consentError.classList.remove('visible');
+
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Odesílám…';
+    btn.disabled = true;
+
+    const data = {
+      jmeno,
+      email,
+      telefon: document.getElementById('telefon').value.trim(),
+      paket: document.getElementById('paket').value,
+      promokod: document.getElementById('promokod').value.trim().toUpperCase()
+    };
+
+    try {
+      await fetch('/api/kontakt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.error(err);
+    }
+
+    const params = new URLSearchParams(data);
+    window.location.href = 'dotaznik.html?' + params.toString();
+  });
+
+  // Intersection Observer — scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      // trigger counters when stats become visible
+      if (entry.target.classList.contains('stagger')) {
+        entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
+      }
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .reveal-scale, .stagger').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1200;
+    const start = performance.now();
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+    requestAnimationFrame(function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      el.textContent = Math.floor(easeOut(progress) * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    });
+  }
+
+  // Uppercase promo code live
+  document.getElementById('promokod').addEventListener('input', function() {
+    this.value = this.value.toUpperCase();
+  });
+</script>
+
+</body>
+</html>
