@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from: 'maxxweb <onboarding@resend.dev>',
+      from: 'maxxweb <office@maxxweb.cz>',
       to: 'office@maxxweb.cz',
       subject: `đŠ NovĂĄ poptĂĄvka â ${jmeno}${promokod ? ` [${promokod}]` : ''}`,
       html: `
