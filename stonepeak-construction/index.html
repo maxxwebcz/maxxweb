@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STONEPEAK CONSTRUCTION — Building tomorrow with precision.</title>
+<meta name="description" content="STONEPEAK CONSTRUCTION — prémiová stavební společnost. Pozemní a průmyslové stavby, rekonstrukce, inženýrské sítě a developerské projekty. (Demonstrační projekt)">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Preconnect & Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PRELOADER                                                     -->
+<!-- ============================================================ -->
+<div class="preloader" id="preloader">
+  <div class="preloader-inner">
+    <svg class="preloader-mark" width="72" height="72" viewBox="0 0 72 72" fill="none">
+      <path d="M36 4L64 20V52L36 68L8 52V20L36 4Z" stroke="currentColor" stroke-width="1.5"/>
+      <path class="preloader-mark-fill" d="M36 4L64 20V52L36 68L8 52V20L36 4Z" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+    <div class="preloader-text">STONEPEAK</div>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+</div>
+
+<!-- Cursor glow (desktop only, controlled via JS) -->
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Subtle film grain overlay for premium texture -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- ============================================================ -->
+<!-- NAVBAR                                                        -->
+<!-- ============================================================ -->
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#hero" class="logo" aria-label="STONEPEAK CONSTRUCTION — domů">
+      <span class="logo-mark">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M15 2L27 8.5V21.5L15 28L3 21.5V8.5L15 2Z" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M15 2V28M3 8.5L27 21.5M27 8.5L3 21.5" stroke="currentColor" stroke-width="0.6" opacity="0.5"/>
+        </svg>
+      </span>
+      <span class="logo-text">STONEPEAK<span class="logo-sub">CONSTRUCTION</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#sluzby" data-nav>Služby</a>
+      <a href="#realizace" data-nav>Realizace</a>
+      <a href="#proc-my" data-nav>Proč my</a>
+      <a href="#proces" data-nav>Proces</a>
+      <a href="#reference" data-nav>Reference</a>
+      <a href="#kontakt" data-nav>Kontakt</a>
+    </nav>
+
+    <div class="navbar-actions">
+      <a href="#kontakt" class="btn btn-ghost btn-small">
+        <span>Nezávazná poptávka</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu-links">
+      <a href="#sluzby" data-nav>Služby</a>
+      <a href="#realizace" data-nav>Realizace</a>
+      <a href="#proc-my" data-nav>Proč my</a>
+      <a href="#proces" data-nav>Proces</a>
+      <a href="#reference" data-nav>Reference</a>
+      <a href="#kontakt" data-nav>Kontakt</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="tel:+420601100200">+420 601 100 200</a>
+      <a href="mailto:info@stonepeak-construction.cz">info@stonepeak-construction.cz</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- HERO                                                          -->
+<!-- ============================================================ -->
+<section class="hero" id="hero">
+  <!--
+    AI RENDER PROMPT (placeholder):
+    "Ultra-realistic architectural photograph of a modern glass-and-concrete
+    office tower at dusk, golden hour light reflecting off the facade,
+    construction crane silhouette beside it, dramatic cinematic sky,
+    shot on 35mm, moody blue-gold color grade, ultra sharp detail."
+    Rendered below as generative CSS art until the final photograph is supplied.
+  -->
+  <div class="hero-bg" id="heroBg">
+    <div class="hero-sky"></div>
+    <div class="hero-sun"></div>
+    <div class="hero-skyline">
+      <div class="building b1"></div>
+      <div class="building b2"></div>
+      <div class="building b3"></div>
+      <div class="building b4"></div>
+      <div class="building b5"></div>
+      <div class="building b6"></div>
+      <div class="crane">
+        <div class="crane-mast"></div>
+        <div class="crane-jib"></div>
+        <div class="crane-counter"></div>
+        <div class="crane-hook"></div>
+      </div>
+    </div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-mouse-gradient" id="heroMouseGradient" aria-hidden="true"></div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-reveal>
+      <span class="eyebrow-line"></span> Prémiové stavební realizace od roku 2008
+    </p>
+    <h1 class="hero-title" data-title-reveal>
+      <span class="line"><span class="word">STONEPEAK</span></span>
+      <span class="line"><span class="word">CONSTRUCTION</span></span>
+    </h1>
+    <p class="hero-subtitle" data-reveal>Building tomorrow with precision.</p>
+
+    <div class="hero-actions" data-reveal>
+      <a href="#realizace" class="btn btn-primary" data-magnetic>
+        <span>Naše realizace</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+      <a href="#kontakt" class="btn btn-outline" data-magnetic>
+        <span>Kontakt</span>
+      </a>
+    </div>
+  </div>
+
+  <a href="#stats" class="scroll-down" aria-label="Posunout dolů">
+    <span class="scroll-down-text">Scroll</span>
+    <span class="scroll-down-line"><span></span></span>
+  </a>
+</section>
+
+<!-- ============================================================ -->
+<!-- STATS                                                         -->
+<!-- ============================================================ -->
+<section class="stats" id="stats">
+  <div class="section-inner">
+    <div class="stats-grid">
+      <div class="stat-item" data-reveal>
+        <div class="stat-number"><span data-counter data-target="850">0</span><span class="stat-plus">+</span></div>
+        <div class="stat-label">Dokončených projektů</div>
+      </div>
+      <div class="stat-item" data-reveal>
+        <div class="stat-number"><span data-counter data-target="420">0</span></div>
+        <div class="stat-label">Spokojených klientů</div>
+      </div>
+      <div class="stat-item" data-reveal>
+        <div class="stat-number"><span data-counter data-target="18">0</span></div>
+        <div class="stat-label">Let zkušeností</div>
+      </div>
+      <div class="stat-item" data-reveal>
+        <div class="stat-number"><span data-counter data-target="135">0</span></div>
+        <div class="stat-label">Profesionálů v týmu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SLUŽBY                                                        -->
+<!-- ============================================================ -->
+<section class="services" id="sluzby">
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="section-tag" data-reveal><span class="eyebrow-line"></span> Naše služby</p>
+      <h2 class="section-title" data-reveal>Komplexní stavební<br> řešení na klíč</h2>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="service-card" data-reveal data-tilt>
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M4 28V13L16 5L28 13V28" stroke="currentColor" stroke-width="1.4"/><path d="M11 28V19H21V28" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Pozemní stavby</h3>
+        <p>Rodinné domy, bytové komplexy a administrativní budovy realizované s důrazem na preciznost a dlouhou životnost.</p>
+        <span class="service-index">01</span>
+      </article>
+
+      <article class="service-card" data-reveal data-tilt>
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="12" width="24" height="16" stroke="currentColor" stroke-width="1.4"/><path d="M8 12V6H24V12" stroke="currentColor" stroke-width="1.4"/><path d="M4 20H28" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Průmyslové objekty</h3>
+        <p>Výrobní haly, logistická centra a skladové areály navržené pro maximální provozní efektivitu.</p>
+        <span class="service-index">02</span>
+      </article>
+
+      <article class="service-card" data-reveal data-tilt>
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 28V8L16 4L26 8V28" stroke="currentColor" stroke-width="1.4"/><path d="M6 28H26M13 28V21H19V28" stroke="currentColor" stroke-width="1.4"/><path d="M22 4L26 8" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Rekonstrukce</h3>
+        <p>Citlivá obnova historických i moderních budov se zachováním charakteru a zvýšením užitné hodnoty.</p>
+        <span class="service-index">03</span>
+      </article>
+
+      <article class="service-card" data-reveal data-tilt>
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.4"/><path d="M16 8V16L21 21" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Inženýrské sítě</h3>
+        <p>Vodovody, kanalizace, plynovody a elektro rozvody — kompletní infrastruktura pro váš projekt.</p>
+        <span class="service-index">04</span>
+      </article>
+
+      <article class="service-card" data-reveal data-tilt>
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="6" y="4" width="20" height="24" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M10 10H22M10 15H22M10 20H17" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Projektová dokumentace</h3>
+        <p>Architektonické studie, prováděcí dokumentace a inženýring od prvního nápadu po stavební povolení.</p>
+        <span class="service-index">05</span>
+      </article>
+
+      <article class="service-card" data-reveal data-tilt>
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M4 26L12 14L18 20L28 6" stroke="currentColor" stroke-width="1.4"/><path d="M20 6H28V14" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Developerské projekty</h3>
+        <p>Kompletní realizace developerských záměrů od akvizice pozemku po prodej hotových jednotek.</p>
+        <span class="service-index">06</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- REALIZACE / GALLERY                                           -->
+<!-- ============================================================ -->
+<section class="portfolio" id="realizace">
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="section-tag" data-reveal><span class="eyebrow-line"></span> Naše realizace</p>
+      <h2 class="section-title" data-reveal>Vybrané projekty<br> z posledních let</h2>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <!-- AI RENDER: Moderní rodinný dům s minimalistickou architekturou, večerní osvětlení, bazén, dřevo a beton -->
+      <figure class="portfolio-item span-2" data-reveal>
+        <div class="portfolio-media ph-1">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M5 36V16L20 6L35 16V36" stroke="currentColor" stroke-width="1.3"/><path d="M14 36V24H26V36" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Rezidenční výstavba</span>
+          <span class="portfolio-title">Vila Vltava — Roztoky</span>
+        </figcaption>
+      </figure>
+
+      <!-- AI RENDER: Jeřáb na moderním staveništi při soumraku, ocelová konstrukce, dělníci v reflexních vestách -->
+      <figure class="portfolio-item" data-reveal>
+        <div class="portfolio-media ph-2">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 36V6M8 6L34 12M8 12L26 12M30 12V20" stroke="currentColor" stroke-width="1.3"/><circle cx="30" cy="22" r="2" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Stavební technika</span>
+          <span class="portfolio-title">Věžový jeřáb — Praha 9</span>
+        </figcaption>
+      </figure>
+
+      <!-- AI RENDER: Bytový komplex s prosklenými balkony, zeleň na terasách, moderní urbanistický celek -->
+      <figure class="portfolio-item" data-reveal>
+        <div class="portfolio-media ph-3">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="8" y="4" width="24" height="32" stroke="currentColor" stroke-width="1.3"/><path d="M8 12H32M8 20H32M8 28H32M16 4V36M24 4V36" stroke="currentColor" stroke-width="0.8"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Bytové domy</span>
+          <span class="portfolio-title">Rezidence Panorama</span>
+        </figcaption>
+      </figure>
+
+      <!-- AI RENDER: Průmyslová hala shora, fotovoltaika na střeše, nákladní vozy u rampy, industriální estetika -->
+      <figure class="portfolio-item" data-reveal>
+        <div class="portfolio-media ph-4">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M5 34V16L14 10L23 16V34" stroke="currentColor" stroke-width="1.3"/><path d="M23 34V20L32 15L37 18V34" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Průmyslové haly</span>
+          <span class="portfolio-title">Logistické centrum CZ Logistics</span>
+        </figcaption>
+      </figure>
+
+      <!-- AI RENDER: Betonáž základové desky, pracovníci s vibrační latí, autodomíchávač, ranní světlo -->
+      <figure class="portfolio-item" data-reveal>
+        <div class="portfolio-media ph-5">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.3"/><path d="M20 10V20L27 24" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Realizace stavby</span>
+          <span class="portfolio-title">Betonáž — Administrativní centrum</span>
+        </figcaption>
+      </figure>
+
+      <!-- AI RENDER: Luxusní interiér obývacího pokoje s mramorem, teplé osvětlení, designový nábytek -->
+      <figure class="portfolio-item span-2" data-reveal>
+        <div class="portfolio-media ph-6">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="28" height="24" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M12 26V20H20V26M24 26V16H30V26" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Interiéry na klíč</span>
+          <span class="portfolio-title">Penthouse Rezidence Panorama</span>
+        </figcaption>
+      </figure>
+
+      <!-- AI RENDER: Výstavba mostní konstrukce nad údolím, jeřáby, ocelová armatura, dramatické nebe -->
+      <figure class="portfolio-item" data-reveal>
+        <div class="portfolio-media ph-7">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M4 26C10 18 30 18 36 26" stroke="currentColor" stroke-width="1.3"/><path d="M4 26V32M36 26V32M12 26V32M20 26V32M28 26V32" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Inženýrské stavby</span>
+          <span class="portfolio-title">Přemostění údolí Sázavy</span>
+        </figcaption>
+      </figure>
+
+      <!-- AI RENDER: Bagr při výkopových pracích na staveništi, prašný terén, dělníci v pozadí -->
+      <figure class="portfolio-item" data-reveal>
+        <div class="portfolio-media ph-8">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M4 32H24M8 32V22L16 16L24 20V32" stroke="currentColor" stroke-width="1.3"/><path d="M24 20L34 14L36 18L28 26" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Zemní práce</span>
+          <span class="portfolio-title">Příprava staveniště — Kladno</span>
+        </figcaption>
+      </figure>
+
+      <!-- AI RENDER: Firemní sídlo s prosklenou fasádou při západu slunce, reflexe oblohy ve skle -->
+      <figure class="portfolio-item" data-reveal>
+        <div class="portfolio-media ph-9">
+          <div class="ph-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="10" y="4" width="20" height="32" stroke="currentColor" stroke-width="1.3"/><path d="M10 12H30M10 20H30M10 28H30" stroke="currentColor" stroke-width="0.8"/></svg>
+          </div>
+        </div>
+        <figcaption>
+          <span class="portfolio-cat">Administrativní budovy</span>
+          <span class="portfolio-title">Sídlo NordSteel Group</span>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PROČ MY                                                       -->
+<!-- ============================================================ -->
+<section class="why-us" id="proc-my">
+  <div class="section-inner">
+    <div class="why-us-grid">
+      <div class="why-us-col">
+        <p class="section-tag" data-reveal><span class="eyebrow-line"></span> Proč zvolit Stonepeak</p>
+        <h2 class="section-title" data-reveal>Preciznost není detail. <br>Je to náš standard.</h2>
+        <p class="why-us-text" data-reveal>
+          Za dobu naší existence jsme si vybudovali pověst společnosti, která dodává stavby
+          přesně podle plánu — bez kompromisů v kvalitě, termínech i komunikaci s klientem.
+        </p>
+        <a href="#kontakt" class="btn btn-outline" data-reveal data-magnetic><span>Domluvit konzultaci</span></a>
+      </div>
+
+      <div class="why-us-col why-us-list">
+
+        <div class="why-item" data-reveal>
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M14 8V14L18 17" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+          <div>
+            <h4>Moderní technologie</h4>
+            <p>BIM modelování, dronové zaměřování a digitální řízení stavby v reálném čase.</p>
+          </div>
+        </div>
+
+        <div class="why-item" data-reveal>
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 14L11 20L23 8" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <div>
+            <h4>Precizní zpracování</h4>
+            <p>Detailní kontrola kvality v každé fázi výstavby, nezávislé technické dozory.</p>
+          </div>
+        </div>
+
+        <div class="why-item" data-reveal>
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="5" y="6" width="18" height="17" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M9 3V8M19 3V8M5 12H23" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+          <div>
+            <h4>Dodržování termínů</h4>
+            <p>Detailní harmonogramy a rezervní kapacity zajišťují dodání projektu včas.</p>
+          </div>
+        </div>
+
+        <div class="why-item" data-reveal>
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 22V14L14 6L24 14V22" stroke="currentColor" stroke-width="1.3"/><path d="M10 22V17H18V22" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+          <div>
+            <h4>Komplexní služby</h4>
+            <p>Od projekční přípravy přes realizaci až po předání a poprodejní servis.</p>
+          </div>
+        </div>
+
+        <div class="why-item" data-reveal>
+          <div class="why-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="9" r="4" stroke="currentColor" stroke-width="1.3"/><path d="M5 24C5 18 9.5 15 14 15C18.5 15 23 18 23 24" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+          <div>
+            <h4>Profesionální tým</h4>
+            <p>135 zkušených odborníků — od projektantů po mistry na stavbě.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIMELINE / PROCES                                             -->
+<!-- ============================================================ -->
+<section class="timeline-section" id="proces">
+  <div class="section-inner">
+    <div class="section-head center">
+      <p class="section-tag center" data-reveal><span class="eyebrow-line"></span> Jak pracujeme</p>
+      <h2 class="section-title" data-reveal>Od návrhu k předání klíčů</h2>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <div class="timeline-line"><span class="timeline-line-fill" id="timelineFill"></span></div>
+
+      <div class="timeline-step" data-reveal>
+        <div class="timeline-number">01</div>
+        <div class="timeline-dot"></div>
+        <h3>Návrh</h3>
+        <p>Analýza potřeb, studie proveditelnosti a první architektonické koncepty.</p>
+      </div>
+
+      <div class="timeline-step" data-reveal>
+        <div class="timeline-number">02</div>
+        <div class="timeline-dot"></div>
+        <h3>Projekt</h3>
+        <p>Prováděcí dokumentace, inženýring a příprava veškerých povolení.</p>
+      </div>
+
+      <div class="timeline-step" data-reveal>
+        <div class="timeline-number">03</div>
+        <div class="timeline-dot"></div>
+        <h3>Realizace</h3>
+        <p>Výstavba pod nepřetržitým technickým dozorem s důrazem na kvalitu.</p>
+      </div>
+
+      <div class="timeline-step" data-reveal>
+        <div class="timeline-number">04</div>
+        <div class="timeline-dot"></div>
+        <h3>Předání</h3>
+        <p>Kompletní dokumentace, revize a předání díla včetně záručního servisu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- REFERENCE / CAROUSEL                                          -->
+<!-- ============================================================ -->
+<section class="testimonials" id="reference">
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="section-tag" data-reveal><span class="eyebrow-line"></span> Reference</p>
+      <h2 class="section-title" data-reveal>Důvěřují nám lídři <br>ve svém oboru</h2>
+    </div>
+
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+
+        <article class="testimonial-card">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p>Spolupráce se Stonepeak Construction byla naprosto bez kompromisů — od prvního
+          plánu až po předání areálu se dodržel harmonogram i rozpočet.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-logo">NS</div>
+            <div>
+              <h5>NordSteel</h5>
+              <span>Výstavba výrobního areálu</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p>Tým Stonepeak prokázal špičkovou úroveň projektového řízení. Komunikace byla
+          transparentní po celou dobu developerského projektu.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-logo">UG</div>
+            <div>
+              <h5>Urban Group</h5>
+              <span>Rezidenční developerský projekt</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p>Oceňujeme profesionalitu a preciznost při realizaci naší administrativní budovy.
+          Výsledek předčil naše očekávání.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-logo">IB</div>
+            <div>
+              <h5>InvestBuild</h5>
+              <span>Administrativní centrum</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p>Logistické centrum bylo dokončeno o dva týdny dříve, než bylo plánováno, při
+          zachování nejvyšší kvality provedení.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-logo">CL</div>
+            <div>
+              <h5>Czech Logistics</h5>
+              <span>Distribuční hala</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carouselPrev" aria-label="Předchozí reference">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 3L5 9L11 15" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="carouselNext" aria-label="Další reference">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 3L13 9L7 15" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CTA                                                           -->
+<!-- ============================================================ -->
+<section class="cta-section">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="section-inner cta-inner">
+    <h2 class="cta-title" data-reveal>Máte stavební záměr?<br>Pojďme jej postavit <span class="text-gold">precizně.</span></h2>
+    <p class="cta-text" data-reveal>Nezávazná konzultace do 24 hodin. Nabídneme řešení šité na míru vašemu projektu.</p>
+    <a href="#kontakt" class="btn btn-primary btn-large" data-reveal data-magnetic>
+      <span>Nezávazná poptávka</span>
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9H15M15 9L9.5 3.5M15 9L9.5 14.5" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- KONTAKT                                                       -->
+<!-- ============================================================ -->
+<section class="contact" id="kontakt">
+  <div class="section-inner">
+    <div class="section-head">
+      <p class="section-tag" data-reveal><span class="eyebrow-line"></span> Kontaktujte nás</p>
+      <h2 class="section-title" data-reveal>Proberme váš<br> další projekt</h2>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-info" data-reveal>
+        <h3>STONEPEAK CONSTRUCTION s.r.o.</h3>
+        <ul class="contact-list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5L10 11L17 5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="4" width="14" height="12" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
+            <a href="mailto:info@stonepeak-construction.cz">info@stonepeak-construction.cz</a>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 3C5 3 6 3 7 5C8 7 6.5 7.5 7 8.5C7.5 9.5 10.5 12.5 11.5 13C12.5 13.5 13 12 15 13C17 14 17 15 17 15C17 16.5 15.5 18 14 18C10 18 2 10 2 6C2 4.5 3.5 3 5 3Z" stroke="currentColor" stroke-width="1.2"/></svg>
+            <a href="tel:+420601100200">+420 601 100 200</a>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 18C10 18 16 12.5 16 8C16 4.5 13.3 2 10 2C6.7 2 4 4.5 4 8C4 12.5 10 18 10 18Z" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="8" r="2.3" stroke="currentColor" stroke-width="1.2"/></svg>
+            <span>Stavební 128/4, 150 00 Praha 5 &mdash; Smíchov</span>
+          </li>
+        </ul>
+
+        <div class="contact-hours">
+          <h4>Provozní doba</h4>
+          <div class="contact-hours-row"><span>Pondělí – Pátek</span><span>7:30 – 17:00</span></div>
+          <div class="contact-hours-row"><span>Sobota</span><span>Na objednání</span></div>
+        </div>
+
+        <div class="contact-map">
+          <!-- MAP PLACEHOLDER: vlož Google Maps / Mapy.cz embed se souřadnicemi sídla společnosti -->
+          <div class="map-placeholder">
+            <div class="map-grid" aria-hidden="true"></div>
+            <div class="map-pin">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none"><path d="M15 27C15 27 24 18.7 24 12C24 6.9 20 3 15 3C10 3 6 6.9 6 12C6 18.7 15 27 15 27Z" stroke="currentColor" stroke-width="1.4"/><circle cx="15" cy="12" r="3.4" stroke="currentColor" stroke-width="1.4"/></svg>
+            </div>
+            <span class="map-label">Mapa — Praha 5, Smíchov</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" data-reveal>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Jméno a příjmení</label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <label for="subject">Typ projektu</label>
+            <select id="subject" name="subject">
+              <option value="">Vyberte možnost</option>
+              <option value="rodinny-dum">Rodinný dům</option>
+              <option value="bytovy-komplex">Bytový komplex</option>
+              <option value="prumysl">Průmyslový objekt</option>
+              <option value="rekonstrukce">Rekonstrukce</option>
+              <option value="jine">Jiné</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="message">Zpráva</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large form-submit" data-magnetic>
+          <span class="btn-submit-text">Odeslat poptávku</span>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9H15M15 9L9.5 3.5M15 9L9.5 14.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+
+        <p class="form-note">Toto je pouze demonstrační formulář — data se nikam neodesílají.</p>
+        <div class="form-success" id="formSuccess">Děkujeme! Vaše poptávka byla &bdquo;odeslána&ldquo; (demo režim).</div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                        -->
+<!-- ============================================================ -->
+<footer class="footer">
+  <div class="section-inner">
+    <div class="footer-top">
+      <a href="#hero" class="logo footer-logo">
+        <span class="logo-mark">
+          <svg width="28" height="28" viewBox="0 0 30 30" fill="none"><path d="M15 2L27 8.5V21.5L15 28L3 21.5V8.5L15 2Z" stroke="currentColor" stroke-width="1.4"/></svg>
+        </span>
+        <span class="logo-text">STONEPEAK<span class="logo-sub">CONSTRUCTION</span></span>
+      </a>
+
+      <nav class="footer-links">
+        <a href="#sluzby">Služby</a>
+        <a href="#realizace">Realizace</a>
+        <a href="#proc-my">Proč my</a>
+        <a href="#proces">Proces</a>
+        <a href="#reference">Reference</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="Facebook">fb</a>
+      </div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">
+        Tento web slouží pouze jako ukázkový demonstrační projekt vytvořený za účelem prezentace
+        webdesignových a vývojářských schopností. Veškeré názvy, reference, kontaktní údaje,
+        fotografie i realizace jsou fiktivní nebo vytvořené pomocí AI a neslouží jako prezentace
+        skutečné stavební společnosti.
+      </p>
+      <p class="footer-credit">
+        Web vytvořila společnost ELEOS, IČO 01950398. &middot;
+        <a href="https://www.maxxweb.cz/" target="_blank" rel="noopener">MaxxWeb – www.maxxweb.cz</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
