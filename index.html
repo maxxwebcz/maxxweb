@@ -871,6 +871,88 @@ footer {
 }
 .footer-links a:hover { color: rgba(255,255,255,0.7); }
 
+/* ─── REVIEWS ─── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.reviews-grid .review-card:nth-child(4),
+.reviews-grid .review-card:nth-child(5) {
+  grid-column: span 1;
+}
+.reviews-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+/* Center last row of 2 */
+.reviews-grid::after {
+  content: '';
+  grid-column: span 1;
+}
+
+.review-card {
+  background: var(--white2);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+.review-stars {
+  color: var(--red);
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.review-text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #333;
+  flex: 1;
+  font-style: italic;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: var(--red);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Serif Display', serif;
+}
+.review-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--black);
+}
+.review-role {
+  font-size: 12px;
+  color: var(--slate2);
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-grid::after { display: none; }
+}
+
 /* ─── COOKIE BANNER ─── */
 .cookie-banner {
   position: fixed;
@@ -1140,6 +1222,73 @@ footer {
           <li>3 kola revizí</li>
         </ul>
         <a href="#kontakt" class="plan-cta plan-cta-outline" onclick="vyberPaket('premium')">Zjistit cenu →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section-light" id="recenze">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:64px">
+      <div class="eyebrow">Reference</div>
+      <div class="display-title">Co říkají<br>naši klienti.</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal" style="transition-delay:0.05s">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Web byl hotový za 3 dny a vypadá přesně tak, jak jsem si představovala. Komunikace byla skvělá a celý proces byl velmi jednoduchý."</p>
+        <div class="review-author">
+          <div class="review-avatar">K</div>
+          <div>
+            <div class="review-name">Kateřina M.</div>
+            <div class="review-role">Kadeřnický salon, Brno</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.12s">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Konečně web, který nevypadá jako z roku 2010. Přesně jsem potřeboval něco moderního a rychle — a to dostal."</p>
+        <div class="review-author">
+          <div class="review-avatar">T</div>
+          <div>
+            <div class="review-name">Tomáš R.</div>
+            <div class="review-role">Elektrikář OSVČ, Praha</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.19s">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Čekal jsem, že to bude složité. Nebylo. Od prvního kontaktu po hotové stránky neuběhl ani týden a vše bylo hotovo. Cena se taky dodržela. Doporučuju."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Martin H.</div>
+            <div class="review-role">Stavebnictví, Krnov</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.26s">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Cena odpovídala domluvě — žádné překvapení na faktuře. To jsem od jiných agentur nezažila. Doporučuji každé malé firmě."</p>
+        <div class="review-author">
+          <div class="review-avatar">L</div>
+          <div>
+            <div class="review-name">Lucie P.</div>
+            <div class="review-role">Cukrárna, Ostrava</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.33s">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Měl jsem jen logo a hrubou představu. Tým se se mnou spojil, pochopil co potřebuji a výsledek předčil moje očekávání."</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Jan V.</div>
+            <div class="review-role">Instalatér, Svitavy</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
