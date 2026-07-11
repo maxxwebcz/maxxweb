@@ -877,20 +877,18 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
-.reviews-grid .review-card:nth-child(4),
-.reviews-grid .review-card:nth-child(5) {
-  grid-column: span 1;
-}
-.reviews-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-/* Center last row of 2 */
-.reviews-grid::after {
-  content: '';
-  grid-column: span 1;
-}
 
+/* Center last row of 2 using flexbox wrapper trick */
+.reviews-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
 .review-card {
+  flex: 1 1 calc(33.333% - 24px);
+  max-width: calc(33.333% - 16px);
+  min-width: 280px;
   background: var(--white2);
   border: 1px solid var(--border-light);
   border-radius: 20px;
@@ -949,7 +947,7 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .reviews-grid { grid-template-columns: 1fr; }
+  .review-card { flex: 1 1 100%; max-width: 100%; }
   .reviews-grid::after { display: none; }
 }
 
@@ -1064,7 +1062,7 @@ footer {
 
 <!-- NAV -->
 <nav id="mainNav">
-  <div class="nav-logo"><img src="/logo.jpeg" alt="maxxweb" /></div>
+  <div class="nav-logo"><img src="/logo.png" alt="maxxweb" /></div>
   <ul class="nav-links">
     <li><a href="#o-nas">O nás</a></li>
     <li><a href="#cenik">Ceník</a></li>
@@ -1393,7 +1391,7 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="/logo.jpeg" alt="maxxweb" /></div>
+  <div class="footer-logo"><img src="/logo.png" alt="maxxweb" /></div>
   <div class="footer-tagline">Weby s rychlým doručením pro malé firmy a živnostníky.</div>
   <div class="footer-legal"><span style="pointer-events:none;user-select:text">ELEOS s.r.o. · IČO: 01950398 · Čenětická 2413/1a, Chodov, 149 00 Praha 11</span></div>
   <div class="footer-legal">© 2025 maxxweb · Všechna práva vyhrazena</div>
