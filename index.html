@@ -1,915 +1,987 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="format-detection" content="telephone=no">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="/logo-icon.png" />
-  <link rel="apple-touch-icon" href="/logo-icon.png" />
-  <title>maxxweb – Web hotový za týden | Weby pro živnostníky a malé firmy</title>
-  <meta name="description" content="Profesionální web do 7 dní. Děláme weby pro živnostníky a malé firmy – bez byrokracie, fixní cena předem, bez překvapení." />
-  <meta name="keywords" content="tvorba webu, webové stránky, web pro živnostníky, levný web, rychlý web, web do týdne, maxxweb" />
-  <meta name="author" content="maxxweb" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.maxxweb.cz/" />
-
-  <!-- Open Graph (sdílení na sociálních sítích) -->
-  <meta property="og:title" content="maxxweb – Web hotový za týden" />
-  <meta property="og:image" content="https://www.maxxweb.cz/logo-icon.png" />
-  <meta property="og:image:width" content="1080" />
-  <meta property="og:image:height" content="1080" />
-  <meta property="og:description" content="Profesionální web do 7 dní pro živnostníky a malé firmy. Cena individuálně, fixní cena předem, bez překvapení." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.maxxweb.cz/" />
-  <meta property="og:locale" content="cs_CZ" />
-
-  <!-- Schema.org strukturovaná data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "maxxweb",
-    "description": "Tvorba webových stránek pro živnostníky a malé firmy. Web hotový za 7 dní.",
-    "url": "https://www.maxxweb.cz",
-    "telephone": "+420776545111",
-    "email": "office@maxxweb.cz",
-    "priceRange": "Individuálně",
-    "areaServed": "CZ",
-    "serviceType": "Tvorba webových stránek",
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Basic",
-        "price": "20000",
-        "priceCurrency": "CZK",
-        "description": "Web 1–3 stránky, responzivní design, základní SEO"
-      },
-      {
-        "@type": "Offer",
-        "name": "Business",
-        "price": "40000",
-        "priceCurrency": "CZK",
-        "description": "Web 4–6 stránek, CMS, blog, pokročilé SEO"
-      },
-      {
-        "@type": "Offer",
-        "name": "Premium",
-        "price": "70000",
-        "priceCurrency": "CZK",
-        "description": "Web 10+ stránek, e-shop, platební brána, registrace uživatelů"
-      }
-    ]
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>maxxweb – Web hotový za týden</title>
+<meta name="description" content="Profesionální web do 7 dní. Děláme weby pro živnostníky a malé firmy – bez byrokracie, fixní cena předem, bez překvapení." />
+<link rel="icon" type="image/png" href="/logo-icon.png" />
+<link rel="apple-touch-icon" href="/logo-icon.png" />
+<meta property="og:title" content="maxxweb – Web hotový za týden" />
+<meta property="og:description" content="Profesionální web do 7 dní pro živnostníky a malé firmy. Cena individuálně, fixní cena předem, bez překvapení." />
+<meta property="og:image" content="https://www.maxxweb.cz/logo-icon.png" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="1080" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.maxxweb.cz" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "maxxweb",
+  "url": "https://www.maxxweb.cz",
+  "email": "office@maxxweb.cz",
+  "telephone": "+420604419420",
+  "priceRange": "Individuálně",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Čenětická 2413/1a",
+    "addressLocality": "Praha 11",
+    "postalCode": "149 00",
+    "addressCountry": "CZ"
   }
-  </script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --red: #E83A3A;
-      --red-deep: #B52B2B;
-      --red-tint: #FFF5F5;
-      --red-blush: #FFD0D0;
-      --black: #1A1A1A;
-      --slate: #555555;
-      --gray: #F2F2F2;
-      --white: #FFFFFF;
-    }
-
-    html { scroll-behavior: smooth; overflow-x: clip; }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.92); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes slideRight {
-      from { opacity: 0; transform: translateX(-28px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes pulse-ring {
-      0%   { box-shadow: 0 0 0 0 rgba(232,58,58,0.35); }
-      70%  { box-shadow: 0 0 0 12px rgba(232,58,58,0); }
-      100% { box-shadow: 0 0 0 0 rgba(232,58,58,0); }
-    }
-
-    /* scroll-reveal base state */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-scale {
-      opacity: 0;
-      transform: scale(0.93);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .reveal-scale.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* staggered children */
-    .stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
-    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s; }
-    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s; }
-    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.3s; }
-    .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s; }
-    .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.5s; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--black);
-      background: var(--white);
-      font-size: 17px;
-      line-height: 1.6;
-      padding-top: 64px;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid #eee;
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      margin: 0;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-logo img {
-      height: 36px;
-      width: auto;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--slate);
-      font-weight: 500;
-      font-size: 15px;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--red); }
-
-    .nav-cta {
-      background: var(--red);
-      color: var(--white) !important;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-weight: 600 !important;
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover { background: var(--red-deep) !important; color: var(--white) !important; }
-
-    /* HERO */
-    .hero {
-      background: var(--black);
-      color: var(--white);
-      padding: 100px 32px;
-      text-align: center;
-      margin-top: 0;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: var(--red);
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-      letter-spacing: 0.5px;
-      animation: fadeIn 0.6s ease both;
-    }
-
-    .hero h1 {
-      font-size: clamp(38px, 6vw, 68px);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      animation: fadeUp 0.7s ease 0.15s both;
-    }
-
-    .hero h1 span { color: var(--red); }
-
-    .hero p {
-      font-size: clamp(17px, 2.5vw, 21px);
-      color: #aaa;
-      max-width: 580px;
-      margin: 0 auto 40px;
-      animation: fadeUp 0.7s ease 0.3s both;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 0.7s ease 0.45s both;
-    }
-
-    .btn-primary {
-      background: var(--red);
-      color: var(--white);
-      padding: 16px 36px;
-      border-radius: 10px;
-      font-size: 17px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      display: inline-block;
-    }
-
-    .btn-primary:hover { background: var(--red-deep); transform: translateY(-1px); }
-    .btn-primary { animation: pulse-ring 2.4s ease-out 1.8s infinite; }
-
-    .btn-outline {
-      border: 2px solid #444;
-      color: var(--white);
-      padding: 14px 34px;
-      border-radius: 10px;
-      font-size: 17px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: border-color 0.2s, transform 0.15s;
-      display: inline-block;
-    }
-
-    .btn-outline:hover { border-color: #888; transform: translateY(-1px); }
-
-    /* STATS */
-    .stats {
-      background: var(--gray);
-      padding: 60px 32px;
-      display: flex;
-      justify-content: center;
-      gap: 64px;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 42px;
-      font-weight: 800;
-      color: var(--red);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 15px;
-      color: var(--slate);
-      margin-top: 6px;
-    }
-
-    /* SECTION */
-    section { padding: 80px 32px; }
-
-    .container { max-width: 1100px; margin: 0 auto; }
-
-    .section-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: clamp(26px, 4vw, 40px);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .section-sub {
-      font-size: 17px;
-      color: var(--slate);
-      max-width: 560px;
-      margin-bottom: 56px;
-    }
-
-    /* VALUES */
-    .values { background: var(--white); }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-      margin-top: 48px;
-    }
-
-    .value-card {
-      background: var(--gray);
-      border-radius: 16px;
-      padding: 36px 32px;
-    }
-
-    .value-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--red-blush);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
-
-    .value-card h3 {
-      font-size: 19px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .value-card p {
-      font-size: 15px;
-      color: var(--slate);
-      line-height: 1.65;
-    }
-
-    /* PRICING */
-    .pricing { background: var(--red-tint); }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-      align-items: start;
-    }
-
-    .price-card {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 36px 32px;
-      border: 2px solid transparent;
-      position: relative;
-    }
-
-    .price-card.featured {
-      border-color: var(--red);
-    }
-
-    .popular-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--red);
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 700;
-      padding: 5px 20px;
-      border-radius: 100px;
-      white-space: nowrap;
-    }
-
-    .plan-tag {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-    }
-
-    .plan-tag.basic { background: #EEF2FF; color: #3B5BDB; }
-    .plan-tag.business { background: var(--red-blush); color: var(--red-deep); }
-    .plan-tag.premium { background: #FFF3E0; color: #E65100; }
-
-    .plan-price {
-      font-size: 36px;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .plan-period {
-      font-size: 14px;
-      color: var(--slate);
-      margin-bottom: 24px;
-    }
-
-    .plan-divider {
-      border: none;
-      border-top: 1px solid #eee;
-      margin-bottom: 24px;
-    }
-
-    .plan-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .plan-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 15px;
-    }
-
-    .plan-features li .icon {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      margin-top: 2px;
-    }
-
-    .icon-yes { color: #2E7D32; }
-    .icon-no { color: #bbb; }
-
-    .plan-note {
-      font-size: 13px;
-      color: var(--slate);
-      margin-top: 16px;
-    }
-
-    .btn-plan {
-      display: block;
-      text-align: center;
-      padding: 14px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-plan.red {
-      background: var(--red);
-      color: var(--white);
-    }
-
-    .btn-plan.red:hover { background: var(--red-deep); }
-
-    .btn-plan.outline {
-      border: 2px solid #ddd;
-      color: var(--black);
-    }
-
-    .btn-plan.outline:hover { border-color: var(--red); color: var(--red); }
-
-    /* CONTACT */
-    .contact { background: var(--white); }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .contact-info h2 {
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .contact-info p {
-      font-size: 16px;
-      color: var(--slate);
-      margin-bottom: 36px;
-      line-height: 1.7;
-    }
-
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-      font-size: 16px;
-    }
-
-    .contact-detail-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--gray);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    /* FORM */
-    .form-card {
-      background: var(--gray);
-      border-radius: 20px;
-      padding: 40px 36px;
-    }
-
-    .form-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 28px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--black);
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      color: var(--black);
-      background: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--red);
-    }
-
-    .form-group textarea { resize: vertical; min-height: 100px; }
-
-    /* PAKET PICKER */
-    .paket-picker {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .paket-btn {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 14px 16px;
-      background: var(--white);
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      cursor: pointer;
-      font-family: 'Poppins', sans-serif;
-      text-align: left;
-      transition: all 0.2s;
-    }
-
-    .paket-btn:hover { border-color: var(--red-blush); transform: translateY(-1px); }
-
-    .paket-btn.selected {
-      border-color: var(--red);
-      background: var(--red-tint);
-    }
-
-    .paket-popular { border-color: var(--red-blush); }
-
-    .paket-badge {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--red);
-      margin-bottom: 4px;
-    }
-
-    .paket-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--black);
-    }
-
-    .paket-price {
-      font-size: 12px;
-      color: var(--slate);
-      margin-top: 2px;
-    }
-
-    .paket-btn.selected .paket-name { color: var(--red); }
-
-    .promo-group {
-      margin-bottom: 20px;
-    }
-
-    .promo-group label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--black);
-    }
-
-    .promo-input-wrap {
-      position: relative;
-    }
-
-    .promo-input-wrap svg {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 18px;
-      height: 18px;
-      color: #bbb;
-      pointer-events: none;
-      transition: color 0.2s;
-    }
-
-    .promo-input-wrap input {
-      width: 100%;
-      padding: 14px 120px 14px 46px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--black);
-      background: var(--white);
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .promo-input-wrap input::placeholder {
-      letter-spacing: 1px;
-      font-weight: 400;
-      color: #ccc;
-    }
-
-    .promo-input-wrap input:focus {
-      border-color: var(--red);
-      box-shadow: 0 0 0 4px rgba(232,58,58,0.08);
-    }
-
-    .promo-input-wrap input:focus + .promo-check-icon,
-    .promo-input-wrap:focus-within svg { color: var(--red); }
-
-    .promo-badge {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--gray);
-      color: var(--slate);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 6px;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-
-    .promo-input-wrap input:not(:placeholder-shown) ~ .promo-badge {
-      background: #E8F5E9;
-      color: #2E7D32;
-    }
-
-    .promo-hint {
-      font-size: 12px;
-      color: #aaa;
-      margin-top: 7px;
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 16px;
-      background: var(--red);
-      color: var(--white);
-      border: none;
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      margin-top: 8px;
-    }
-
-    .form-submit:hover { background: var(--red-deep); transform: translateY(-1px); }
-
-    .form-note {
-      text-align: center;
-      font-size: 13px;
-      color: var(--slate);
-      margin-top: 14px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--black);
-      color: #888;
-      text-align: center;
-      padding: 40px 32px;
-      font-size: 14px;
-    }
-
-    footer strong { color: var(--white); }
-    footer span { color: var(--red); }
-
-    /* GDPR CONSENT */
-    .consent-wrap {
-      background: #fff;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      padding: 14px 16px;
-      margin-bottom: 20px;
-      margin-top: 4px;
-    }
-
-    .consent-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-    }
-
-    .consent-label input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-      margin-top: 2px;
-      accent-color: var(--red);
-      cursor: pointer;
-    }
-
-    .consent-text {
-      font-size: 13px;
-      color: var(--slate);
-      line-height: 1.55;
-    }
-
-    .consent-text a {
-      color: var(--red);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .consent-text a:hover { text-decoration: underline; }
-
-    .consent-error {
-      font-size: 12px;
-      color: var(--red);
-      margin-top: 8px;
-      display: none;
-    }
-
-    .consent-error.visible { display: block; }
-
-    /* COOKIE BANNER */
-    .cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--black);
-      border-top: 1px solid #333;
-      padding: 18px 32px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      z-index: 9999;
-      flex-wrap: wrap;
-    }
-
-    .cookie-banner.hidden { display: none; }
-
-    .cookie-text {
-      flex: 1;
-      font-size: 13px;
-      color: #aaa;
-      min-width: 220px;
-      line-height: 1.5;
-    }
-
-    .cookie-text a { color: var(--red); text-decoration: none; }
-    .cookie-text a:hover { text-decoration: underline; }
-
-    .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
-
-    .btn-cookie-accept {
-      background: var(--red);
-      color: var(--white);
-      border: none;
-      border-radius: 8px;
-      padding: 10px 20px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-cookie-accept:hover { background: var(--red-deep); }
-
-    .btn-cookie-reject {
-      background: none;
-      color: #888;
-      border: 1px solid #444;
-      border-radius: 8px;
-      padding: 10px 20px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .btn-cookie-reject:hover { color: #ccc; border-color: #666; }
-
-    /* FOOTER LINKS */
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .footer-links a {
-      color: #666;
-      text-decoration: none;
-      font-size: 12px;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: #aaa; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-
-      .hero { padding: 70px 20px; }
-
-      .stats { gap: 36px; padding: 50px 20px; }
-
-      section { padding: 60px 20px; }
-
-      .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
-
-      .form-card { padding: 28px 22px; }
-    }
-  </style>
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #E83A3A;
+  --red-dim: rgba(232,58,58,0.15);
+  --red-glow: rgba(232,58,58,0.35);
+  --black: #080808;
+  --black2: #111111;
+  --black3: #181818;
+  --white: #F9F9F7;
+  --white2: #EFEFED;
+  --slate: #8a8a8a;
+  --slate2: #555;
+  --border: rgba(255,255,255,0.07);
+  --border-light: rgba(0,0,0,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ─── CUSTOM CURSOR ─── */
+#cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: var(--red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  mix-blend-mode: normal;
+}
+#cursor-ring {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(232,58,58,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear, width 0.3s, height 0.3s, opacity 0.3s;
+}
+body:has(a:hover) #cursor,
+body:has(button:hover) #cursor { width: 20px; height: 20px; }
+body:has(a:hover) #cursor-ring,
+body:has(button:hover) #cursor-ring { width: 60px; height: 60px; opacity: 0.4; }
+
+@media (hover: none) {
+  #cursor, #cursor-ring { display: none; }
+  body { cursor: auto; }
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 72px;
+  transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(8,8,8,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: var(--border);
+}
+.nav-logo img { height: 32px; width: auto; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(249,249,247,0.6);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--red) !important;
+  color: var(--white) !important;
+  padding: 10px 22px !important;
+  border-radius: 100px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  letter-spacing: 0 !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(232,58,58,0.4) !important;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 48px 80px;
+  overflow: hidden;
+}
+
+/* Animated grid */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* Mouse-following glow */
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,58,58,0.18) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: left 0.6s cubic-bezier(0.23,1,0.32,1), top 0.6s cubic-bezier(0.23,1,0.32,1);
+  will-change: left, top;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232,58,58,0.12);
+  border: 1px solid rgba(232,58,58,0.25);
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 100px;
+  margin-bottom: 40px;
+  letter-spacing: 0.04em;
+  animation: fadeDown 0.8s cubic-bezier(0.23,1,0.32,1) both;
+}
+.hero-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(56px, 9vw, 130px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin-bottom: 32px;
+  animation: fadeUp 0.9s 0.1s cubic-bezier(0.23,1,0.32,1) both;
+}
+.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .accent { color: var(--red); }
+.hero h1 .outline {
+  -webkit-text-stroke: 1.5px rgba(249,249,247,0.25);
+  color: transparent;
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: rgba(249,249,247,0.5);
+  max-width: 460px;
+  line-height: 1.65;
+  margin-bottom: 48px;
+  animation: fadeUp 0.9s 0.2s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.9s 0.3s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: var(--white);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border: none;
+  cursor: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: inline-block;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(232,58,58,0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: rgba(249,249,247,0.6);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  cursor: none;
+  transition: color 0.25s, border-color 0.25s;
+  display: inline-block;
+}
+.btn-outline:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.35);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeUp 1s 0.8s both;
+}
+.hero-scroll span {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(232,58,58,0.8), transparent);
+  animation: scrollLine 1.5s 1.2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ─── STATS ─── */
+.stats-section {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 48px;
+}
+.stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.stat-item {
+  padding: 20px 48px;
+  text-align: center;
+  position: relative;
+}
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 10%; bottom: 10%;
+  width: 1px;
+  background: var(--border);
+}
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px;
+  font-weight: 800;
+  color: var(--red);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--slate);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ─── SECTIONS COMMON ─── */
+.section-dark { background: var(--black); padding: 120px 48px; }
+.section-light {
+  background: var(--white);
+  color: var(--black);
+  padding: 120px 48px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+.section-dark .eyebrow { color: var(--red); }
+.section-light .eyebrow { color: var(--red); }
+
+.display-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+/* ─── VALUES ─── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 64px;
+}
+.value-card {
+  background: var(--black2);
+  padding: 48px 40px;
+  position: relative;
+  transition: background 0.3s;
+}
+.value-card:hover { background: var(--black3); }
+.value-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 64px;
+  font-weight: 800;
+  color: rgba(232,58,58,0.12);
+  line-height: 1;
+  margin-bottom: 32px;
+  letter-spacing: -0.04em;
+  transition: color 0.3s;
+}
+.value-card:hover .value-num { color: rgba(232,58,58,0.22); }
+.value-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+.value-card p {
+  font-size: 15px;
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+/* ─── PROCESS ─── */
+.process-list {
+  margin-top: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.process-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.3s;
+}
+.process-item:first-child { border-top: 1px solid var(--border-light); }
+.process-item:hover { background: rgba(232,58,58,0.02); }
+.process-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: rgba(0,0,0,0.08);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.process-item h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--black);
+}
+.process-item p {
+  font-size: 15px;
+  color: var(--slate2);
+  line-height: 1.7;
+}
+
+/* ─── PRICING ─── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+}
+.plan {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 48px 36px;
+  position: relative;
+  background: var(--black2);
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.plan:hover {
+  transform: translateY(-6px);
+  border-color: rgba(232,58,58,0.3);
+  box-shadow: 0 30px 80px rgba(232,58,58,0.12);
+}
+.plan.featured {
+  border-color: var(--red);
+  background: linear-gradient(135deg, rgba(232,58,58,0.08) 0%, var(--black2) 60%);
+}
+.plan-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--red);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 100px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.plan-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.plan-desc {
+  font-size: 14px;
+  color: var(--slate);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(249,249,247,0.75);
+  line-height: 1.5;
+}
+.plan-features li::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7.5' stroke='%23E83A3A' stroke-opacity='0.4'/%3E%3Cpath d='M5 8l2 2 4-4' stroke='%23E83A3A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  margin-top: 1px;
+}
+.plan-cta {
+  display: block;
+  text-align: center;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: none;
+  transition: all 0.25s;
+}
+.plan-cta-outline {
+  border: 1px solid var(--border);
+  color: rgba(249,249,247,0.6);
+}
+.plan-cta-outline:hover {
+  border-color: rgba(255,255,255,0.3);
+  color: var(--white);
+}
+.plan-cta-solid {
+  background: var(--red);
+  color: var(--white);
+  border: 1px solid transparent;
+}
+.plan-cta-solid:hover {
+  box-shadow: 0 12px 40px rgba(232,58,58,0.4);
+  transform: translateY(-1px);
+}
+
+/* ─── CONTACT ─── */
+.contact-section {
+  background: var(--black);
+  padding: 120px 48px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 100px;
+  align-items: start;
+}
+.contact-left h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+.contact-left h2 .red { color: var(--red); }
+.contact-left > p {
+  font-size: 16px;
+  color: var(--slate);
+  line-height: 1.7;
+  margin-bottom: 48px;
+  max-width: 360px;
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.contact-detail-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--black2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.contact-detail a, .contact-detail span {
+  font-size: 15px;
+  color: rgba(249,249,247,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-detail a:hover { color: var(--white); }
+
+/* ─── FORM ─── */
+.form-card {
+  background: var(--black2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px;
+}
+.form-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--slate);
+  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-group input::placeholder { color: rgba(255,255,255,0.2); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: rgba(232,58,58,0.5);
+  background: rgba(232,58,58,0.04);
+}
+
+/* Paket picker */
+.paket-picker {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+.paket-btn {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: rgba(249,249,247,0.6);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 8px;
+  cursor: none;
+  transition: all 0.2s;
+  text-align: center;
+}
+.paket-btn:hover {
+  border-color: rgba(232,58,58,0.3);
+  color: var(--white);
+}
+.paket-btn.selected {
+  background: rgba(232,58,58,0.12);
+  border-color: var(--red);
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* Promo */
+.promo-group { margin-bottom: 20px; }
+.promo-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--slate);
+  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.promo-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.promo-input-wrap svg {
+  position: absolute;
+  left: 14px;
+  width: 16px;
+  height: 16px;
+  color: var(--slate);
+  pointer-events: none;
+}
+.promo-input-wrap input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  padding: 14px 16px 14px 42px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.promo-input-wrap input::placeholder { color: rgba(255,255,255,0.2); text-transform: none; letter-spacing: 0; }
+.promo-input-wrap input:focus { border-color: rgba(232,58,58,0.5); background: rgba(232,58,58,0.04); }
+.promo-badge {
+  position: absolute;
+  right: 12px;
+  background: rgba(232,58,58,0.12);
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.promo-check-icon {
+  position: absolute;
+  right: 12px;
+  color: var(--red);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.promo-input-wrap input:not(:placeholder-shown) ~ .promo-badge { opacity: 1; }
+.promo-hint {
+  font-size: 12px;
+  color: var(--slate);
+  margin-top: 6px;
+}
+
+/* Consent */
+.consent-wrap {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+.consent-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  margin-top: 2px;
+  accent-color: var(--red);
+  cursor: pointer;
+}
+.consent-text {
+  font-size: 12px;
+  color: var(--slate);
+  line-height: 1.6;
+}
+.consent-text a { color: rgba(249,249,247,0.5); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+.consent-text a:hover { color: var(--white); }
+.consent-error {
+  font-size: 12px;
+  color: var(--red);
+  margin-top: 8px;
+  display: none;
+}
+.consent-error.visible { display: block; }
+
+.form-submit {
+  width: 100%;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 100px;
+  padding: 16px 32px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+  letter-spacing: 0.01em;
+}
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 50px rgba(232,58,58,0.4);
+}
+.form-submit:disabled { opacity: 0.5; transform: none; box-shadow: none; }
+.form-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--slate);
+  margin-top: 12px;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.footer-logo img { height: 28px; width: auto; filter: invert(1) opacity(0.6); }
+.footer-tagline {
+  font-size: 14px;
+  color: var(--slate);
+}
+.footer-legal {
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+  text-align: center;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-links a {
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+/* ─── COOKIE BANNER ─── */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(24,24,24,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 9998;
+  max-width: 680px;
+  width: calc(100% - 48px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.cookie-banner.hidden { display: none; }
+.cookie-text {
+  flex: 1;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+.cookie-text a { color: rgba(255,255,255,0.6); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+.cookie-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.btn-cookie-accept {
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-cookie-reject {
+  background: none;
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-cookie-reject:hover { color: rgba(255,255,255,0.7); }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1), transform 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+.stagger { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+.stagger.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; height: 64px; }
+  .nav-links { gap: 20px; }
+  .nav-links li:not(:last-child) { display: none; }
+  .hero { padding: 100px 24px 80px; }
+  .stats-section { padding: 48px 24px; }
+  .stats-inner { grid-template-columns: 1fr; gap: 32px; }
+  .stat-item:not(:last-child)::after { display: none; }
+  .section-dark, .section-light, .contact-section { padding: 80px 24px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .process-item { grid-template-columns: 48px 1fr; gap: 20px; }
+  .process-item p { display: none; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .form-card { padding: 32px 24px; }
+  .paket-picker { grid-template-columns: repeat(2,1fr); }
+  footer { padding: 40px 24px; }
+  body { cursor: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
 </head>
 <body>
 
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <div class="nav-logo"><img src="/logo.jpeg" alt="maxxweb" /></div>
   <ul class="nav-links">
     <li><a href="#o-nas">O nás</a></li>
@@ -920,51 +992,68 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-tag">⚡ Doručení za 4 dny</div>
-  <h1>Web hotový<br/><span>za týden.</span></h1>
-  <p>Děláme weby pro živnostníky a malé firmy. Bez byrokracie, bez skrytých poplatků, bez zbytečných otázek.</p>
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow" id="heroGlow"></div>
+
+  <div class="hero-tag">Doručení za 4 dny</div>
+
+  <h1>
+    <span class="line">Web hotový</span>
+    <span class="line"><span class="accent">za týden.</span></span>
+  </h1>
+
+  <p class="hero-sub">Děláme weby pro živnostníky a malé firmy.<br>Bez byrokracie, bez zbytečných otázek.</p>
+
   <div class="hero-buttons">
     <a href="#kontakt" class="btn-primary">Chci web za týden</a>
     <a href="#cenik" class="btn-outline">Zjistit více</a>
   </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
 <!-- STATS -->
-<div class="stats stagger">
-  <div>
-    <div class="stat-number">4 dny</div>
-    <div class="stat-label">Průměrné doručení</div>
-  </div>
-  <div>
-    <div class="stat-number" data-count="150" data-suffix="+">0</div>
-    <div class="stat-label">Spokojených klientů</div>
-  </div>
-  <div>
-    <div class="stat-number" data-count="100" data-suffix="%">0%</div>
-    <div class="stat-label">Fixní cena předem</div>
+<div class="stats-section stagger">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-number">4 dny</div>
+      <div class="stat-label">Průměrné doručení</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-count="150" data-suffix="+">0</div>
+      <div class="stat-label">Spokojených klientů</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-count="100" data-suffix="%">0%</div>
+      <div class="stat-label">Fixní cena předem</div>
+    </div>
   </div>
 </div>
 
 <!-- VALUES -->
-<section class="values" id="o-nas">
+<section class="section-dark" id="o-nas">
   <div class="container">
-    <div class="section-label">Proč maxxweb</div>
-    <div class="section-title">Weby bez komplikací.</div>
-    <div class="section-sub">Klient nemusí rozumět technologiím. Naší prací je to vyřešit za něj.</div>
-    <div class="values-grid stagger">
-      <div class="value-card">
-        <div class="value-icon">⚡</div>
+    <div class="reveal">
+      <div class="eyebrow">Proč maxxweb</div>
+      <div class="display-title">Weby bez<br>komplikací.</div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal" style="transition-delay:0.1s">
+        <div class="value-num">01</div>
         <h3>Rychlost</h3>
         <p>Web do týdne je slib, ne fráze. Víme, že každý den bez webu stojí peníze. Proto jsme tak rychlí.</p>
       </div>
-      <div class="value-card">
-        <div class="value-icon">🤝</div>
+      <div class="value-card reveal" style="transition-delay:0.2s">
+        <div class="value-num">02</div>
         <h3>Lidský přístup</h3>
         <p>Mluvíme česky, ne IT žargonem. Klientem je řemeslník, kadeřnice, cukrářka — ne IT manažer.</p>
       </div>
-      <div class="value-card">
-        <div class="value-icon">💰</div>
+      <div class="value-card reveal" style="transition-delay:0.3s">
+        <div class="value-num">03</div>
         <h3>Jasná cena</h3>
         <p>Žádné skryté poplatky. Říkáme cenu dopředu a držíme se jí. Žádné překvapení v ceně.</p>
       </div>
@@ -972,103 +1061,119 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing" id="cenik">
+<!-- PROCESS -->
+<section class="section-light">
   <div class="container">
-    <div class="section-label">Ceník</div>
-    <div class="section-title">Vyberte si balíček.</div>
-    <div class="section-sub">Každý balíček má pevnou cenu. Přesně víte, co dostanete.</div>
-
-    <div class="pricing-grid stagger">
-
-      <!-- BASIC -->
-      <div class="price-card">
-        <span class="plan-tag basic">A · Basic</span>
-        <hr class="plan-divider" />
-        <ul class="plan-features">
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>1–3 stránky</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Responzivní design</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Základní SEO</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Google Analytics</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Zprovoznění domény + hostingu</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Kontaktní formulář</li>
-          <li><svg class="icon icon-no" viewBox="0 0 20 20" fill="currentColor" style="color:#ddd"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg><span style="color:#bbb">Redakční systém</span></li>
-        </ul>
-        <div class="plan-note">Vizitka, landing page, živnostník</div>
-        <br/>
-        <button type="button" class="btn-plan outline" onclick="vyberPaket('basic')">Vybrat Basic</button>
+    <div class="reveal">
+      <div class="eyebrow">Jak to funguje</div>
+      <div class="display-title">Od poptávky<br>k webu za 7 dní.</div>
+    </div>
+    <div class="process-list">
+      <div class="process-item reveal">
+        <div class="process-num">01</div>
+        <h3>Vyplníte formulář</h3>
+        <p>Pošlete nám základní info a přesměrujeme vás na krátký dotazník. Celé to trvá 5 minut.</p>
       </div>
-
-      <!-- BUSINESS (featured) -->
-      <div class="price-card featured">
-        <div class="popular-badge">Nejpopulárnější</div>
-        <span class="plan-tag business">B · Business</span>
-        <hr class="plan-divider" />
-        <ul class="plan-features">
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>4–6 stránek</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Vše z Basic</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Kontaktní formulář</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Blog / aktuality</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>CMS (správa obsahu)</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Pokročilé SEO</li>
-          <li><svg class="icon icon-no" viewBox="0 0 20 20" fill="currentColor" style="color:#ddd"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg><span style="color:#bbb">Registrace uživatelů</span></li>
-        </ul>
-        <div class="plan-note">Firmy, služby, portfolia</div>
-        <br/>
-        <button type="button" class="btn-plan red" onclick="vyberPaket('business')">Vybrat Business</button>
+      <div class="process-item reveal" style="transition-delay:0.1s">
+        <div class="process-num">02</div>
+        <h3>Domluvíme se na ceně</h3>
+        <p>Do 24 hodin vám zašleme nabídku na míru. Žádné skryté poplatky, fixní cena předem.</p>
       </div>
-
-      <!-- PREMIUM -->
-      <div class="price-card">
-        <span class="plan-tag premium">C · Premium</span>
-        <hr class="plan-divider" />
-        <ul class="plan-features">
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>10+ stránek</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Vše z Business</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Registrace uživatelů</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Uživatelské role &amp; přihlášení</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Malý e-shop (do 500 produktů)</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Platební brána</li>
-          <li><svg class="icon icon-yes" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Individuální analýza + smlouva</li>
-        </ul>
-        <div class="plan-note">E-shopy, portály, SaaS MVP</div>
-        <br/>
-        <button type="button" class="btn-plan outline" onclick="vyberPaket('premium')">Vybrat Premium</button>
+      <div class="process-item reveal" style="transition-delay:0.2s">
+        <div class="process-num">03</div>
+        <h3>Pustíme se do práce</h3>
+        <p>Po zaplacení zálohy začínáme. Průběžně vás informujeme o postupu.</p>
       </div>
+      <div class="process-item reveal" style="transition-delay:0.3s">
+        <div class="process-num">04</div>
+        <h3>Web je live</h3>
+        <p>Do 7 dní od obdržení podkladů spustíme váš nový web. Průměrně to stihneme za 4 dny.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- PRICING -->
+<section class="section-dark" id="cenik">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Ceník</div>
+      <div class="display-title">Web na míru.<br>Cena předem.</div>
+      <p style="color:var(--slate);font-size:16px;max-width:480px;margin-top:16px;line-height:1.7">Každý web nacenujeme individuálně — dle rozsahu a požadavků. Cenu vám sdělíme ještě před zahájením prací, vždy pevnou a bez překvapení.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan reveal" style="transition-delay:0.1s">
+        <div class="plan-name">Základ</div>
+        <div class="plan-desc">Pro živnostníky a malé firmy, kteří potřebují solidní web rychle a bez komplikací.</div>
+        <ul class="plan-features">
+          <li>Responzivní web na míru</li>
+          <li>Až 5 podstránek</li>
+          <li>Kontaktní formulář</li>
+          <li>Doručení do 7 dní</li>
+          <li>2 kola revizí</li>
+        </ul>
+        <a href="#kontakt" class="plan-cta plan-cta-outline" onclick="vyberPaket('basic')">Zjistit cenu →</a>
+      </div>
+      <div class="plan featured reveal" style="transition-delay:0.2s">
+        <div class="plan-badge">Nejoblíbenější</div>
+        <div class="plan-name">Rozšířený</div>
+        <div class="plan-desc">Pro firmy, které chtějí víc než jen vizitku — blog, SEO, analytiku a rychlejší doručení.</div>
+        <ul class="plan-features">
+          <li>Vše ze Základu</li>
+          <li>Až 10 podstránek</li>
+          <li>Blog nebo aktuality</li>
+          <li>SEO optimalizace</li>
+          <li>Google Analytics</li>
+          <li>Prioritní doručení</li>
+        </ul>
+        <a href="#kontakt" class="plan-cta plan-cta-solid" onclick="vyberPaket('business')">Zjistit cenu →</a>
+      </div>
+      <div class="plan reveal" style="transition-delay:0.3s">
+        <div class="plan-name">Prémiový</div>
+        <div class="plan-desc">Kompletní řešení — e-shop, rezervace, vlastní funkce. Pro náročné klienty bez kompromisů.</div>
+        <ul class="plan-features">
+          <li>Vše z Rozšířeného</li>
+          <li>Neomezené podstránky</li>
+          <li>E-shop integrace</li>
+          <li>Rezervační systém</li>
+          <li>Prioritní podpora</li>
+          <li>3 kola revizí</li>
+        </ul>
+        <a href="#kontakt" class="plan-cta plan-cta-outline" onclick="vyberPaket('premium')">Zjistit cenu →</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="kontakt">
+<section class="contact-section" id="kontakt">
   <div class="container">
-    <div class="contact-wrap">
-
-      <div class="contact-info reveal">
-        <div class="section-label">Kontakt</div>
-        <h2>Pojďme to rozjet.</h2>
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <div class="eyebrow">Kontakt</div>
+        <h2>Pojďme to<br><span class="red">rozjet.</span></h2>
         <p>Vyplňte formulář a my se vám ozveme do 24 hodin. Pak vás provedeme krátkým dotazníkem, abychom mohli začít co nejdřív.</p>
-
-        <div class="contact-detail">
-          <div class="contact-detail-icon">📧</div>
-          <div><a href="mailto:office@maxxweb.cz" style="color:inherit;text-decoration:none">office@maxxweb.cz</a></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">📧</div>
-          <div><a href="mailto:zakazky@maxxweb.cz" style="color:inherit;text-decoration:none">zakazky@maxxweb.cz</a></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">📞</div>
-          <div><a href="tel:+420604419420" style="color:inherit;text-decoration:none">+420 604 419 420</a></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">📞</div>
-          <div><a href="tel:+420604420788" style="color:inherit;text-decoration:none">+420 604 420 788</a></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">⏰</div>
-          <div>Po–Pá, 8:00–17:00</div>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉</div>
+            <a href="mailto:office@maxxweb.cz">office@maxxweb.cz</a>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉</div>
+            <a href="mailto:zakazky@maxxweb.cz">zakazky@maxxweb.cz</a>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">☎</div>
+            <a href="tel:+420604419420">+420 604 419 420</a>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">☎</div>
+            <a href="tel:+420604420788">+420 604 420 788</a>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">⏱</div>
+            <span>Po–Pá, 8:00–17:00</span>
+          </div>
         </div>
       </div>
 
@@ -1084,7 +1189,7 @@
             <input type="email" id="email" name="email" placeholder="jan@vasefirma.cz" required />
           </div>
           <div class="form-group">
-            <label for="telefon">Telefon <span style="color:var(--red)">*</span></label>
+            <label for="telefon">Telefon *</label>
             <input type="tel" id="telefon" name="telefon" placeholder="+420 777 123 456" required />
           </div>
           <div class="form-group">
@@ -1107,7 +1212,7 @@
           </div>
 
           <div class="promo-group">
-            <label for="promokod">Promo kód <span style="color:#aaa;font-weight:400">(nepovinné)</span></label>
+            <label for="promokod">Promo kód <span style="color:var(--slate);font-weight:400;text-transform:none;letter-spacing:0">(nepovinné)</span></label>
             <div class="promo-input-wrap">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
@@ -1133,17 +1238,16 @@
           <div class="form-note">Po odeslání budete přesměrováni na krátký dotazník.</div>
         </form>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div style="margin-bottom:12px"><img src="/logo.jpeg" alt="maxxweb" style="height:32px;width:auto;filter:invert(1)" /></div>
-  <div>Weby s rychlým doručením pro malé firmy a živnostníky.</div>
-  <div style="margin-top:10px;font-size:12px;color:#555"><span style="-webkit-user-select:text;user-select:text;pointer-events:none">ELEOS s.r.o. &nbsp;·&nbsp; IČO:&nbsp;01950398 &nbsp;·&nbsp; Čenětická 2413/1a, Chodov, 149 00 Praha 11</span></div>
-  <div style="margin-top:6px;font-size:12px">© 2025 maxxweb · Všechna práva vyhrazena</div>
+  <div class="footer-logo"><img src="/logo.jpeg" alt="maxxweb" /></div>
+  <div class="footer-tagline">Weby s rychlým doručením pro malé firmy a živnostníky.</div>
+  <div class="footer-legal"><span style="pointer-events:none;user-select:text">ELEOS s.r.o. · IČO: 01950398 · Čenětická 2413/1a, Chodov, 149 00 Praha 11</span></div>
+  <div class="footer-legal">© 2025 maxxweb · Všechna práva vyhrazena</div>
   <div class="footer-links">
     <a href="/obchodni-podminky.html">Obchodní podmínky</a>
     <a href="/zasady-ochrany-osobnich-udaju.html">Zásady ochrany osobních údajů</a>
@@ -1155,15 +1259,50 @@
 <div class="cookie-banner" id="cookieBanner">
   <div class="cookie-text">
     Používáme cookies pro analýzu návštěvnosti (Google Analytics). Funkční cookies jsou nezbytné pro provoz webu.
-    <a href="/cookies.html">Zásady cookies</a> &nbsp;·&nbsp; <a href="/zasady-ochrany-osobnich-udaju.html">Ochrana osobních údajů</a>
+    <a href="/cookies.html">Zásady cookies</a> · <a href="/zasady-ochrany-osobnich-udaju.html">Ochrana osobních údajů</a>
   </div>
   <div class="cookie-actions">
-    <button class="btn-cookie-reject" onclick="rejectCookies()">Odmítnout analytické</button>
+    <button class="btn-cookie-reject" onclick="rejectCookies()">Odmítnout</button>
     <button class="btn-cookie-accept" onclick="acceptCookies()">Přijmout vše</button>
   </div>
 </div>
 
 <script>
+  // ── Custom cursor ──────────────────────────────────────
+  const cur = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cur.style.left = mx + 'px';
+    cur.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // ── Hero mouse glow ────────────────────────────────────
+  const hero = document.getElementById('hero');
+  const glow = document.getElementById('heroGlow');
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    glow.style.left = (e.clientX - rect.left) + 'px';
+    glow.style.top = (e.clientY - rect.top) + 'px';
+  });
+
+  // ── Nav scroll ─────────────────────────────────────────
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
   // ── Cookie banner ──────────────────────────────────────
   const cookieBanner = document.getElementById('cookieBanner');
   const savedConsent = localStorage.getItem('cookie_consent');
@@ -1171,20 +1310,16 @@
     cookieBanner.classList.add('hidden');
     if (savedConsent === 'accepted') loadAnalytics();
   }
-
   function acceptCookies() {
     localStorage.setItem('cookie_consent', 'accepted');
     cookieBanner.classList.add('hidden');
     loadAnalytics();
   }
-
   function rejectCookies() {
     localStorage.setItem('cookie_consent', 'rejected');
     cookieBanner.classList.add('hidden');
   }
-
   function loadAnalytics() {
-    // ← Nahraďte G-XXXXXXXXXX svým Google Analytics Measurement ID
     const GA_ID = 'G-SLQH3X7CYR';
     const s = document.createElement('script');
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
@@ -1202,7 +1337,6 @@
     btn.classList.add('selected');
     document.getElementById('paket').value = btn.dataset.val;
   }
-
   function vyberPaket(hodnota) {
     document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
     setTimeout(() => {
@@ -1212,76 +1346,57 @@
     }, 600);
   }
 
+  // ── Form submit ────────────────────────────────────────
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-
     const jmeno = document.getElementById('jmeno').value.trim();
     const email = document.getElementById('email').value.trim();
     const telefon = document.getElementById('telefon').value.trim();
     const gdprConsent = document.getElementById('gdpr-consent');
     const consentError = document.getElementById('consentError');
-
-    if (!jmeno || !email || !telefon) {
-      alert('Prosím vyplňte jméno, e-mail a telefon.');
-      return;
-    }
-
+    if (!jmeno || !email || !telefon) { alert('Prosím vyplňte jméno, e-mail a telefon.'); return; }
     if (!gdprConsent.checked) {
       consentError.classList.add('visible');
       gdprConsent.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
     consentError.classList.remove('visible');
-
     const btn = document.querySelector('.form-submit');
     btn.textContent = 'Odesílám…';
     btn.disabled = true;
-
     const data = {
-      jmeno,
-      email,
+      jmeno, email,
       telefon: document.getElementById('telefon').value.trim(),
       paket: document.getElementById('paket').value,
       promokod: document.getElementById('promokod').value.trim().toUpperCase()
     };
-
     try {
-      await fetch('/api/kontakt', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-    } catch (err) {
-      console.error(err);
-    }
-
+      await fetch('/api/kontakt', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    } catch(err) { console.error(err); }
     const params = new URLSearchParams(data);
     window.location.href = 'dotaznik.html?' + params.toString();
   });
 
-  // Intersection Observer — scroll reveal
+  // ── Scroll reveal ──────────────────────────────────────
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('visible');
-      // trigger counters when stats become visible
       if (entry.target.classList.contains('stagger')) {
         entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
       }
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.15 });
-
+  }, { threshold: 0.12 });
   document.querySelectorAll('.reveal, .reveal-scale, .stagger').forEach(el => observer.observe(el));
 
-  // Counter animation
+  // ── Counter ────────────────────────────────────────────
   function animateCounter(el) {
     const target = parseInt(el.dataset.count);
     const suffix = el.dataset.suffix || '';
-    const duration = 1200;
+    const duration = 1400;
     const start = performance.now();
     const easeOut = t => 1 - Math.pow(1 - t, 3);
-
     requestAnimationFrame(function step(now) {
       const progress = Math.min((now - start) / duration, 1);
       el.textContent = Math.floor(easeOut(progress) * target) + suffix;
@@ -1289,11 +1404,10 @@
     });
   }
 
-  // Uppercase promo code live
+  // ── Promo uppercase ────────────────────────────────────
   document.getElementById('promokod').addEventListener('input', function() {
     this.value = this.value.toUpperCase();
   });
 </script>
-
 </body>
 </html>
