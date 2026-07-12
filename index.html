@@ -936,16 +936,17 @@ footer {
   aspect-ratio: 16/9;
   background: #111;
 }
-.browser-screen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
+.browser-screen iframe {
+  width: 1440px;
+  height: 900px;
+  border: none;
+  transform: scale(0.556);
+  transform-origin: top left;
+  pointer-events: none;
   display: block;
-  transition: transform 8s ease;
 }
 .browser-mockup:hover .browser-screen img {
-  transform: translateY(-30%);
+  transform: none;
 }
 
 .screen-overlay {
@@ -1450,12 +1451,12 @@ footer {
           <div style="width:52px"></div>
         </div>
         <div class="browser-screen">
-          <img
-            src="https://api.screenshotone.com/take?url=https://stonepeak-construction.vercel.app&viewport_width=1440&viewport_height=900&device_scale_factor=1&format=jpg&quality=85&block_ads=true&block_cookie_banners=true&delay=2"
-            alt="Stonepeak Construction web"
-            onerror="this.parentElement.classList.add('screenshot-fallback')"
+          <iframe
+            src="https://stonepeak-construction.vercel.app"
+            title="Stonepeak Construction"
             loading="lazy"
-          />
+            scrolling="no"
+          ></iframe>
           <div class="screen-overlay">
             <a href="https://stonepeak-construction.vercel.app" target="_blank" class="screen-btn">
               Zobrazit web <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
