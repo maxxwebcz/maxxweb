@@ -967,6 +967,10 @@ body.cursor-active .cursor-dot{ opacity: 1; }
 .map-embed iframe{
   width: 100%; height: 100%; border: 0; display: block;
   filter: invert(92%) hue-rotate(180deg) grayscale(25%) brightness(0.92) contrast(1.05);
+  /* Static preview only — dragging/zooming the live embed would leave the
+     gold pin overlay pointing at the wrong spot, since it isn't part of
+     the map itself. "Otevřít mapu" below links out to the real, pannable map. */
+  pointer-events: none;
 }
 .map-embed::after{
   content: '';
@@ -984,6 +988,21 @@ body.cursor-active .cursor-dot{ opacity: 1; }
   pointer-events: none;
 }
 @keyframes pinBounce{ 0%,100%{ transform: translate(-50%, -100%); } 50%{ transform: translate(-50%, -108%); } }
+
+.map-open-link{
+  position: absolute; right: 14px; bottom: 14px;
+  z-index: 2;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 100px;
+  background: rgba(5,5,6,0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: var(--c-white);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.map-open-link:hover{ border-color: var(--c-gold-light); color: var(--c-gold-light); }
 
 .contact-form{
   background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
