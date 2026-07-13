@@ -62,41 +62,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none;
-}
-
-/* ─── CUSTOM CURSOR ─── */
-#cursor {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  background: var(--red);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-  mix-blend-mode: normal;
-}
-#cursor-ring {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(232,58,58,0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s linear, width 0.3s, height 0.3s, opacity 0.3s;
-}
-body:has(a:hover) #cursor,
-body:has(button:hover) #cursor { width: 20px; height: 20px; }
-body:has(a:hover) #cursor-ring,
-body:has(button:hover) #cursor-ring { width: 60px; height: 60px; opacity: 0.4; }
-
-@media (hover: none) {
-  #cursor, #cursor-ring { display: none; }
-  body { cursor: auto; }
+  
 }
 
 /* ─── NAV ─── */
@@ -258,7 +224,7 @@ nav.scrolled {
   font-size: 15px;
   text-decoration: none;
   border: none;
-  cursor: none;
+  
   transition: transform 0.25s, box-shadow 0.25s;
   display: inline-block;
 }
@@ -276,7 +242,7 @@ nav.scrolled {
   font-size: 15px;
   text-decoration: none;
   border: 1px solid rgba(255,255,255,0.12);
-  cursor: none;
+  
   transition: color 0.25s, border-color 0.25s;
   display: inline-block;
 }
@@ -548,7 +514,7 @@ nav.scrolled {
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
-  cursor: none;
+  
   transition: all 0.25s;
 }
 .plan-cta-outline {
@@ -690,7 +656,7 @@ nav.scrolled {
   font-size: 13px;
   font-weight: 500;
   padding: 12px 8px;
-  cursor: none;
+  
   transition: all 0.2s;
   text-align: center;
 }
@@ -821,7 +787,7 @@ nav.scrolled {
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   font-weight: 600;
-  cursor: none;
+  
   transition: transform 0.25s, box-shadow 0.25s;
   letter-spacing: 0.01em;
 }
@@ -974,7 +940,7 @@ footer {
   font-weight: 600;
   font-size: 14px;
   text-decoration: none;
-  cursor: none;
+  
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .screen-btn:hover {
@@ -990,7 +956,7 @@ footer {
   justify-content: center;
 }
 .browser-screen.screenshot-fallback::after {
-  content: 'stonepeak-construction.com';
+  content: 'scstavby.cz';
   color: rgba(255,255,255,0.3);
   font-size: 14px;
 }
@@ -1261,9 +1227,6 @@ footer {
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
-
 <!-- NAV -->
 <nav id="mainNav">
   <div class="nav-logo"><img src="/logo.png" alt="maxxweb" /></div>
@@ -1446,19 +1409,19 @@ footer {
           </div>
           <div class="browser-url">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            stonepeak-construction.com
+            scstavby.cz
           </div>
           <div style="width:52px"></div>
         </div>
         <div class="browser-screen">
           <iframe
-            src="https://stonepeak-construction.vercel.app"
+            src="https://scstavby.cz"
             title="Stonepeak Construction"
             loading="lazy"
             scrolling="no"
           ></iframe>
           <div class="screen-overlay">
-            <a href="https://stonepeak-construction.vercel.app" target="_blank" class="screen-btn">
+            <a href="https://scstavby.cz" target="_blank" class="screen-btn">
               Zobrazit web <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
@@ -1678,26 +1641,6 @@ footer {
 </div>
 
 <script>
-  // ── Custom cursor ──────────────────────────────────────
-  const cur = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cur.style.left = mx + 'px';
-    cur.style.top = my + 'px';
-  });
-
-  function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
   // ── Hero mouse glow ────────────────────────────────────
   const hero = document.getElementById('hero');
   const glow = document.getElementById('heroGlow');
