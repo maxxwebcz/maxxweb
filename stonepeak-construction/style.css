@@ -711,6 +711,29 @@ body.cursor-active .cursor-dot{ opacity: 1; }
   border-radius: var(--radius-m);
   overflow: hidden;
   isolation: isolate;
+  cursor: zoom-in;
+}
+
+.portfolio-expand{
+  position: absolute; top: 18px; right: 18px;
+  z-index: 3;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-white);
+  background: rgba(5,5,6,0.55);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-out), border-color 0.3s ease, color 0.3s ease;
+  pointer-events: none;
+}
+.portfolio-item:hover .portfolio-expand{
+  opacity: 1;
+  transform: scale(1);
+  border-color: var(--c-gold-light);
+  color: var(--c-gold-light);
 }
 
 .portfolio-media{
@@ -1112,4 +1135,64 @@ body.cursor-active .cursor-dot{ opacity: 1; }
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* ---------------------------------------------------------------
+   21. LIGHTBOX (galerie realizací — jediný obrázek, bez procházení)
+   --------------------------------------------------------------- */
+.lightbox{
+  position: fixed; inset: 0;
+  z-index: 9600;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(24px, 6vw, 64px);
+  background: rgba(5,5,6,0.94);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.lightbox.active{ opacity: 1; visibility: visible; }
+
+.lightbox-content{
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  max-width: min(1100px, 92vw);
+  max-height: 88vh;
+}
+.lightbox-content img{
+  display: block;
+  max-width: 100%;
+  max-height: 76vh;
+  width: auto; height: auto;
+  border-radius: var(--radius-m);
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.7);
+  transform: scale(0.94);
+  opacity: 0;
+  transition: transform 0.45s var(--ease-out), opacity 0.45s ease;
+}
+.lightbox.active .lightbox-content img{ transform: scale(1); opacity: 1; }
+
+.lightbox-content figcaption{
+  color: var(--c-white-dim);
+  font-size: 0.92rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.lightbox-close{
+  position: absolute; top: clamp(16px, 3vw, 32px); right: clamp(16px, 3vw, 32px);
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-white);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.4s var(--ease-out);
+}
+.lightbox-close:hover{
+  border-color: var(--c-gold-light);
+  color: var(--c-gold-light);
+  transform: rotate(90deg);
+}
+
+@media (max-width: 600px){
+  .lightbox-content img{ max-height: 62vh; }
 }
