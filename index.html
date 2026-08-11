@@ -155,24 +155,27 @@ nav.scrolled {
 .hero-grid {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  pointer-events: none;
+}
+
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
 }
 
 /* Mouse-following glow */
 .hero-glow {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,58,58,0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232,58,58,0.14) 0%, transparent 70%);
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: left 0.6s cubic-bezier(0.23,1,0.32,1), top 0.6s cubic-bezier(0.23,1,0.32,1);
+  transition: left 0.8s cubic-bezier(0.23,1,0.32,1), top 0.8s cubic-bezier(0.23,1,0.32,1);
   will-change: left, top;
 }
 
@@ -1268,7 +1271,7 @@ footer {
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-grid"></div>
+  <div class="hero-grid"><canvas id="heroCanvas"></canvas></div>
   <div class="hero-glow" id="heroGlow"></div>
 
   <div class="hero-tag" data-i18n="hero_tag">Doručení za 4 dny</div>
@@ -1861,6 +1864,149 @@ footer {
 
   // Init on load
   setLang(currentLang);
+
+  // ── Hero canvas animation ──────────────────────────────
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  const heroSection = document.getElementById('hero');
+
+  let W, H, nodes, mouse = { x: -9999, y: -9999 };
+  let waves = [];
+
+  const NODE_COUNT = 60;
+  const MAX_DIST = 130;
+  const RED = 'rgba(232,58,58,';
+  const WHITE = 'rgba(255,255,255,';
+
+  function resize() {
+    W = canvas.width = heroSection.offsetWidth;
+    H = canvas.height = heroSection.offsetHeight;
+    initNodes();
+  }
+
+  function initNodes() {
+    nodes = Array.from({ length: NODE_COUNT }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 0.5,
+    }));
+  }
+
+  heroSection.addEventListener('mousemove', e => {
+    const rect = heroSection.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  heroSection.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+  heroSection.addEventListener('click', e => {
+    const rect = heroSection.getBoundingClientRect();
+    waves.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, r: 0, maxR: Math.max(W, H) * 0.6, alpha: 0.5 });
+  });
+
+  // Auto pulse every 4s
+  setInterval(() => {
+    waves.push({ x: W / 2, y: H / 2, r: 0, maxR: Math.max(W, H) * 0.7, alpha: 0.25 });
+  }, 4000);
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Vignette mask
+    const vignette = ctx.createRadialGradient(W/2, H/2, H*0.1, W/2, H/2, H*0.8);
+    vignette.addColorStop(0, 'rgba(0,0,0,0)');
+    vignette.addColorStop(1, 'rgba(8,8,8,0.85)');
+
+    // Move nodes
+    nodes.forEach(n => {
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+
+      // Mouse repulsion
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const d = Math.sqrt(dx*dx + dy*dy);
+      if (d < 100) {
+        const force = (100 - d) / 100 * 0.8;
+        n.x += dx / d * force;
+        n.y += dy / d * force;
+      }
+    });
+
+    // Draw connections
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < MAX_DIST) {
+          const alpha = (1 - d / MAX_DIST) * 0.18;
+          // Red tint near mouse
+          const mdx = (nodes[i].x + nodes[j].x) / 2 - mouse.x;
+          const mdy = (nodes[i].y + nodes[j].y) / 2 - mouse.y;
+          const md = Math.sqrt(mdx*mdx + mdy*mdy);
+          const isNearMouse = md < 150;
+          ctx.strokeStyle = isNearMouse ? RED + (alpha * 3) + ')' : WHITE + alpha + ')';
+          ctx.lineWidth = isNearMouse ? 0.8 : 0.5;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw nodes
+    nodes.forEach(n => {
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const d = Math.sqrt(dx*dx + dy*dy);
+      const nearMouse = d < 120;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, nearMouse ? n.r * 2.5 : n.r, 0, Math.PI * 2);
+      ctx.fillStyle = nearMouse ? RED + '0.9)' : WHITE + '0.25)';
+      ctx.fill();
+    });
+
+    // Draw waves
+    waves = waves.filter(w => w.alpha > 0.01);
+    waves.forEach(w => {
+      w.r += 4;
+      w.alpha *= 0.96;
+      ctx.beginPath();
+      ctx.arc(w.x, w.y, w.r, 0, Math.PI * 2);
+      ctx.strokeStyle = RED + w.alpha + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Second inner wave
+      if (w.r > 30) {
+        ctx.beginPath();
+        ctx.arc(w.x, w.y, w.r * 0.6, 0, Math.PI * 2);
+        ctx.strokeStyle = RED + (w.alpha * 0.4) + ')';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    });
+
+    // Apply vignette
+    ctx.fillStyle = vignette;
+    ctx.fillRect(0, 0, W, H);
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Trigger initial wave after 1s
+  setTimeout(() => {
+    waves.push({ x: W / 2, y: H / 2, r: 0, maxR: Math.max(W, H) * 0.7, alpha: 0.3 });
+  }, 1000);
+
+  draw();
 
   // ── Hero mouse glow ────────────────────────────────────
   const hero = document.getElementById('hero');
