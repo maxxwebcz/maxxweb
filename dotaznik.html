@@ -155,7 +155,7 @@
   <!-- STEP 1: Typ podnikání -->
   <div class="step active" id="step1">
     <div class="step-header">
-      <div class="step-number">Otázka 1 z 10</div>
+      <div class="step-number">Otázka 1 z 12</div>
       <h2>Čemu se věnujete?</h2>
       <p>Vyberte, co nejlépe popisuje vaše podnikání.</p>
     </div>
@@ -179,7 +179,7 @@
   <!-- STEP 2: Popis + slogan -->
   <div class="step" id="step2">
     <div class="step-header">
-      <div class="step-number">Otázka 2 z 10</div>
+      <div class="step-number">Otázka 2 z 12</div>
       <h2>Řekněte nám o sobě víc.</h2>
       <p>Čím více víme, tím lépe web napíšeme.</p>
     </div>
@@ -201,7 +201,7 @@
   <!-- STEP 3: Praktické info -->
   <div class="step" id="step3">
     <div class="step-header">
-      <div class="step-number">Otázka 3 z 10</div>
+      <div class="step-number">Otázka 3 z 12</div>
       <h2>Jaké praktické info má web obsahovat?</h2>
       <p>Zaškrtněte vše, co platí a doplňte detaily níže.</p>
     </div>
@@ -226,7 +226,7 @@
   <!-- STEP 4: Co má web umět -->
   <div class="step" id="step4">
     <div class="step-header">
-      <div class="step-number">Otázka 4 z 10</div>
+      <div class="step-number">Otázka 4 z 12</div>
       <h2>Co má web umět?</h2>
       <p>Vyberte vše, co chcete mít na webu. Lze vybrat více.</p>
     </div>
@@ -249,7 +249,7 @@
   <!-- STEP 5: Styl a pocit -->
   <div class="step" id="step5">
     <div class="step-header">
-      <div class="step-number">Otázka 5 z 10</div>
+      <div class="step-number">Otázka 5 z 12</div>
       <h2>Jaký má web mít styl a pocit?</h2>
       <p>Vyberte jedno nebo více slov, která vystihují vaši představu.</p>
     </div>
@@ -273,7 +273,7 @@
   <!-- STEP 6: Barvy -->
   <div class="step" id="step6">
     <div class="step-header">
-      <div class="step-number">Otázka 6 z 10</div>
+      <div class="step-number">Otázka 6 z 12</div>
       <h2>Jaké barvy vám sedí?</h2>
       <p>Vyberte jednu nebo více kombinací. Lze vybrat více.</p>
     </div>
@@ -297,7 +297,7 @@
   <!-- STEP 7: Logo a fotky -->
   <div class="step" id="step7">
     <div class="step-header">
-      <div class="step-number">Otázka 7 z 10</div>
+      <div class="step-number">Otázka 7 z 12</div>
       <h2>Máte logo a fotky?</h2>
       <p>Fotky jsou pro web velmi důležité — čím více, tím lépe!</p>
     </div>
@@ -320,7 +320,7 @@
   <!-- STEP 8: Inspirace -->
   <div class="step" id="step8">
     <div class="step-header">
-      <div class="step-number">Otázka 8 z 10</div>
+      <div class="step-number">Otázka 8 z 12</div>
       <h2>Jaký web nebo Instagram se vám líbí?</h2>
       <p>Pošlete 1–3 odkazy na weby nebo Instagramy, které vás inspirují. Nemusí být ze stejného oboru.</p>
     </div>
@@ -336,7 +336,7 @@
   <!-- STEP 9: Zákazník -->
   <div class="step" id="step9">
     <div class="step-header">
-      <div class="step-number">Otázka 9 z 10</div>
+      <div class="step-number">Otázka 9 z 12</div>
       <h2>Kdo je váš zákazník?</h2>
       <p>Popište, komu web mluví — věk, zájmy, situace. Podle toho ladíme jazyk i celkový dojem.</p>
     </div>
@@ -357,40 +357,63 @@
     </div>
   </div>
 
-  <!-- STEP 10: Termín + rozpočet -->
+  <!-- STEP 10: Rozpočet + poznámky -->
   <div class="step" id="step10">
     <div class="step-header">
-      <div class="step-number">Otázka 10 z 10</div>
+      <div class="step-number">Otázka 10 z 12</div>
       <h2>Poslední věci.</h2>
-      <p>Kdy to potřebujete a co bychom měli vědět?</p>
-    </div>
-    <div class="form-group">
-      <label>Kdy web potřebujete?</label>
-      <div class="tile-picker" id="terminPicker">
-        <button type="button" class="tile-btn" data-val="co-nejdrive" onclick="selectTile('terminPicker', this, 'termin')"><span class="tile-icon">⚡</span><span class="tile-label">Co nejdříve</span></button>
-        <button type="button" class="tile-btn" data-val="mesic" onclick="selectTile('terminPicker', this, 'termin')"><span class="tile-icon">📅</span><span class="tile-label">Do měsíce</span></button>
-        <button type="button" class="tile-btn" data-val="2mesice" onclick="selectTile('terminPicker', this, 'termin')"><span class="tile-icon">🗓️</span><span class="tile-label">Do 2 měsíců</span></button>
-        <button type="button" class="tile-btn" data-val="neresi" onclick="selectTile('terminPicker', this, 'termin')"><span class="tile-icon">😌</span><span class="tile-label">Termín neřeším</span></button>
-      </div>
-      <input type="hidden" id="termin" value="" />
-    </div>
-    <div class="form-group">
-      <label>Orientační rozpočet:</label>
-      <div class="tile-picker" id="rozpocetPicker">
-        <button type="button" class="tile-btn" data-val="basic" onclick="selectTile('rozpocetPicker', this, 'rozpocet')"><span class="tile-icon">🟦</span><span class="tile-label">Basic</span></button>
-        <button type="button" class="tile-btn" data-val="business" onclick="selectTile('rozpocetPicker', this, 'rozpocet')"><span class="tile-icon">🟥</span><span class="tile-label">Business</span></button>
-        <button type="button" class="tile-btn" data-val="premium" onclick="selectTile('rozpocetPicker', this, 'rozpocet')"><span class="tile-icon">🟧</span><span class="tile-label">Premium</span></button>
-        <button type="button" class="tile-btn" data-val="nevim" onclick="selectTile('rozpocetPicker', this, 'rozpocet')"><span class="tile-icon">🤔</span><span class="tile-label">Ještě nevím</span></button>
-      </div>
-      <input type="hidden" id="rozpocet" value="" />
+      <p>Je něco, co bychom měli vědět?</p>
     </div>
     <div class="form-group">
       <label>Máte ještě něco, co bychom měli vědět?</label>
-      <textarea id="poznamky" placeholder="Speciální požadavky, důležité termíny, co vás trápí…"></textarea>
+      <textarea id="poznamky" placeholder="Speciální požadavky, co vás trápí…"></textarea>
+    </div>
+    <div class="step-nav">
+      <button class="btn-next" onclick="nextStep(10)">Pokračovat →</button>
+      <button class="btn-back" onclick="prevStep(10)">← Zpět</button>
+    </div>
+  </div>
+
+  <!-- STEP 11: Doména -->
+  <div class="step" id="step11">
+    <div class="step-header">
+      <div class="step-number">Otázka 11 z 12</div>
+      <h2>Jakou doménu byste chtěli?</h2>
+      <p>Napište název domény, který byste si přáli — ověříme dostupnost za vás. Pokud už doménu máte, napište jakou.</p>
+    </div>
+    <div class="form-group">
+      <label>Preferovaná doména nebo stávající doména</label>
+      <input type="text" id="domena" placeholder="Např. moje-firma.cz nebo mojeznacka.com" />
+      <div style="margin-top:8px;font-size:13px;color:var(--slate)">Pokud máte více variant nebo nejste si jistí, napište je všechny — vybereme tu nejlepší dostupnou. Pokud již doménu vlastníte, stačí ji sem napsat.</div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-next" onclick="nextStep(11)">Pokračovat →</button>
+      <button class="btn-back" onclick="prevStep(11)">← Zpět</button>
+    </div>
+  </div>
+
+  <!-- STEP 12: Fakturační údaje -->
+  <div class="step" id="step12">
+    <div class="step-header">
+      <div class="step-number">Otázka 12 z 12</div>
+      <h2>Fakturační údaje.</h2>
+      <p>Potřebujeme je pro vystavení zálohové faktury. Pokud jste fyzická osoba bez IČO, stačí jméno a adresa.</p>
+    </div>
+    <div class="form-group">
+      <label>Název firmy nebo jméno a příjmení</label>
+      <input type="text" id="faktNazev" placeholder="Např. Novák s.r.o. nebo Jan Novák" />
+    </div>
+    <div class="form-group">
+      <label>IČO <span style="font-weight:400;color:var(--slate)">(nepovinné pro fyzické osoby)</span></label>
+      <input type="text" id="faktIco" placeholder="Např. 12345678" maxlength="12" />
+    </div>
+    <div class="form-group">
+      <label>Fakturační adresa</label>
+      <input type="text" id="faktAdresa" placeholder="Ulice a číslo, PSČ, Město" />
     </div>
     <div class="step-nav">
       <button class="btn-next" onclick="showSummary()">Zobrazit shrnutí ✓</button>
-      <button class="btn-back" onclick="prevStep(10)">← Zpět</button>
+      <button class="btn-back" onclick="prevStep(12)">← Zpět</button>
     </div>
   </div>
 
@@ -419,7 +442,7 @@
 </main>
 
 <script>
-  const TOTAL_STEPS = 10;
+  const TOTAL_STEPS = 12;
   let currentStep = 1;
   const answers = {};
 
@@ -499,7 +522,9 @@
     if (n === 7) { answers.logoFotky = getSelected('step7'); answers.logoFotkyDetail = val('logoFotkyDetail'); }
     if (n === 8) { answers.inspirace = val('inspirace'); }
     if (n === 9) { answers.zakaznik = getSelected('step9'); answers.zakaznikDetail = val('zakaznikDetail'); }
-    if (n === 10) { answers.termin = val('termin'); answers.rozpocet = val('rozpocet'); answers.poznamky = val('poznamky'); }
+    if (n === 10) { answers.poznamky = val('poznamky'); }
+    if (n === 11) { answers.domena = val('domena'); }
+    if (n === 12) { answers.faktNazev = val('faktNazev'); answers.faktIco = val('faktIco'); answers.faktAdresa = val('faktAdresa'); }
   }
 
   function nextStep(n) {
@@ -546,9 +571,11 @@
       { label: 'Detaily (logo/fotky)', value: answers.logoFotkyDetail },
       { label: 'Inspirace', value: answers.inspirace },
       { label: 'Zákazník', value: [mapArr(answers.zakaznik, labelMaps.zakaznik), answers.zakaznikDetail].filter(Boolean).join(' — ') },
-      { label: 'Termín', value: mapVal(answers.termin, labelMaps.termin) },
-      { label: 'Rozpočet', value: mapVal(answers.rozpocet, labelMaps.rozpocet) },
-      { label: 'Poznámky', value: answers.poznamky },
+      { label: 'Poznámky', value: answers.poznamky || '—' },
+      { label: 'Preferovaná doména', value: answers.domena || '—' },
+      { label: 'Firma / Jméno', value: answers.faktNazev || '—' },
+      { label: 'IČO', value: answers.faktIco || '—' },
+      { label: 'Fakturační adresa', value: answers.faktAdresa || '—' },
     ];
 
     const container = document.getElementById('summaryItems');
