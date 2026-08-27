@@ -68,9 +68,11 @@ export default async function handler(req, res) {
               ${row('Detaily (logo/fotky)', d.logoFotkyDetail)}
               ${row('Inspirace', d.inspirace)}
               ${row('Zákazník', [mapArr(d.zakaznik, maps.zakaznik), d.zakaznikDetail].filter(v => v && v !== '—').join(' — ') || '—')}
-              ${row('Termín', mapVal(d.termin, maps.termin))}
-              ${row('Rozpočet', mapVal(d.rozpocet, maps.rozpocet))}
               ${row('Poznámky', d.poznamky)}
+              ${row('Preferovaná / stávající doména', d.domena)}
+              ${row('Firma / Jméno', d.faktNazev)}
+              ${row('IČO', d.faktIco)}
+              ${row('Fakturační adresa', d.faktAdresa)}
             </table>
           </div>
         </div>
