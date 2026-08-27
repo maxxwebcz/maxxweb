@@ -212,12 +212,12 @@ nav.scrolled {
   font-family: 'DM Serif Display', serif;
   font-size: clamp(56px, 9vw, 130px);
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 1.0;
   letter-spacing: -0.04em;
   margin-bottom: 32px;
   animation: fadeUp 0.9s 0.1s cubic-bezier(0.23,1,0.32,1) both;
 }
-.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .line { display: block; overflow: visible; padding-bottom: 0.05em; }
 .hero h1 .accent { color: var(--red); }
 .hero h1 .outline {
   -webkit-text-stroke: 1.5px rgba(249,249,247,0.25);
