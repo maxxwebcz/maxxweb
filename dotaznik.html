@@ -412,7 +412,7 @@
       <input type="text" id="faktAdresa" placeholder="Ulice a číslo, PSČ, Město" />
     </div>
     <div class="step-nav">
-      <button class="btn-next" onclick="showSummary()">Zobrazit shrnutí ✓</button>
+      <button class="btn-next" onclick="collectStep(12); showSummary()">Zobrazit shrnutí ✓</button>
       <button class="btn-back" onclick="prevStep(12)">← Zpět</button>
     </div>
   </div>
@@ -555,6 +555,7 @@
   function mapVal(val, map) { return map[val] || val || null; }
 
   function showSummary() {
+    collectStep(9);
     collectStep(10);
     collectStep(11);
     collectStep(12);
