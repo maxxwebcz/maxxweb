@@ -556,6 +556,8 @@
 
   function showSummary() {
     collectStep(10);
+    collectStep(11);
+    collectStep(12);
 
     const rows = [
       { label: 'Kontaktní údaje', value: [answers.jmeno, answers.email, answers.promokod ? `Kód: ${answers.promokod}` : null].filter(Boolean).join(' | ') },
