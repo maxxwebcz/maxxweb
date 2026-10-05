@@ -50,7 +50,7 @@ export default async function handler(req, res) {
   try {
     await resend.emails.send({
       from: 'maxxweb <office@maxxweb.cz>',
-      to: ['office@maxxweb.cz', 'zakazky@maxxweb.cz', 'maxxweb@outlook.cz'],
+      to: ['maxxweb@outlook.cz'],,
       subject: `📩 ${jeSeo ? 'SEO poptávka' : 'Nová poptávka'} – ${jmeno}${promokod ? ` [${promokod}]` : ''}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1A1A1A">
