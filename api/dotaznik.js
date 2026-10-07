@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const isEmail = v => typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
 const maps = {
   typPodnikani: { remeslnik:'Řemeslník', sluzby:'Služby', krasa:'Krása & wellness', gastro:'Gastronomie', eshop:'E-shop / obchod', jine:'Jiné' },
@@ -35,7 +36,7 @@ export default async function handler(req, res) {
       // který smí posílat jen na e-mail účtu (maxxweb@outlook.cz).
       from: 'maxxweb web <onboarding@resend.dev>',
       to: ['maxxweb@outlook.cz'],
-      ...(d.email ? { reply_to: d.email } : {}),
+      ...(isEmail(d.email) ? { reply_to: d.email.trim() } : {}),
       subject: `📋 Dotazník – ${d.jmeno || 'Nový klient'}${d.promokod ? ` [${d.promokod}]` : ''}`,
       html: `
         <div style="font-family:sans-serif;max-width:640px;margin:0 auto;background:#1A1A1A;color:#fff;border-radius:12px;overflow:hidden">

@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const isEmail = v => typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
@@ -53,7 +54,7 @@ export default async function handler(req, res) {
       // který smí posílat jen na e-mail účtu (maxxweb@outlook.cz).
       from: 'maxxweb web <onboarding@resend.dev>',
       to: ['maxxweb@outlook.cz'],
-      ...(email ? { reply_to: email } : {}),
+      ...(isEmail(email) ? { reply_to: email.trim() } : {}),
       subject: `📩 ${jeSeo ? 'SEO poptávka' : 'Nová poptávka'} – ${jmeno}${promokod ? ` [${promokod}]` : ''}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1A1A1A">

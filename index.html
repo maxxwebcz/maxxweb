@@ -2236,6 +2236,7 @@ footer {
     const gdprConsent = document.getElementById('gdpr-consent');
     const consentError = document.getElementById('consentError');
     if (!jmeno || !email || !telefon) { alert('Prosím vyplňte jméno, e-mail a telefon.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Prosím zadejte platný e-mail.'); return; }
     if (!gdprConsent.checked) {
       consentError.classList.add('visible');
       gdprConsent.scrollIntoView({ behavior: 'smooth', block: 'center' });
