@@ -31,8 +31,11 @@ export default async function handler(req, res) {
 
   try {
     const { error } = await resend.emails.send({
-      from: 'maxxweb <office@maxxweb.cz>',
-      to: ['office@maxxweb.cz', 'zakazky@maxxweb.cz', 'maxxweb@outlook.cz'],
+      // Doména maxxweb.cz není v Resendu ověřená → testovací odesílatel Resendu,
+      // který smí posílat jen na e-mail účtu (maxxweb@outlook.cz).
+      from: 'maxxweb web <onboarding@resend.dev>',
+      to: ['maxxweb@outlook.cz'],
+      ...(d.email ? { reply_to: d.email } : {}),
       subject: `📋 Dotazník – ${d.jmeno || 'Nový klient'}${d.promokod ? ` [${d.promokod}]` : ''}`,
       html: `
         <div style="font-family:sans-serif;max-width:640px;margin:0 auto;background:#1A1A1A;color:#fff;border-radius:12px;overflow:hidden">
