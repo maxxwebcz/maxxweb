@@ -48,9 +48,9 @@ export default async function handler(req, res) {
     : `<div style="margin-top:28px;padding:16px;background:#FFF5F5;border-radius:8px;font-size:14px;color:#555">Klient byl přesměrován na dotazník — výsledky přijdou v dalším e-mailu.</div>`;
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'maxxweb <office@maxxweb.cz>',
-      to: ['maxxweb@outlook.cz'],,
+      to: ['maxxweb@outlook.cz'],
       subject: `📩 ${jeSeo ? 'SEO poptávka' : 'Nová poptávka'} – ${jmeno}${promokod ? ` [${promokod}]` : ''}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1A1A1A">
@@ -71,10 +71,11 @@ export default async function handler(req, res) {
         </div>
       `,
     });
+    if (error) throw error;
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Chyba při odesílání emailu.' });
+    res.status(500).json({ error: 'Chyba při odesílání emailu.', detail: err?.message });
   }
 }
 

@@ -30,7 +30,7 @@ export default async function handler(req, res) {
   const d = req.body;
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'maxxweb <office@maxxweb.cz>',
       to: ['office@maxxweb.cz', 'zakazky@maxxweb.cz', 'maxxweb@outlook.cz'],
       subject: `📋 Dotazník – ${d.jmeno || 'Nový klient'}${d.promokod ? ` [${d.promokod}]` : ''}`,
@@ -74,9 +74,10 @@ export default async function handler(req, res) {
         </div>
       `,
     });
+    if (error) throw error;
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Chyba při odesílání emailu.' });
+    res.status(500).json({ error: 'Chyba při odesílání emailu.', detail: err?.message });
   }
 }
