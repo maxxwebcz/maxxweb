@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>Odeslat ukázku – maxxweb</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background: #0D0D0D; color: #fff; min-height: 100vh; padding: 24px 16px 48px; }
+    .wrap { max-width: 560px; margin: 0 auto; }
+    .logo { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 24px; }
+    .logo span { color: #E83A3A; }
+    h1 { font-size: 22px; margin-bottom: 6px; }
+    .sub { color: #999; font-size: 14px; margin-bottom: 24px; line-height: 1.6; }
+    label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #999; margin: 18px 0 8px; }
+    input, textarea { width: 100%; background: #1A1A1A; border: 1px solid #2A2A2A; border-radius: 12px; color: #fff; font: inherit; font-size: 16px; padding: 14px 16px; }
+    input:focus, textarea:focus { outline: none; border-color: #E83A3A; }
+    textarea { min-height: 160px; resize: vertical; }
+    button { width: 100%; margin-top: 20px; background: #E83A3A; color: #fff; border: 0; border-radius: 100px; font: inherit; font-size: 16px; font-weight: 700; padding: 16px; cursor: pointer; }
+    button.secondary { background: transparent; border: 1px solid #444; }
+    button:disabled { opacity: .5; cursor: default; }
+    .box { background: #1A1A1A; border-radius: 12px; padding: 16px; margin-top: 20px; font-size: 14px; line-height: 1.7; word-break: break-all; }
+    .box ul { list-style: none; }
+    .ok { color: #4ade80; }
+    .err { color: #f87171; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo">maxx<span>web</span></div>
+    <h1>Odeslat ukázku práce</h1>
+    <p class="sub">Vlož e-maily od prodejce (klidně celý text zprávy, adresy si najdu sám). Každý dostane samostatný e-mail „Ukázka naší práce“ z office@maxxweb.cz.</p>
+
+    <form id="form">
+      <label for="heslo">Heslo</label>
+      <input id="heslo" type="password" autocomplete="current-password" required />
+
+      <label for="prodejce">Prodejce</label>
+      <input id="prodejce" type="text" placeholder="Kdo s klienty mluvil" />
+
+      <label for="emaily">E-maily</label>
+      <textarea id="emaily" placeholder="jan@firma.cz&#10;info@stavebniny.cz" required></textarea>
+
+      <button type="submit" id="btnNahled">Zkontrolovat</button>
+    </form>
+
+    <div id="nahled" class="hidden">
+      <div class="box"><p id="nahledText"></p><ul id="nahledList"></ul></div>
+      <button id="btnOdeslat"></button>
+      <button id="btnZpet" class="secondary">Upravit</button>
+    </div>
+
+    <div id="vysledek" class="box hidden"></div>
+  </div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const uloz = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+  const nacti = k => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  $('heslo').value = nacti('maxxweb-heslo');
+  $('prodejce').value = nacti('maxxweb-prodejce');
+
+  async function zavolej(jenNahled) {
+    const r = await fetch('/api/ukazka', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ heslo: $('heslo').value, prodejce: $('prodejce').value.trim(), emaily: $('emaily').value, jenNahled }),
+    });
+    const data = await r.json().catch(() => ({ error: 'Neplatná odpověď serveru.' }));
+    if (!r.ok) throw new Error(data.error || 'Chyba ' + r.status);
+    return data;
+  }
+
+  function ukazChybu(msg) {
+    $('vysledek').innerHTML = `<p class="err">${esc(msg)}</p>`;
+    $('vysledek').classList.remove('hidden');
+  }
+
+  $('form').addEventListener('submit', async e => {
+    e.preventDefault();
+    $('vysledek').classList.add('hidden');
+    $('btnNahled').disabled = true;
+    try {
+      const { adresy } = await zavolej(true);
+      uloz('maxxweb-heslo', $('heslo').value);
+      uloz('maxxweb-prodejce', $('prodejce').value.trim());
+      $('nahledText').textContent = `Odejde ${adresy.length} ${adresy.length === 1 ? 'e-mail' : adresy.length < 5 ? 'e-maily' : 'e-mailů'} na:`;
+      $('nahledList').innerHTML = adresy.map(a => `<li>${esc(a)}</li>`).join('');
+      $('btnOdeslat').textContent = `Odeslat (${adresy.length})`;
+      $('form').classList.add('hidden');
+      $('nahled').classList.remove('hidden');
+    } catch (err) {
+      ukazChybu(err.message);
+    }
+    $('btnNahled').disabled = false;
+  });
+
+  $('btnZpet').addEventListener('click', () => {
+    $('nahled').classList.add('hidden');
+    $('form').classList.remove('hidden');
+  });
+
+  $('btnOdeslat').addEventListener('click', async () => {
+    const btn = $('btnOdeslat');
+    btn.disabled = true;
+    btn.textContent = 'Odesílám…';
+    try {
+      const { vysledky } = await zavolej(false);
+      const ok = vysledky.filter(v => v.ok).length;
+      $('vysledek').innerHTML = `<p><b>Odesláno ${ok} z ${vysledky.length}.</b></p><ul>${
+        vysledky.map(v => `<li class="${v.ok ? 'ok' : 'err'}">${v.ok ? '✓' : '✗'} ${esc(v.email)}${v.ok ? '' : ' – ' + esc(v.chyba)}</li>`).join('')
+      }</ul>`;
+      $('vysledek').classList.remove('hidden');
+      $('nahled').classList.add('hidden');
+      $('form').classList.remove('hidden');
+      if (ok === vysledky.length) $('emaily').value = '';
+    } catch (err) {
+      ukazChybu(err.message);
+    }
+    btn.disabled = false;
+  });
+</script>
+</body>
+</html>
