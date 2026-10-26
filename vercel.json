@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/tydenni-souhrn",
+      "schedule": "0 6 * * 1"
+    }
+  ]
+}

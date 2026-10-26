@@ -55,6 +55,9 @@
     </div>
 
     <div id="vysledek" class="box hidden"></div>
+
+    <button id="btnSouhrn" class="secondary">Poslat souhrn za posledních 7 dní</button>
+    <p class="sub" style="margin-top:10px;font-size:12px">Souhrn podle prodejců chodí automaticky každé pondělí ráno do office@maxxweb.cz.</p>
   </div>
 
 <script>
@@ -104,6 +107,30 @@
   $('btnZpet').addEventListener('click', () => {
     $('nahled').classList.add('hidden');
     $('form').classList.remove('hidden');
+  });
+
+  $('btnSouhrn').addEventListener('click', async () => {
+    const btn = $('btnSouhrn');
+    btn.disabled = true;
+    btn.textContent = 'Počítám…';
+    try {
+      const r = await fetch('/api/tydenni-souhrn', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ heslo: $('heslo').value }),
+      });
+      const data = await r.json().catch(() => ({ error: 'Neplatná odpověď serveru.' }));
+      if (!r.ok) throw new Error(r.status === 401 ? 'Nejdřív vyplň správné heslo.' : (data.error || 'Chyba ' + r.status));
+      const radky = Object.entries(data.prodejci).sort((a, b) => b[1].maily - a[1].maily);
+      $('vysledek').innerHTML = `<p><b>Souhrn ${esc(data.obdobi)}</b> (poslán i do office@maxxweb.cz)</p><ul>${
+        radky.map(([j, v]) => `<li>${esc(j)}: <b>${v.maily}</b> mailů</li>`).join('') || '<li>Žádná odeslání.</li>'
+      }</ul><p>Celkem: <b>${data.celkem}</b></p>`;
+      $('vysledek').classList.remove('hidden');
+    } catch (err) {
+      ukazChybu(err.message);
+    }
+    btn.disabled = false;
+    btn.textContent = 'Poslat souhrn za posledních 7 dní';
   });
 
   $('btnOdeslat').addEventListener('click', async () => {
