@@ -1382,11 +1382,12 @@ footer {
     <div class="reveal">
       <div class="eyebrow" data-i18n="pricing_eyebrow">Ceník</div>
       <div class="display-title" data-i18n="pricing_title">Web na míru.<br>Cena předem.</div>
-      <p style="color:var(--slate);font-size:16px;max-width:480px;margin-top:16px;line-height:1.7" data-i18n="pricing_desc">Každý web oceníme individuálně — dle rozsahu a požadavků. Cenu vám sdělíme ještě před zahájením prací, vždy pevnou a bez překvapení.</p>
+      <p style="color:var(--slate);font-size:16px;max-width:480px;margin-top:16px;line-height:1.7" data-i18n="pricing_desc">Ceny jsou orientační „od“. Každý web oceníme podle rozsahu a požadavků a pevnou cenu vám sdělíme ještě před zahájením prací — bez překvapení.</p>
     </div>
     <div class="pricing-grid">
       <div class="plan reveal" style="transition-delay:0.1s">
         <div class="plan-name" data-i18n="plan1_name">Základ</div>
+        <div class="plan-price" data-i18n="plan1_price" style="font-size:28px;font-weight:800;color:var(--white);margin:8px 0 12px;letter-spacing:-1px">od 19 900 Kč</div>
         <div class="plan-desc" data-i18n="plan1_desc">Pro živnostníky a malé firmy, kteří potřebují solidní web rychle a bez komplikací.</div>
         <ul class="plan-features">
           <li data-i18n="plan1_f1">Responzivní web na míru</li>
@@ -1400,6 +1401,7 @@ footer {
       <div class="plan featured reveal" style="transition-delay:0.2s">
         <div class="plan-badge" data-i18n="plan_badge">Nejoblíbenější</div>
         <div class="plan-name" data-i18n="plan2_name">Rozšířený</div>
+        <div class="plan-price" data-i18n="plan2_price" style="font-size:28px;font-weight:800;color:var(--white);margin:8px 0 12px;letter-spacing:-1px">od 39 900 Kč</div>
         <div class="plan-desc" data-i18n="plan2_desc">Pro firmy, které chtějí víc než jen vizitku — blog, SEO, analytiku a rychlejší doručení.</div>
         <ul class="plan-features">
           <li data-i18n="plan2_f1">Vše ze Základu</li>
@@ -1413,6 +1415,7 @@ footer {
       </div>
       <div class="plan reveal" style="transition-delay:0.3s">
         <div class="plan-name" data-i18n="plan3_name">Prémiový</div>
+        <div class="plan-price" data-i18n="plan3_price" style="font-size:28px;font-weight:800;color:var(--white);margin:8px 0 12px;letter-spacing:-1px">od 69 900 Kč</div>
         <div class="plan-desc" data-i18n="plan3_desc">Kompletní řešení — e-shop, rezervace, vlastní funkce. Pro náročné klienty bez kompromisů.</div>
         <ul class="plan-features">
           <li data-i18n="plan3_f1">Vše z Rozšířeného</li>
@@ -1423,6 +1426,16 @@ footer {
           <li data-i18n="plan3_f6">3 kola revizí</li>
         </ul>
         <a href="#kontakt" class="plan-cta plan-cta-outline" onclick="vyberPaket('premium')" data-i18n="plan_cta">Zjistit cenu →</a>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:16px">
+      <div style="background:var(--black);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin-bottom:8px" data-i18n="plan4_name">Systém na míru</div>
+          <div style="font-size:32px;font-weight:800;color:var(--white);letter-spacing:-1px;margin-bottom:4px" data-i18n="plan4_price">od 150 000 Kč</div>
+          <div style="color:var(--slate);font-size:15px;line-height:1.6;max-width:520px" data-i18n="plan4_desc">Web, který za vás prodává a obsluhuje zákazníky — online platby, rezervace s kapacitou, administrace pro tým, členství a předplatné, automatické e-maily a SMS. Například systém, který jsme postavili pro Ever Clean Car.</div>
+        </div>
+        <a href="#kontakt" class="btn-primary" onclick="vyberPaket('premium')" style="white-space:nowrap;flex-shrink:0" data-i18n="plan4_cta">Nezávazně poptat →</a>
       </div>
     </div>
   </div>
@@ -1844,7 +1857,7 @@ footer {
       proc3_title: 'Pustíme se do práce', proc3_text: 'Po zaplacení zálohy začínáme. Průběžně vás informujeme o postupu.',
       proc4_title: 'Web je live', proc4_text: 'Do 7 dní od obdržení podkladů spustíme váš nový web. Průměrně to stihneme za 4 dny.',
       pricing_eyebrow: 'Ceník', pricing_title: 'Web na míru.<br>Cena předem.',
-      pricing_desc: 'Každý web oceníme individuálně — dle rozsahu a požadavků. Cenu vám sdělíme ještě před zahájením prací, vždy pevnou a bez překvapení.',
+      pricing_desc: 'Ceny jsou orientační „od“. Každý web oceníme podle rozsahu a požadavků a pevnou cenu vám sdělíme ještě před zahájením prací — bez překvapení.',
       plan1_name: 'Základ', plan1_desc: 'Pro živnostníky a malé firmy, kteří potřebují solidní web rychle a bez komplikací.',
       plan1_f1: 'Responzivní web na míru', plan1_f2: 'Jednostránkový web (scroll)', plan1_f3: 'Kontaktní formulář', plan1_f4: 'Doručení do 7 dní', plan1_f5: '2 kola revizí',
       plan_badge: 'Nejoblíbenější', plan2_name: 'Rozšířený', plan2_desc: 'Pro firmy, které chtějí víc než jen vizitku — blog, SEO, analytiku a rychlejší doručení.',
@@ -1852,6 +1865,7 @@ footer {
       plan3_name: 'Prémiový', plan3_desc: 'Kompletní řešení — e-shop, rezervace, vlastní funkce. Pro náročné klienty bez kompromisů.',
       plan3_f1: 'Vše z Rozšířeného', plan3_f2: 'Neomezené podstránky', plan3_f3: 'E-shop integrace', plan3_f4: 'Rezervační systém', plan3_f5: 'Prioritní podpora', plan3_f6: '3 kola revizí',
       plan_cta: 'Zjistit cenu →',
+      plan1_price: 'od 19 900 Kč', plan2_price: 'od 39 900 Kč', plan3_price: 'od 69 900 Kč', plan4_name: 'Systém na míru', plan4_price: 'od 150 000 Kč', plan4_desc: 'Web, který za vás prodává a obsluhuje zákazníky — online platby, rezervace s kapacitou, administrace pro tým, členství a předplatné, automatické e-maily a SMS. Například systém, který jsme postavili pro Ever Clean Car.', plan4_cta: 'Nezávazně poptat →',
       portfolio_eyebrow: 'Naše práce', portfolio_title: 'Weby, na které<br>jsme hrdí.',
       portfolio_desc: 'Každý web děláme na míru. Tady je ukázka toho, co pro naše klienty vytváříme.',
       portfolio_tag: 'Autodetailing', portfolio_item_desc: 'Web pro čištění aut v Hodoníně — online rezervace s výběrem volného termínu, platba Apple Pay i Google Pay a roční členství.',
@@ -1902,7 +1916,7 @@ footer {
       proc3_title: 'We get to work', proc3_text: 'After the deposit is paid, we start. We keep you updated throughout.',
       proc4_title: 'Website goes live', proc4_text: 'Within 7 days of receiving your materials, your new website is live. On average we do it in 4 days.',
       pricing_eyebrow: 'Pricing', pricing_title: 'Tailored website.<br>Price upfront.',
-      pricing_desc: 'We price each website individually — based on scope and requirements. You\'ll know the price before we start, always fixed, no surprises.',
+      pricing_desc: 'Prices shown are starting prices. We price each website individually — based on scope and requirements. You\'ll know the price before we start, always fixed, no surprises.',
       plan1_name: 'Starter', plan1_desc: 'For freelancers and small businesses who need a solid website fast and without complications.',
       plan1_f1: 'Responsive custom website', plan1_f2: 'Single-page (scroll) website', plan1_f3: 'Contact form', plan1_f4: 'Delivery within 7 days', plan1_f5: '2 revision rounds',
       plan_badge: 'Most popular', plan2_name: 'Business', plan2_desc: 'For companies who want more than just an online business card — blog, SEO, analytics and faster delivery.',
@@ -1910,6 +1924,7 @@ footer {
       plan3_name: 'Premium', plan3_desc: 'Complete solution — e-shop, booking system, custom features. For demanding clients without compromise.',
       plan3_f1: 'Everything in Business', plan3_f2: 'Unlimited subpages', plan3_f3: 'E-shop integration', plan3_f4: 'Booking system', plan3_f5: 'Priority support', plan3_f6: '3 revision rounds',
       plan_cta: 'Get a quote →',
+      plan1_price: 'from CZK 19,900', plan2_price: 'from CZK 39,900', plan3_price: 'from CZK 69,900', plan4_name: 'Custom system', plan4_price: 'from CZK 150,000', plan4_desc: 'A website that sells and serves customers for you — online payments, capacity-based booking, team admin, memberships and subscriptions, automated emails and SMS. Like the system we built for Ever Clean Car.', plan4_cta: 'Get a free quote →',
       portfolio_eyebrow: 'Our work', portfolio_title: 'Websites we\'re<br>proud of.',
       portfolio_desc: 'Every website we build is custom-made. Here\'s a sample of what we create for our clients.',
       portfolio_tag: 'Car detailing', portfolio_item_desc: 'A website for a car cleaning service in Hodonín — online booking with free time slots, Apple Pay and Google Pay, and an annual membership.',
@@ -1960,7 +1975,7 @@ footer {
       proc3_title: 'Bierzemy się do pracy', proc3_text: 'Po wpłacie zaliczki rozpoczynamy. Na bieżąco informujemy Cię o postępach.',
       proc4_title: 'Strona jest live', proc4_text: 'W ciągu 7 dni od otrzymania materiałów uruchamiamy Twoją nową stronę. Średnio zajmuje nam to 4 dni.',
       pricing_eyebrow: 'Cennik', pricing_title: 'Strona na miarę.<br>Cena z góry.',
-      pricing_desc: 'Każdą stronę wyceniamy indywidualnie — według zakresu i wymagań. Cenę poznasz przed rozpoczęciem prac, zawsze stałą i bez niespodzianek.',
+      pricing_desc: 'Podane ceny są cenami „od”. Każdą stronę wyceniamy indywidualnie — według zakresu i wymagań. Cenę poznasz przed rozpoczęciem prac, zawsze stałą i bez niespodzianek.',
       plan1_name: 'Podstawowy', plan1_desc: 'Dla freelancerów i małych firm, które potrzebują solidnej strony szybko i bez komplikacji.',
       plan1_f1: 'Responsywna strona na miarę', plan1_f2: 'Strona jednostronicowa (scroll)', plan1_f3: 'Formularz kontaktowy', plan1_f4: 'Realizacja do 7 dni', plan1_f5: '2 rundy poprawek',
       plan_badge: 'Najpopularniejszy', plan2_name: 'Rozszerzony', plan2_desc: 'Dla firm, które chcą więcej niż wizytówkę — blog, SEO, analitykę i szybszą realizację.',
@@ -1968,6 +1983,7 @@ footer {
       plan3_name: 'Premium', plan3_desc: 'Kompleksowe rozwiązanie — sklep, rezerwacje, własne funkcje. Dla wymagających klientów bez kompromisów.',
       plan3_f1: 'Wszystko z Rozszerzonego', plan3_f2: 'Nieograniczone podstrony', plan3_f3: 'Integracja sklepu', plan3_f4: 'System rezerwacji', plan3_f5: 'Wsparcie priorytetowe', plan3_f6: '3 rundy poprawek',
       plan_cta: 'Zapytaj o cenę →',
+      plan1_price: 'od 19 900 CZK', plan2_price: 'od 39 900 CZK', plan3_price: 'od 69 900 CZK', plan4_name: 'System na zamówienie', plan4_price: 'od 150 000 CZK', plan4_desc: 'Strona, która sprzedaje i obsługuje klientów za Ciebie — płatności online, rezerwacje z limitem miejsc, panel dla zespołu, członkostwa i subskrypcje, automatyczne e-maile i SMS. Jak system, który zbudowaliśmy dla Ever Clean Car.', plan4_cta: 'Zapytaj bez zobowiązań →',
       portfolio_eyebrow: 'Nasze prace', portfolio_title: 'Strony, z których<br>jesteśmy dumni.',
       portfolio_desc: 'Każdą stronę tworzymy na miarę. Oto przykład tego, co robimy dla naszych klientów.',
       portfolio_tag: 'Auto detailing', portfolio_item_desc: 'Strona dla myjni i detailingu w Hodonínie — rezerwacja online z wyborem wolnego terminu, płatność Apple Pay i Google Pay oraz roczne członkostwo.',
