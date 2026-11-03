@@ -4,5 +4,12 @@
       "path": "/api/tydenni-souhrn",
       "schedule": "0 6 * * 1"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/tvorba-webu-praha.html",
+      "destination": "/tvorba-webovych-stranek.html",
+      "permanent": true
+    }
   ]
 }
