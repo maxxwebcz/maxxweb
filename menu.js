@@ -78,7 +78,7 @@
       <aside class="mx-drawer" id="mxDrawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
         <div class="mx-head"><a href="/"><img src="/logo.png" alt="maxxweb"></a><button type="button" class="mx-close" data-mx-close aria-label="Zavřít menu">×</button></div>
         <div class="mx-body" role="navigation" aria-label="Stránky webu">${sections}</div>
-        <div class="mx-foot"><a class="mx-cta" href="/#kontakt">Chci web za týden</a><a class="mx-phone" href="tel:+420604339385">+420 604 339 385 · office@maxxweb.cz</a></div>
+        <div class="mx-foot"><a class="mx-cta" href="/#kontakt">Chci web za týden</a><a class="mx-phone" href="tel:+420604419420">+420 604 419 420 · office@maxxweb.cz</a></div>
       </aside>`;
     document.body.appendChild(wrap);
     const drawer = wrap.querySelector('.mx-drawer');
