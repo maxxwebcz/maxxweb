@@ -1,5 +1,8 @@
 import nodemailer from 'nodemailer';
-import { predmet, html, text } from './_sablona-ukazka.js';
+import * as ukazka from './_sablona-ukazka.js';
+import * as vanoce from './_sablona-vanoce.js';
+
+const SABLONY = { ukazka, vanoce };
 
 export const config = { maxDuration: 60 };
 
@@ -16,7 +19,9 @@ const escape = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  const { heslo, emaily, prodejce, jenNahled } = req.body || {};
+  const { heslo, emaily, prodejce, jenNahled, sablona = 'ukazka' } = req.body || {};
+  const mail = SABLONY[sablona];
+  if (!mail) return res.status(400).json({ error: 'Neznámý typ e-mailu.' });
 
   if (!process.env.ODESILANI_HESLO || !process.env.SEZNAM_SMTP_PASS) {
     return res.status(500).json({ error: 'Odesílání není nastavené (chybí proměnné ve Vercelu).' });
@@ -43,9 +48,9 @@ export default async function handler(req, res) {
       await transporter.sendMail({
         from: `maxxweb <${ODESILATEL}>`,
         to,
-        subject: predmet,
-        html,
-        text,
+        subject: mail.predmet,
+        html: mail.html,
+        text: mail.text,
         headers: { 'List-Unsubscribe': `<mailto:${ODESILATEL}?subject=odhlasit>` },
       });
       vysledky.push({ email: to, ok: true });
@@ -61,7 +66,7 @@ export default async function handler(req, res) {
     await transporter.sendMail({
       from: `maxxweb <${ODESILATEL}>`,
       to: ODESILATEL,
-      subject: `Odesláno: Ukázka naší práce – ${vysledky.filter(v => v.ok).length}× (${prodejce || 'bez prodejce'})`,
+      subject: `Odesláno: ${mail.predmet} – ${vysledky.filter(v => v.ok).length}× (${prodejce || 'bez prodejce'})`,
       html: `<p>Odesláno ${escape(kdy)}, prodejce: <b>${escape(prodejce || '—')}</b></p><ul>${
         vysledky.map(v => `<li>${escape(v.email)} – ${v.ok ? 'odesláno' : `<b style="color:#c00">CHYBA: ${escape(v.chyba)}</b>`}</li>`).join('')
       }</ul>`,
