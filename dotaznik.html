@@ -527,16 +527,32 @@
     if (n === 12) { answers.faktNazev = val('faktNazev'); answers.faktIco = val('faktIco'); answers.faktAdresa = val('faktAdresa'); }
   }
 
+  // Každý krok má vlastní záznam v historii, takže tlačítko Zpět v prohlížeči
+  // i gesto zpět na mobilu vrací o otázku zpět místo opuštění stránky.
+  let odeslano = false;
+
   function nextStep(n) {
     collectStep(n);
     currentStep = n + 1;
     showStep(currentStep);
+    history.pushState({ krok: currentStep }, '');
   }
 
   function prevStep(n) {
+    if (history.state && history.state.krok === n) return history.back();
     currentStep = n - 1;
     showStep(currentStep);
   }
+
+  window.addEventListener('popstate', e => {
+    if (odeslano) { window.location.href = '/'; return; }
+    const krok = e.state && e.state.krok;
+    if (krok === 'shrnuti') { showSummary(true); return; }
+    document.getElementById('summaryScreen').style.display = 'none';
+    document.getElementById('welcomeBlock').style.display = 'block';
+    currentStep = typeof krok === 'number' ? krok : 1;
+    showStep(currentStep);
+  });
 
   // SUMMARY
   const labelMaps = {
@@ -554,7 +570,7 @@
   function mapArr(arr, map) { return arr && arr.length ? arr.map(v => map[v] || v).join(', ') : null; }
   function mapVal(val, map) { return map[val] || val || null; }
 
-  function showSummary() {
+  function showSummary(zHistorie) {
     collectStep(9);
     collectStep(10);
     collectStep(11);
@@ -597,9 +613,11 @@
     document.getElementById('summaryScreen').style.display = 'block';
     document.getElementById('progressBar').style.width = '95%';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (zHistorie !== true) history.pushState({ krok: 'shrnuti' }, '');
   }
 
   function hideSummary() {
+    if (history.state && history.state.krok === 'shrnuti') return history.back();
     document.getElementById('summaryScreen').style.display = 'none';
     document.getElementById('welcomeBlock').style.display = 'block';
     showStep(currentStep); // currentStep je stále 10, showStep přidá .active
@@ -620,10 +638,12 @@
 
     document.getElementById('summaryScreen').style.display = 'none';
     document.getElementById('successScreen').style.display = 'block';
+    odeslano = true;
     document.getElementById('progressBar').style.width = '100%';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  history.replaceState({ krok: 1 }, '');
   updateProgress(1);
 </script>
 </body>
